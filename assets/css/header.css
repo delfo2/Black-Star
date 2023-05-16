@@ -1,0 +1,29 @@
+.estrela__cabecalho {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.cabecalho__titulo {
+    font-family: var(--handwriting-font);
+    margin: 0 0;
+}
+.cabecalho__titulo::before {
+    background: url(../img/star-solid.svg) center no-repeat;
+    content: '';
+    display: inline-block;
+    height: 30px;
+    margin-right: 5px;
+    width: 30px;
+}
+
+.cabecalho__pesquisa form {
+    border: 1px solid #000;
+}
+.pesquisa__icone {
+    border: none;
+}
+.pesquisa__input {
+    border: none;
+}

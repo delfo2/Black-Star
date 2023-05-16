@@ -1,0 +1,8 @@
+:root {
+    --regular-font: 'Open Sans', sans-serif;
+    --handwriting-font: 'Pacifico', cursive;
+}
+
+.estrela {
+    font-family: var(--regular-font);
+}
