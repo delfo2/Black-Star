@@ -13,41 +13,70 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <title>Black Star</title>
 </head>
-<body>
-    <main class="estrela">
-        <header class="estrela__header">
-            <div class="estrela__cabecalho">
-                <h1 class="cabecalho__titulo">Black Star</h1>
-                <div class="cabecalho__container">
-                    <div class="cabecalho__pesquisa">
-                        <form method="get">
-                            <input type="search" name="search" id="search" required class="pesquisa__input" placeholder="Exemplo: Camisas" pattern="[\D*\s*]*" title="A pesquisa deve conter apenas letras de a-z">
-                            <input type="submit" name="search" id="search" value="" class="pesquisa__icone">
-                        </form>
-                    </div>
-                    <button type="menu" class="cabecalho__menu-mobile"></button>
-                    <div class="cabecalho__menu">
-                        <button class="menu__botao">início</button>
-                        <button class="menu__botao">masculino</button>
-                        <button class="menu__botao">feminino</button>
-                        <button class="menu__botao">inverno</button>
-                        <button class="menu__botao">verão</button>
-                    </div>
-                    <div class="cabecalho__carrinho">
-                        <button class="carrinho__botao"></button>
-                    </div>
+<body>        
+    <header class="estrela__header">
+        <div class="estrela__cabecalho">
+            <h1 class="cabecalho__titulo">Black Star</h1>
+            <div class="cabecalho__container">
+                <div class="cabecalho__pesquisa">
+                    <form method="get" class="pesquisa__form">
+                        <input type="search" name="search" id="search" required class="pesquisa__input" placeholder="Exemplo: Camisas" pattern="[\D*\s*]*" title="A pesquisa deve conter apenas letras de a-z">
+                        <input type="submit" name="search" id="search" value="" class="pesquisa__icone">
+                    </form>
                 </div>
-            </div>
-            <div class="cabecalho__mobile">
-                <div class="cabecalho__mobile-menu">
+                <button type="menu" class="cabecalho__menu-mobile"></button>
+                <div class="cabecalho__menu">
                     <button class="menu__botao">início</button>
                     <button class="menu__botao">masculino</button>
                     <button class="menu__botao">feminino</button>
                     <button class="menu__botao">inverno</button>
                     <button class="menu__botao">verão</button>
                 </div>
+                <div class="cabecalho__carrinho">
+                    <button class="carrinho__botao"></button>
+                </div>
             </div>
-        </header>
+        </div>
+        <div class="cabecalho__mobile">
+            <div class="cabecalho__mobile-menu">
+                <button class="menu__botao">início</button>
+                <button class="menu__botao">masculino</button>
+                <button class="menu__botao">feminino</button>
+                <button class="menu__botao">inverno</button>
+                <button class="menu__botao">verão</button>
+            </div>
+        </div>
+    </header>
+    <main class="estrela">
+        <h2>Camisas</h2>
+        <!-- <ul class="estrela__pickcollor">
+            <p>Escolha a sua cor desejada</p>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+            <li><button class="pickcollor__button"></button></li>
+        </ul> -->
+        <div class="estrela__inverno">
+            <div class="inverno__textArea">
+                <h3 class="textArea__titulo">Coleção Inverno 2023</h3>
+                <p class="textArea__descricao">Nosso moletom é flanelado por dentro, por isso é muito mais quentinho e fofo, é uma peça de extrema qualidade, proporcionando conforto e estilo para te aquecer nesse inverno. Os moletons são unissex, possuem capuz e bolsos laterais... assim todos podem ficar quentinhos e formidáveis!</p>
+                <a href="#" class="textArea__link">Conferir Coleção</a>
+            </div>
+            <img class="inverno__foto-destaque" src="./assets/img/just test images/modelocelb.webp" alt="Homem vestido com camisa jeans aberta em conjunto com calça jeans">
+            <div class="inverno__preview">
+                <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno1.webp" alt=""></a>
+                <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno2.webp" alt=""></a>
+                <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno3.webp" alt=""></a>
+            </div>
+        </div>
     </main>
     <!-- <script src="main.js" type="module"></script> -->
 </body>
