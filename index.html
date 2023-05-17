@@ -20,7 +20,7 @@
             <div class="cabecalho__container">
                 <div class="cabecalho__pesquisa">
                     <form method="get">
-                        <input type="search" name="search" id="search" required class="pesquisa__input" placeholder="Exemplo: Camisas" pattern="">
+                        <input type="search" name="search" id="search" required class="pesquisa__input" placeholder="Exemplo: Camisas" pattern="[\D*\s*]*" title="A pesquisa deve conter apenas letras de a-z">
                         <input type="submit" name="search" id="search" value="" class="pesquisa__icone">
                     </form>
                 </div>

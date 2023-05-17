@@ -1,13 +1,13 @@
 .estrela__cabecalho {
     align-items: center;
+    border-bottom: 1px solid var(--preto);
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
 }
 
 .cabecalho__titulo {
     font-family: var(--handwriting-font);
-    margin: 0 0;
+    margin: 1rem 0 0 0;
 }
 .cabecalho__titulo::before {
     background: url(../img/star-solid.svg) center no-repeat;
@@ -19,6 +19,9 @@
 }
 
 .cabecalho__container {
+    display: flex;
+    align-items: stretch;
+    margin-top: 3rem;
     width: 90%;
 }
 
@@ -49,4 +52,40 @@
     border: none;
     cursor: pointer;
     padding: .5rem 1rem;
+}
+
+.cabecalho__menu {
+    align-items: stretch;
+    display:  flex;
+    margin-left: 15%;
+    height: 100%;
+}
+
+.menu__botao {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    padding: .5rem .5rem 1.5rem .5rem;
+}
+.menu__botao:hover,
+.menu__botao:active,
+.menu__botao:focus,
+.menu__botao:focus-visible {
+    color: white;
+    background: var(--preto);
+    text-decoration: none;
+    outline: none;
+}
+
+.cabecalho__carrinho {
+    margin-left: 30%;
+}
+
+.carrinho__botao {
+    border: none;
+    background: url(../img/cart.svg) center no-repeat;
+    background-size: 60%;
+    cursor: pointer;
+    padding: 15px 25px;
 }
