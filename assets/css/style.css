@@ -1,6 +1,10 @@
 :root {
     --regular-font: 'Open Sans', sans-serif;
     --handwriting-font: 'Pacifico', cursive;
+
+    --cinza-claro: #a7a7a7;
+    --cinza-comum: #5c5c5c;
+    --cinza-escuro: #222222;
 }
 
 .estrela {

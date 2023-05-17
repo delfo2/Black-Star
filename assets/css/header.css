@@ -18,12 +18,35 @@
     width: 30px;
 }
 
-.cabecalho__pesquisa form {
-    border: 1px solid #000;
+.cabecalho__container {
+    width: 90%;
 }
-.pesquisa__icone {
-    border: none;
+
+.cabecalho__pesquisa {
+    display: inline-block;
+}
+
+.cabecalho__pesquisa form {
+    border: 1px solid var(--cinza-claro);
 }
 .pesquisa__input {
     border: none;
+    padding-left: 1rem;
+}
+.pesquisa__input:focus,
+.pesquisa__input:active,
+.pesquisa__input:focus-visible {
+    border: none;
+    outline: none;
+}
+.pesquisa__input::placeholder {
+    font-size: 1rem;
+    font-weight: 100;
+}
+.pesquisa__icone {
+    background: url(../img/search-icon.svg) center no-repeat;
+    background-size: 50%;
+    border: none;
+    cursor: pointer;
+    padding: .5rem 1rem;
 }
