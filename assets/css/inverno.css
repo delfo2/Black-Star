@@ -84,7 +84,6 @@
     width: 15px;
 }
 
-
 .inverno__foto-destaque {
     grid-area: pic;
     object-fit: cover;
@@ -120,4 +119,48 @@
 }
 .preview__cartao img:hover {
     opacity: .7;
+}
+
+@media screen and (max-width: 1000px) {
+    .estrela__inverno {
+        padding: 2rem 1rem;
+    }
+    .inverno__container {
+        gap: 0 4%;
+        grid-template-columns: 48% 48%;
+        grid-template-rows: 80% 20%;
+        grid-template-areas: 
+            "text pic"
+            "preview preview";
+        height: 70vh;
+        width: 100%;
+    }
+    
+    .textArea__titulo {
+        font-size: 2rem;
+    }
+    .textArea__titulo strong {
+        font-size: 2rem;
+    }
+
+    .textArea__descricao {
+        font-size: .7rem;
+    }
+
+    .textArea__link {
+        font-size: 1rem;
+        padding: .2rem .5rem;
+    }
+    
+    .inverno__foto-destaque {
+        height: 90%;
+    }
+
+    .preview__cartao {
+        justify-content: center;
+    }
+    
+    .preview__cartao img {
+        width: 80px;
+    }
 }
