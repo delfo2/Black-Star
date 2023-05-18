@@ -1,7 +1,7 @@
 .estrela__inverno {
     display: flex;
     justify-content: center;
-    padding: 3rem 0;
+    padding: 4rem 0;
 }
 
 .inverno__container {
@@ -18,6 +18,7 @@
 
 .inverno__textArea {
     grid-area: text;
+    height: 100%;
 }
 
 .textArea__titulo {
@@ -90,12 +91,33 @@
     object-position: top;
     width: 100%;
     height: 100%;
+    transition: all 200ms;
+}
+.inverno__foto-destaque:hover {
+    object-position: bottom;
 }
 
 .inverno__preview {
+    align-items: center;
+    display: flex;
     grid-area: preview;
 }
 
+.preview__cartao {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
 .preview__cartao img {
-    width: 20%;
+    border-radius: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+    /* transform: scale(1); */
+    width: 100px;
+}
+.preview__cartao img:hover {
+    opacity: .7;
 }
