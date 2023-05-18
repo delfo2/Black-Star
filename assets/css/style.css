@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap');
+
 :root {
     --regular-font: 'Open Sans', sans-serif;
     --handwriting-font: 'Pacifico', cursive;
+    --winter-font: 'Rowdies', cursive;
 
+    --branco: #FFF;
     --cinza-claro: #a7a7a7;
     --cinza-comum: #5c5c5c;
     --cinza-escuro: #222222;
