@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Germania+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
 :root {
     --regular-font: 'Open Sans', sans-serif;
     --handwriting-font: 'Pacifico', cursive;
     --winter-font: 'Rowdies', cursive;
+    --trending-font: 'UnifrakturCook', cursive;
+
 
     --branco: #FFF;
     --cinza-claro: #a7a7a7;
     --cinza-comum: #5c5c5c;
     --cinza-escuro: #222222;
     --preto: #000;
+    --preto-transparente: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(8,8,8,0.7231267507002801) 55%, rgba(0,0,0,0.8995973389355743) 100%);
 }
 
 .estrela {
@@ -58,6 +63,12 @@
     display: inline-block;
     height: 15px;
     width: 15px;
+}
+
+.estrela__linha {
+    display: block;
+    border-top: 1px solid var(--preto);
+    height: 1px;
 }
 
 @media screen and (max-width: 1000px) {

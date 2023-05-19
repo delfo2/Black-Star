@@ -1,7 +1,6 @@
 .estrela__destaques {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     margin: 3rem auto;
     width: 80%;
 }
@@ -85,7 +84,7 @@
 .secao__card:active img,
 .secao__card:focus img,
 .secao__card:focus-visible img,
-.secao__card:active img {
+.secao__card:target img {
     object-position: 115% 110%;
 }
 
