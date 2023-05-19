@@ -15,3 +15,47 @@
 .estrela {
     font-family: var(--regular-font);
 }
+
+.link {
+    background-color: var(--branco);
+    border: 1px solid var(--preto);
+    color: var(--preto);
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: .2rem 1rem;
+    text-decoration: none;
+    transition: 300ms;
+}
+.link::after {
+    content: '';
+    background: url('../img/link\ externo.svg');
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+.link:visited {
+    color: var(--preto);
+    text-decoration: none;
+}
+.link:hover,
+.link:active,
+.link:focus,
+.link:focus-visible,
+.link:target {
+    background-color: var(--preto);
+    color: var(--branco);
+    outline: none;
+}
+.link:hover::after,
+.link:active::after,
+.link:focus::after,
+.link:focus-visible::after,
+.link:target::after {
+    content: '';
+    background: url('../img/link-externo-branco.png');
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}

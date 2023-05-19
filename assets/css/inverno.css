@@ -40,50 +40,6 @@
     margin: 1rem 0;
 }
 
-.textArea__link {
-    background-color: var(--branco);
-    border: 1px solid var(--preto);
-    color: var(--preto);
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding: .2rem 1rem;
-    text-decoration: none;
-    transition: 300ms;
-}
-.textArea__link::after {
-    content: '';
-    background: url('../img/link\ externo.svg');
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-}
-.textArea__link:visited {
-    color: var(--preto);
-    text-decoration: none;
-}
-.textArea__link:hover,
-.textArea__link:active,
-.textArea__link:focus,
-.textArea__link:focus-visible,
-.textArea__link:target {
-    background-color: var(--preto);
-    color: var(--branco);
-    outline: none;
-}
-.textArea__link:hover::after,
-.textArea__link:active::after,
-.textArea__link:focus::after,
-.textArea__link:focus-visible::after,
-.textArea__link:target::after {
-    content: '';
-    background: url('../img/link-externo-branco.png');
-    background-position: center;
-    background-size: cover;
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-}
-
 .inverno__foto-destaque {
     grid-area: pic;
     object-fit: cover;
@@ -112,10 +68,8 @@
 .preview__cartao img {
     border-radius: 100%;
     height: auto;
-    overflow: hidden;
-    object-fit: cover;
-    /* transform: scale(1); */
     width: 100px;
+    transition: 300ms;
 }
 .preview__cartao img:hover {
     opacity: .7;
