@@ -81,6 +81,57 @@
     transition: 300ms;
 }
 
-.secao__card:hover img {
+.secao__card:hover img,
+.secao__card:active img,
+.secao__card:focus img,
+.secao__card:focus-visible img,
+.secao__card:active img {
     object-position: 115% 110%;
+}
+
+@media screen and (max-width: 1000px) {
+    .estrela__destaques {
+        width: 90%;
+    }
+
+    .destaques__texto {
+        margin-bottom: 1rem;
+    }
+
+    .destaques__titulo {
+        font-size: 1.5rem;
+    }
+
+    .destaques__titulo, 
+    .destaques__titulo h3 {
+        height: auto;
+    }
+
+    .destaques__link {
+        font-size: 1rem;
+        padding: 5px 20px;
+    }
+    
+    .destaques__secao {
+        flex-wrap: wrap;
+    }
+    
+    .secao__card figcaption {
+        font-size: 1rem;
+    }
+    
+    .secao__card button {
+        display: flex;
+        font-size: .001rem;
+        padding: 10px 15px;
+    }
+    .secao__card button::before {
+        content: 'Adicionar';
+        font-size: 1rem;
+    }
+    
+    .secao__card img {
+        height: 65%;
+        width: 150px;
+    }
 }
