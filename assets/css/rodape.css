@@ -1,0 +1,72 @@
+.rodape {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 7rem 0 2rem 0;
+}
+
+.rodape__sobre {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1rem;
+    height: 15vh;
+}
+
+.rodape__sobre p{
+    font-weight: 100;
+    font-family: var(--regular-font);
+}
+
+.rodape__sobre p:last-child{
+    font-size: .7rem;
+}
+
+.rodape__sobre div{
+    display: flex;
+}
+
+
+.rodape__link {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rodape__link::after {
+    background: url(../img/linkedin.png) no-repeat center;
+    padding-left: 5px;
+}
+.rodape__link:hover::after,
+.rodape__link:active::after,
+.rodape__link:focus::after,
+.rodape__link:focus-visible::after,
+.rodape__link:target:after {
+    background: url(../img/linkedin-branco.png) no-repeat center;
+}
+
+.rodape__link:first-child::after {
+    background: url(../img/github.png) no-repeat center;
+}
+.rodape__link:first-child:hover::after,
+.rodape__link:first-child:active::after,
+.rodape__link:first-child:focus::after,
+.rodape__link:first-child:focus-visible::after,
+.rodape__link:first-child:target::after {
+    background: url(../img/github-branco.png) no-repeat center;
+}
+
+@media screen and (max-width: 1000px) {
+    .rodape__sobre {
+        width: 80%;
+        height: 22vh;
+    }
+    .rodape__sobre p{
+        text-align: center;
+    }
+    .rodape__link::after {
+        padding-bottom: 5px;
+    }
+}
