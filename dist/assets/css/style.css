@@ -21,6 +21,14 @@
     font-family: var(--regular-font);
 }
 
+.escondido {
+    display: none;
+}
+
+.visivel {
+    display: block;
+}
+
 .link {
     background-color: var(--branco);
     border: 1px solid var(--preto);
