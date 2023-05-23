@@ -176,3 +176,11 @@
         display: block;
     } */
 }
+
+.escondido {
+    display: none;
+}
+
+.visivel {
+    display: block;
+}

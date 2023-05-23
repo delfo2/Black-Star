@@ -2,11 +2,12 @@ const menu : HTMLCollection =  <HTMLCollection> document.querySelector('[data-me
 
 export function changeMenuState (btn : HTMLButtonElement) : void {
     for (const btn of menu) {
-        if(getActualState(btn).contains("visivel")) {
+        
+        if(getActualState(btn).contains('visivel')) {
             btn.classList.remove("visivel");
             btn.classList.add("escondido");
         }
-        if(getActualState(btn).contains("escondido")) {
+        else if(getActualState(btn).contains("escondido")) {
             btn.classList.remove("escondido");
             btn.classList.add("visivel");
         }
