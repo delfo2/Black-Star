@@ -1,6 +1,6 @@
-const menu : HTMLCollection =  <HTMLCollection> document.querySelector('[data-menu="div"]')?.children;
+export const menu : HTMLCollection = <HTMLCollection> document.querySelector('[data-menu="div"]')?.children;
 
-export function changeMenuState (btn : HTMLButtonElement) : void {
+export function changeMenuState () : void {
     for (const btn of menu) {
         
         if(getActualState(btn).contains('visivel')) {

@@ -1,5 +1,7 @@
+import { listenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
-const action = () => {
+export const action = () => {
     listenBtnMenu();
+    listenTouch();
 };
 action();

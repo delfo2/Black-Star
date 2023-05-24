@@ -4,6 +4,6 @@ const btnMenu : HTMLButtonElement = <HTMLButtonElement> document.querySelector('
 
 export function listenBtnMenu () : void {
     btnMenu?.addEventListener('click', () => {
-        changeMenuState(btnMenu);
+        changeMenuState();
     })
 }
