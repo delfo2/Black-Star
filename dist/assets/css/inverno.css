@@ -67,7 +67,7 @@
 
 .preview__cartao img {
     border-radius: 100%;
-    height: auto;
+    height: 100%;
     width: 100px;
     transition: 300ms;
 }
