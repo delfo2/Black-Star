@@ -18,7 +18,10 @@ export function listenTouch () {
 
         
 function imgChildrenCheck(element:any) {
-    if(element instanceof Element && element.children.length > 0) {
+    if(element instanceof Element 
+        && element.children.length > 0
+            && elementCanHaveInternalChange(element)) {
+
         let children = element.children;
         searchNewChildren(children);
     }
@@ -34,4 +37,16 @@ function searchNewChildren(children: HTMLCollection) {
             // make a function later here
         }
     }
+}
+
+const cantChangeElements = [
+    "MAIN",
+    "HEADER",
+    "DIV",
+    "SECTION",
+    "SECTION"
+]
+
+function elementCanHaveInternalChange(element: Element) {
+    return !cantChangeElements.includes(element.nodeName.toUpperCase());
 }

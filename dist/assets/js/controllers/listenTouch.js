@@ -15,7 +15,9 @@ export function listenTouch() {
     });
 }
 function imgChildrenCheck(element) {
-    if (element instanceof Element && element.children.length > 0) {
+    if (element instanceof Element
+        && element.children.length > 0
+        && elementCanHaveInternalChange(element)) {
         let children = element.children;
         searchNewChildren(children);
     }
@@ -29,4 +31,14 @@ function searchNewChildren(children) {
             element.src = 'assets/img/just test images/destaques 1.jpg';
         }
     }
+}
+const cantChangeElements = [
+    "MAIN",
+    "HEADER",
+    "DIV",
+    "SECTION",
+    "SECTION"
+];
+function elementCanHaveInternalChange(element) {
+    return !cantChangeElements.includes(element.nodeName.toUpperCase());
 }
