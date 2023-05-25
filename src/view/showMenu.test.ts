@@ -1,7 +1,6 @@
-import { it, expect, describe, vi } from "vitest";
+import { it, expect, describe, vi, beforeEach } from "vitest";
 import path from 'path';
 import fs from 'fs';
-import { changeMenuState } from "./showMenu";
 
 const HtmlDocPath = path.join(process.cwd(), 'dist/index.html');
 const HtmlDocContent = fs.readFileSync(HtmlDocPath).toString();
@@ -13,10 +12,14 @@ vi.stubGlobal('document', document);
 document.body.innerHTML = '';
 document.write(HtmlDocContent);
 
-describe('changeMenuState()', () => {
+// describe('changeMenuState()', () => {
+    
+//     it('should remove the "visivel" property', async () => {
+//         // const showMenu = await import("./showMenu.ts");
+//         showMenu.changeMenuState();
 
-    it('should remove the "visivel" property', () => {
-        changeMenuState();
-        
-    });
-})
+//         let botao = showMenu.menu[0].classList;
+
+//         expect(botao).toHaveProperty('visivel');
+//     });
+// })

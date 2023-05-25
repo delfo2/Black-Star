@@ -75,7 +75,7 @@
 
 .secao__card img {
     object-fit: cover;
-    height: 75%;
+    height: 325px;
     width: 250px;
     transition: 300ms;
 }
@@ -130,7 +130,7 @@
     }
     
     .secao__card img {
-        height: 65%;
+        height: 200px;
         width: 150px;
     }
 }

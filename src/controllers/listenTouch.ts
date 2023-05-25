@@ -1,10 +1,16 @@
+import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
 
-
 let imgSrcData : string[];
+let lastRandomNumber : number = 0;
+
 export function listenTouch (imgArray : string[]) {
 
     imgSrcData = imgArray;
+    const docImgs = getDocumentImages();
+    docImgs.forEach(src => {
+        imgSrcData.push(src);
+    })
 
     window.addEventListener('click', (e) => {
         if(e.target instanceof HTMLImageElement) {
@@ -20,7 +26,7 @@ export function listenTouch (imgArray : string[]) {
             return;
         }
         else {
-            console.log(e.target);
+            return;
         }
     })
 }
@@ -32,10 +38,13 @@ function getOneSource () : string {
 }
 
 function getRandomNumber (limit : number) : number {
-    let randomNumber = Math.round(Math.random() * 10);
-    if(randomNumber >= limit) {
+    let randomNumber = Math.round(Math.random() * limit);
+
+    if(randomNumber >= limit || randomNumber === lastRandomNumber) {
         randomNumber = getRandomNumber(limit);
     }
+    lastRandomNumber = randomNumber;
+    
     return randomNumber;
 }
 

@@ -21,9 +21,7 @@ export async function fetchGoogleImgs (q : string) : Promise<[GoogleItemObject] 
 }
 
 export function extractImgsIntoArray (obj : Array<GoogleItemObject>) : string[] {
-    const imgArray = obj.map(item => {
-        return item.link;
-    })
+    const imgArray = obj.map(item => item.link)
 
     return imgArray;
 }

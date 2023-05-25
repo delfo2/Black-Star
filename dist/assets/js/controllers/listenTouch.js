@@ -1,7 +1,13 @@
+import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
 let imgSrcData;
+let lastRandomNumber = 0;
 export function listenTouch(imgArray) {
     imgSrcData = imgArray;
+    const docImgs = getDocumentImages();
+    docImgs.forEach(src => {
+        imgSrcData.push(src);
+    });
     window.addEventListener('click', (e) => {
         if (e.target instanceof HTMLImageElement) {
             changeSourceImg(e.target, getOneSource());
@@ -14,7 +20,7 @@ export function listenTouch(imgArray) {
             return;
         }
         else {
-            console.log(e.target);
+            return;
         }
     });
 }
@@ -24,10 +30,11 @@ function getOneSource() {
     return imgSrc;
 }
 function getRandomNumber(limit) {
-    let randomNumber = Math.round(Math.random() * 10);
-    if (randomNumber >= limit) {
+    let randomNumber = Math.round(Math.random() * limit);
+    if (randomNumber >= limit || randomNumber === lastRandomNumber) {
         randomNumber = getRandomNumber(limit);
     }
+    lastRandomNumber = randomNumber;
     return randomNumber;
 }
 function imgChildrenCheck(element) {
