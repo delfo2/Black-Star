@@ -1,67 +1,62 @@
 import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
-let imgSrcData;
-let lastRandomNumber = 0;
-export function listenTouch(imgArray) {
-    imgSrcData = imgArray;
-    const docImgs = getDocumentImages();
-    docImgs.forEach(src => {
-        imgSrcData.push(src);
-    });
-    window.addEventListener('click', (e) => {
-        if (e.target instanceof HTMLImageElement) {
-            changeSourceImg(e.target, getOneSource());
-            return;
-        }
-        imgChildrenCheck(e.target);
-        if (e.target instanceof Element
-            && e.target.previousElementSibling instanceof HTMLImageElement) {
-            changeSourceImg(e.target.previousElementSibling, getOneSource());
-            return;
-        }
-        else {
-            return;
-        }
-    });
-}
-function getOneSource() {
-    const randomNumber = getRandomNumber(imgSrcData.length);
-    const imgSrc = imgSrcData[randomNumber];
-    return imgSrc;
-}
-function getRandomNumber(limit) {
-    let randomNumber = Math.round(Math.random() * limit);
-    if (randomNumber >= limit || randomNumber === lastRandomNumber) {
-        randomNumber = getRandomNumber(limit);
+export class ListenTouch {
+    constructor(ImageDatase) {
+        this.docsImgs = getDocumentImages();
+        this.cantChangeElements = [
+            "MAIN",
+            "HEADER",
+            "DIV",
+            "SECTION",
+            "SECTION"
+        ];
+        this.ImageDatabase = ImageDatase;
+        this.updateSelf();
     }
-    lastRandomNumber = randomNumber;
-    return randomNumber;
-}
-function imgChildrenCheck(element) {
-    if (element instanceof Element
-        && element.children.length > 0
-        && elementCanHaveInternalChange(element)) {
-        let children = element.children;
-        searchNewChildren(children);
+    ;
+    startToListen() {
+        window.addEventListener('click', (e) => {
+            if (e.target instanceof HTMLImageElement) {
+                changeSourceImg(e.target, this.ImageDatabase.getOneSource());
+                return;
+            }
+            this.imgChildrenCheck(e.target);
+            if (e.target instanceof Element
+                && e.target.previousElementSibling instanceof HTMLImageElement) {
+                changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
+                return;
+            }
+            else {
+                return;
+            }
+        });
     }
-}
-function searchNewChildren(children) {
-    for (const element of children) {
-        if (element.children.length > 0) {
-            searchNewChildren(element.children);
-        }
-        if (element instanceof HTMLImageElement) {
-            changeSourceImg(element, getOneSource());
+    updateSelf() {
+        this.ImageDatabase.omegaUpdateSource(this.docsImgs);
+    }
+    ;
+    imgChildrenCheck(element) {
+        if (element instanceof Element
+            && element.children.length > 0
+            && this.elementCanHaveInternalChange(element)) {
+            let children = element.children;
+            this.searchNewChildren(children);
         }
     }
-}
-const cantChangeElements = [
-    "MAIN",
-    "HEADER",
-    "DIV",
-    "SECTION",
-    "SECTION"
-];
-function elementCanHaveInternalChange(element) {
-    return !cantChangeElements.includes(element.nodeName.toUpperCase());
+    ;
+    searchNewChildren(children) {
+        for (const element of children) {
+            if (element.children.length > 0) {
+                this.searchNewChildren(element.children);
+            }
+            if (element instanceof HTMLImageElement) {
+                changeSourceImg(element, this.ImageDatabase.getOneSource());
+            }
+        }
+    }
+    ;
+    elementCanHaveInternalChange(element) {
+        return !this.cantChangeElements.includes(element.nodeName.toUpperCase());
+    }
+    ;
 }

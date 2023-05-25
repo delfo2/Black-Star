@@ -7,12 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { listenTouch } from "./controllers/listenTouch.js";
+import { ListenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
 import { searchImages } from "./controllers/searchController.js";
+import { ImageDatabase } from "./models/ImageDatabase.js";
 export const action = () => __awaiter(void 0, void 0, void 0, function* () {
     listenBtnMenu();
     const srcImg = yield searchImages();
-    listenTouch(srcImg);
+    const ImgDatabase = new ImageDatabase(srcImg);
+    const ListenTouchController = new ListenTouch(ImgDatabase);
+    ListenTouchController.startToListen();
 });
 action();
