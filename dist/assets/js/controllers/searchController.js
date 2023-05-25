@@ -7,10 +7,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { fetchGoogleImgs } from "../models/searchImage.js";
+import { extractImgsIntoArray, fetchGoogleImgs } from "../models/searchImage.js";
 export function searchImages() {
     return __awaiter(this, void 0, void 0, function* () {
         const retorno = yield fetchGoogleImgs('Camisas');
-        console.log(retorno);
+        if (retorno instanceof (Array)) {
+            const srcArray = extractImgsIntoArray(retorno);
+            return srcArray;
+        }
+        else {
+            throw new Error('The object provided isnt a intance of GoogleItemObject.');
+        }
     });
 }

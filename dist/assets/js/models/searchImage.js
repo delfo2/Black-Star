@@ -27,3 +27,9 @@ export function fetchGoogleImgs(q) {
         }
     });
 }
+export function extractImgsIntoArray(obj) {
+    const imgArray = obj.map(item => {
+        return item.link;
+    });
+    return imgArray;
+}

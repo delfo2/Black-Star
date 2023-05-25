@@ -1,18 +1,34 @@
-export function listenTouch() {
+import { changeSourceImg } from "../view/changeSrcImg.js";
+let imgSrcData;
+export function listenTouch(imgArray) {
+    imgSrcData = imgArray;
     window.addEventListener('click', (e) => {
         if (e.target instanceof HTMLImageElement) {
-            e.target.src = 'assets/img/just test images/destaques 1.jpg';
+            changeSourceImg(e.target, getOneSource());
             return;
         }
         imgChildrenCheck(e.target);
-        if (e.target instanceof Element && e.target.previousElementSibling instanceof HTMLImageElement) {
-            e.target.previousElementSibling.src = 'assets/img/just test images/destaques 1.jpg';
+        if (e.target instanceof Element
+            && e.target.previousElementSibling instanceof HTMLImageElement) {
+            changeSourceImg(e.target.previousElementSibling, getOneSource());
             return;
         }
         else {
             console.log(e.target);
         }
     });
+}
+function getOneSource() {
+    const randomNumber = getRandomNumber(imgSrcData.length);
+    const imgSrc = imgSrcData[randomNumber];
+    return imgSrc;
+}
+function getRandomNumber(limit) {
+    let randomNumber = Math.round(Math.random() * 10);
+    if (randomNumber >= limit) {
+        randomNumber = getRandomNumber(limit);
+    }
+    return randomNumber;
 }
 function imgChildrenCheck(element) {
     if (element instanceof Element
@@ -28,7 +44,7 @@ function searchNewChildren(children) {
             searchNewChildren(element.children);
         }
         if (element instanceof HTMLImageElement) {
-            element.src = 'assets/img/just test images/destaques 1.jpg';
+            changeSourceImg(element, getOneSource());
         }
     }
 }
