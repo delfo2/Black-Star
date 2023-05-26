@@ -19,6 +19,7 @@
 
 .estrela {
     font-family: var(--regular-font);
+    padding-top: 7rem;
 }
 
 .link {
@@ -72,6 +73,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+    
+    .estrela {
+        padding-top: 5rem;
+    }
     
     .link {
         font-size: 1rem;

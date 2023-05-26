@@ -1,3 +1,9 @@
+.estrela__header {
+    background-color: var(--branco);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
 .estrela__cabecalho {
     align-items: center;
     border-bottom: 2px solid var(--preto);
@@ -98,13 +104,87 @@
     background: url(../img/cart.svg) center no-repeat;
     background-size: 60%;
     cursor: pointer;
-    padding: 15px 25px;
+    padding: 25px 25px;
+    margin-bottom: 2px;
+}
+
+.carrinho__botao-clicado {
+    border: none;
+    border-radius: 100%;
+    background-color: var(--preto);
+    background-image: url(../img/cart-white.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    cursor: pointer;
+    padding: 25px 25px;
+    margin-bottom: 2px;
 }
 
 .cabecalho__mobile,
 .cabecalho__mobile-menu {
     display:  none;
 }
+
+.cabecalho__carrinho-menu {
+    background-color: var(--branco);
+    border: 2px solid var(--preto);
+    border-top: none;
+    border-right: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 240px;
+    position: absolute;
+    padding-bottom: 1rem;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    right: 0;
+    width: 50%;
+}
+.cabecalho__carrinho-menu::-webkit-scrollbar  {
+    display: none;
+}
+
+.carrinho__card-item {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    width: 100%;
+}
+
+.carrinho__card-item img {
+    border-radius: 5px;
+    height: 50px;
+    object-fit: cover;
+    object-position: top;
+    width: 50px;
+}
+.carrinho__card-item figcaption {
+    color: var(--preto);
+    white-space: nowrap;
+    display: inline-block;
+    height: 1rem;
+    font-family: var(--regular-font);
+    font-weight: 100;
+    overflow: hidden;
+    width: 100px;
+}
+
+@media screen and (min-width : 700px) {
+    .cabecalho__carrinho-menu {
+        margin-top: -2px;
+        width: 25%;
+    }
+}
+
+@media screen and (min-width : 1350px) {
+    .cabecalho__carrinho-menu {
+        width: 25%;
+    }
+}
+
 
 @media screen and (max-width: 1350px) {
     .estrela__header {
@@ -142,6 +222,11 @@
         background-size: 70%;
         padding: .5rem 1rem;
     }
+
+    
+    .carrinho__botao-clicado {
+        border-radius: 30px;
+    }
     .cabecalho__menu-mobile {
         background: none;
         background-image: url(../img/menu.svg);
@@ -178,9 +263,14 @@
 }
 
 .escondido {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.2s linear;
 }
 
 .visivel {
     display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility .2s, opacity 0.2s linear;
 }

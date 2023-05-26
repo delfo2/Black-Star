@@ -1,16 +1,25 @@
+import { AllowChange } from "../helpers/functionHelpers.js";
+
 export const menu : HTMLCollection = <HTMLCollection> document.querySelector('[data-menu="div"]')?.children;
 
-export function changeMenuState () : void {
-    for (const btn of menu) {
-        
-        if(getActualState(btn).contains('visivel')) {
-            btn.classList.remove("visivel");
-            btn.classList.add("escondido");
+export function changeMenuState (can : AllowChange) : void {
+    if(can.menuCan) {
+        for (const btn of menu) {
+            if(getActualState(btn).contains('visivel')) {
+                btn.classList.remove("visivel");
+                btn.classList.add("escondido");
+                can.updateCartCan()
+                console.log(can.cartCan);
+            }
+            else if(getActualState(btn).contains("escondido")) {
+                btn.classList.remove("escondido");
+                btn.classList.add("visivel");
+                can.updateCartCan()
+                console.log(can.cartCan);
+            }
         }
-        else if(getActualState(btn).contains("escondido")) {
-            btn.classList.remove("escondido");
-            btn.classList.add("visivel");
-        }
+    } else {
+        console.log(`You cant change Menu right now. Please disable Cart Menu first.`);
     }
 }
 

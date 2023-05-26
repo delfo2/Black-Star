@@ -6,9 +6,10 @@ import { ImageDatabase } from "./models/ImageDatabase.js";
 export const action = async () => {
     listenBtnMenu();
 
-    const srcImg = await searchImages();
+    // const srcImg = await searchImages();
+    const testImg = ['']
 
-    const ImgDatabase = new ImageDatabase(srcImg);
+    const ImgDatabase = new ImageDatabase(testImg);
     const ListenTouchController = new ListenTouch(ImgDatabase);
     
     ListenTouchController.startToListen();

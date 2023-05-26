@@ -11,3 +11,25 @@ export class getRandomNumber {
         return randomNumber;
     }
 }
+export class AllowChange {
+    constructor() {
+        this.cartCan = true;
+        this.menuCan = true;
+    }
+    updateCartCan() {
+        if (this.cartCan) {
+            this.cartCan = false;
+        }
+        else {
+            this.cartCan = true;
+        }
+    }
+    updateMenuCan() {
+        if (this.menuCan) {
+            this.menuCan = false;
+        }
+        else {
+            this.menuCan = true;
+        }
+    }
+}

@@ -9,12 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { ListenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
-import { searchImages } from "./controllers/searchController.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
 export const action = () => __awaiter(void 0, void 0, void 0, function* () {
     listenBtnMenu();
-    const srcImg = yield searchImages();
-    const ImgDatabase = new ImageDatabase(srcImg);
+    const testImg = [''];
+    const ImgDatabase = new ImageDatabase(testImg);
     const ListenTouchController = new ListenTouch(ImgDatabase);
     ListenTouchController.startToListen();
 });

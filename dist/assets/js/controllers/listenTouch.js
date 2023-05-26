@@ -1,3 +1,4 @@
+import { searchPreviousImg } from "../helpers/htmlHelpers.js";
 import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
 export class ListenTouch {
@@ -26,10 +27,22 @@ export class ListenTouch {
                 changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
                 return;
             }
+            if (e.target instanceof HTMLButtonElement) {
+                this.btnCheck(e.target);
+                return;
+            }
             else {
                 return;
             }
         });
+    }
+    btnCheck(btn) {
+        var _a;
+        const btnText = (_a = btn.textContent) === null || _a === void 0 ? void 0 : _a.toUpperCase();
+        if (btnText === null || btnText === void 0 ? void 0 : btnText.includes('CARRINHO')) {
+            const imgSibling = searchPreviousImg(btn);
+            console.log(imgSibling);
+        }
     }
     updateSelf() {
         this.ImageDatabase.omegaUpdateSource(this.docsImgs);

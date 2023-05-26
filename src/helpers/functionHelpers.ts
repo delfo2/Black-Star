@@ -12,3 +12,23 @@ export class getRandomNumber {
         return randomNumber;
     }
 }
+
+export class AllowChange {
+    public cartCan = true;
+    public menuCan = true;
+    
+    public updateCartCan () : void {
+        if(this.cartCan) {
+            this.cartCan = false;
+        } else {
+            this.cartCan = true;
+        }
+    }
+    public updateMenuCan () : void {
+        if(this.menuCan) {
+            this.menuCan = false;
+        } else {
+            this.menuCan = true;
+        }
+    }
+}
