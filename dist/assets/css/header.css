@@ -82,7 +82,7 @@
     background: none;
     cursor: pointer;
     font-weight: 500;
-    padding: .5rem .5rem 1.5rem .5rem;
+    padding: .5rem .5rem 26px .5rem;
     text-transform: uppercase;
 }
 .menu__botao:hover,

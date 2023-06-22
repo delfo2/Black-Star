@@ -39,6 +39,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    padding-bottom: 5px;
 }
 
 .secao__card figcaption {

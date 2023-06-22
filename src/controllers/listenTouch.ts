@@ -1,4 +1,4 @@
-import { searchPreviousImg } from "../helpers/htmlHelpers.js";
+import { searchPreviousElement } from "../helpers/htmlHelpers.js";
 import { ImageDatabase } from "../models/ImageDatabase.js";
 import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
@@ -34,7 +34,8 @@ export class ListenTouch {
                 return;
             }
             if(e.target instanceof HTMLButtonElement) {
-                this.btnCheck(e.target);
+                const procuctArray = this.btnGetData(e.target);
+                console.log(procuctArray);
                 return;
             }
             else {
@@ -43,12 +44,25 @@ export class ListenTouch {
         })
     }
 
-    private btnCheck (btn : HTMLButtonElement) : void {
+    private btnGetData (btn : HTMLButtonElement) : any[] {
+        let btnData = [];
         const btnText = btn.textContent?.toUpperCase();
+
         if(btnText?.includes('CARRINHO')) {
-            const imgSibling = searchPreviousImg(btn);
-            console.log(imgSibling);
+            const pSibling = searchPreviousElement(btn, HTMLParagraphElement);
+            btnData.push(pSibling);
+            
+            let figCaptionSibling;
+            if(btn.previousElementSibling) {
+                figCaptionSibling = searchPreviousElement(btn.previousElementSibling, HTMLElement);
+                btnData.push(figCaptionSibling);
+            }
+
+            const imgSibling = searchPreviousElement(btn, HTMLImageElement);
+            btnData.push(imgSibling);
         }
+        
+        return btnData;
     }
 
     private updateSelf () : void {

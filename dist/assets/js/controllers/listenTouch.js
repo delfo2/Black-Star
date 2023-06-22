@@ -1,4 +1,4 @@
-import { searchPreviousImg } from "../helpers/htmlHelpers.js";
+import { searchPreviousElement } from "../helpers/htmlHelpers.js";
 import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
 export class ListenTouch {
@@ -28,7 +28,8 @@ export class ListenTouch {
                 return;
             }
             if (e.target instanceof HTMLButtonElement) {
-                this.btnCheck(e.target);
+                const procuctArray = this.btnGetData(e.target);
+                console.log(procuctArray);
                 return;
             }
             else {
@@ -36,13 +37,22 @@ export class ListenTouch {
             }
         });
     }
-    btnCheck(btn) {
+    btnGetData(btn) {
         var _a;
+        let btnData = [];
         const btnText = (_a = btn.textContent) === null || _a === void 0 ? void 0 : _a.toUpperCase();
         if (btnText === null || btnText === void 0 ? void 0 : btnText.includes('CARRINHO')) {
-            const imgSibling = searchPreviousImg(btn);
-            console.log(imgSibling);
+            const pSibling = searchPreviousElement(btn, HTMLParagraphElement);
+            btnData.push(pSibling);
+            let figCaptionSibling;
+            if (btn.previousElementSibling) {
+                figCaptionSibling = searchPreviousElement(btn.previousElementSibling, HTMLElement);
+                btnData.push(figCaptionSibling);
+            }
+            const imgSibling = searchPreviousElement(btn, HTMLImageElement);
+            btnData.push(imgSibling);
         }
+        return btnData;
     }
     updateSelf() {
         this.ImageDatabase.omegaUpdateSource(this.docsImgs);

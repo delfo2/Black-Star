@@ -1,28 +1,28 @@
-export function searchPreviousImg (element : Element) : HTMLImageElement {
+export function searchPreviousElement (element : Element, type : any) : any {
     const children = element.children;
-    let img;
+    let htmlElement;
     if(element.childElementCount > 0) {
         for (const kid of children) {
-            if(kid instanceof HTMLImageElement) {
-                img = kid;
-                return img;
+            if(kid instanceof type) {
+                htmlElement = kid;
+                return htmlElement;
             }
         }
-    } else if (!img) {
-        img = previousSearchLoop(element);
-        return img;
+    } else if (!htmlElement) {
+        htmlElement = previousSearchLoop(element, type);
+        return htmlElement;
     }
     throw new Error(`The element: ${element.nodeName}, with the class: ${element.classList[0]} haven't any sibling or children.`);
 }
 
-export function previousSearchLoop (htmlElement : Element) : HTMLImageElement {
+export function previousSearchLoop (htmlElement : Element, type : any) : any {
     const el = htmlElement.previousElementSibling;
-    let result : HTMLImageElement;
+    let result;
     if(el) {
-        if(el instanceof HTMLImageElement) {
+        if(el instanceof type) {
             return el;
         } else {
-            result = previousSearchLoop(el);
+            result = previousSearchLoop(el, type);
             return result;
         }
     } else {
