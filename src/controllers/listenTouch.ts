@@ -1,7 +1,9 @@
 import { searchPreviousElement } from "../helpers/htmlHelpers.js";
+import { ObjProducts } from "../interface/ObjProducts.js";
 import { ImageDatabase } from "../models/ImageDatabase.js";
 import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
+import { MenuProducts } from "../view/menuProducts.js";
 
 export class ListenTouch {
     private docsImgs = getDocumentImages();
@@ -13,10 +15,12 @@ export class ListenTouch {
         "SECTION",
         "SECTION"
     ];
+    private ProductDataBase : MenuProducts;
 
-    constructor (ImageDatase : ImageDatabase) {
+    constructor (ImageDatase : ImageDatabase, productData : MenuProducts) {
         this.ImageDatabase = ImageDatase;
         this.updateSelf();
+        this.ProductDataBase = productData
     };
 
     public startToListen () : void {
@@ -33,9 +37,13 @@ export class ListenTouch {
                 changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
                 return;
             }
-            if(e.target instanceof HTMLButtonElement) {
-                const procuctArray = this.btnGetData(e.target);
-                console.log(procuctArray);
+            if(e.target instanceof HTMLButtonElement &&
+                e.target.textContent?.toUpperCase().includes('CARRINHO')) {
+
+                let productArray = this.btnGetData(e.target);
+                this.addCartProduct(productArray);
+
+                this.ProductDataBase.updateMenuProducts();
                 return;
             }
             else {
@@ -44,25 +52,39 @@ export class ListenTouch {
         })
     }
 
-    private btnGetData (btn : HTMLButtonElement) : any[] {
-        let btnData = [];
+    private transformIntoArrayProduct (
+        p : HTMLParagraphElement,
+        figCaption : HTMLElement,
+        img : HTMLImageElement): ObjProducts {
+            return {produto : {p, figCaption, img}};
+    }
+
+    private addCartProduct (product : ObjProducts) : void {
+        this.ProductDataBase.addNewProduct(product);
+    }
+
+    private btnGetData (btn : HTMLButtonElement) : ObjProducts {
+        let btnData : ObjProducts;
         const btnText = btn.textContent?.toUpperCase();
 
         if(btnText?.includes('CARRINHO')) {
             const pSibling = searchPreviousElement(btn, HTMLParagraphElement);
-            btnData.push(pSibling);
             
             let figCaptionSibling;
+            //typescript needs a if here;
             if(btn.previousElementSibling) {
+                //ts doesnt has a figcaption interface
+                //so i capture a previous pElement
+                //and this element is next to figcaption
                 figCaptionSibling = searchPreviousElement(btn.previousElementSibling, HTMLElement);
-                btnData.push(figCaptionSibling);
             }
 
             const imgSibling = searchPreviousElement(btn, HTMLImageElement);
-            btnData.push(imgSibling);
+            btnData = this.transformIntoArrayProduct(pSibling, figCaptionSibling, imgSibling);
+            return btnData;
+        } else {
+            throw new Error (`It wasn't possible find a button with text 'CARRINHO'`);
         }
-        
-        return btnData;
     }
 
     private updateSelf () : void {

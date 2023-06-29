@@ -13,6 +13,27 @@ export class getRandomNumber {
     }
 }
 
+export class TokenGenarator {
+    private tokenDataBase : Number[] = [];
+
+    public getToken () : number {
+        return this.genarate();
+    }
+
+    private genarate () : number {
+        let number = 0;
+        if(this.tokenDataBase.includes(number)) {
+            for(let i = 0; this.tokenDataBase.includes(number); i++) {
+                number += i;
+            }
+        }
+        this.tokenDataBase.push(number);
+
+        console.log(`Novo Token gerado: ${number}`);
+        return number;
+    }
+}
+
 export class AllowChange {
     public cartCan = true;
     public menuCan = true;

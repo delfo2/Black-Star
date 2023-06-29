@@ -11,6 +11,25 @@ export class getRandomNumber {
         return randomNumber;
     }
 }
+export class TokenGenarator {
+    constructor() {
+        this.tokenDataBase = [];
+    }
+    getToken() {
+        return this.genarate();
+    }
+    genarate() {
+        let number = 0;
+        if (this.tokenDataBase.includes(number)) {
+            for (let i = 0; this.tokenDataBase.includes(number); i++) {
+                number += i;
+            }
+        }
+        this.tokenDataBase.push(number);
+        console.log(`Novo Token gerado: ${number}`);
+        return number;
+    }
+}
 export class AllowChange {
     constructor() {
         this.cartCan = true;

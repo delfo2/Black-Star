@@ -2,7 +2,7 @@ import { searchPreviousElement } from "../helpers/htmlHelpers.js";
 import { getDocumentImages } from "../models/getDocumentImages.js";
 import { changeSourceImg } from "../view/changeSrcImg.js";
 export class ListenTouch {
-    constructor(ImageDatase) {
+    constructor(ImageDatase, productData) {
         this.docsImgs = getDocumentImages();
         this.cantChangeElements = [
             "MAIN",
@@ -13,10 +13,12 @@ export class ListenTouch {
         ];
         this.ImageDatabase = ImageDatase;
         this.updateSelf();
+        this.ProductDataBase = productData;
     }
     ;
     startToListen() {
         window.addEventListener('click', (e) => {
+            var _a;
             if (e.target instanceof HTMLImageElement) {
                 changeSourceImg(e.target, this.ImageDatabase.getOneSource());
                 return;
@@ -27,9 +29,11 @@ export class ListenTouch {
                 changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
                 return;
             }
-            if (e.target instanceof HTMLButtonElement) {
-                const procuctArray = this.btnGetData(e.target);
-                console.log(procuctArray);
+            if (e.target instanceof HTMLButtonElement &&
+                ((_a = e.target.textContent) === null || _a === void 0 ? void 0 : _a.toUpperCase().includes('CARRINHO'))) {
+                let productArray = this.btnGetData(e.target);
+                this.addCartProduct(productArray);
+                this.ProductDataBase.updateMenuProducts();
                 return;
             }
             else {
@@ -37,22 +41,29 @@ export class ListenTouch {
             }
         });
     }
+    transformIntoArrayProduct(p, figCaption, img) {
+        return { produto: { p, figCaption, img } };
+    }
+    addCartProduct(product) {
+        this.ProductDataBase.addNewProduct(product);
+    }
     btnGetData(btn) {
         var _a;
-        let btnData = [];
+        let btnData;
         const btnText = (_a = btn.textContent) === null || _a === void 0 ? void 0 : _a.toUpperCase();
         if (btnText === null || btnText === void 0 ? void 0 : btnText.includes('CARRINHO')) {
             const pSibling = searchPreviousElement(btn, HTMLParagraphElement);
-            btnData.push(pSibling);
             let figCaptionSibling;
             if (btn.previousElementSibling) {
                 figCaptionSibling = searchPreviousElement(btn.previousElementSibling, HTMLElement);
-                btnData.push(figCaptionSibling);
             }
             const imgSibling = searchPreviousElement(btn, HTMLImageElement);
-            btnData.push(imgSibling);
+            btnData = this.transformIntoArrayProduct(pSibling, figCaptionSibling, imgSibling);
+            return btnData;
         }
-        return btnData;
+        else {
+            throw new Error(`It wasn't possible find a button with text 'CARRINHO'`);
+        }
     }
     updateSelf() {
         this.ImageDatabase.omegaUpdateSource(this.docsImgs);

@@ -7,13 +7,11 @@ export function changeMenuState(can) {
                 btn.classList.remove("visivel");
                 btn.classList.add("escondido");
                 can.updateCartCan();
-                console.log(can.cartCan);
             }
             else if (getActualState(btn).contains("escondido")) {
                 btn.classList.remove("escondido");
                 btn.classList.add("visivel");
                 can.updateCartCan();
-                console.log(can.cartCan);
             }
         }
     }
