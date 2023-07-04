@@ -19,17 +19,19 @@ export class TokenGenarator {
     public getToken () : number {
         return this.genarate();
     }
+    public deleteToken (id : number) : void {
+        this.tokenDataBase.splice(id, 1);
+        console.log(this.tokenDataBase);
+    }
 
     private genarate () : number {
         let number = 0;
-        if(this.tokenDataBase.includes(number)) {
-            for(let i = 0; this.tokenDataBase.includes(number); i++) {
-                number += i;
-            }
+        while(this.tokenDataBase.includes(number)) {
+            number++;
         }
         this.tokenDataBase.push(number);
 
-        console.log(`Novo Token gerado: ${number}`);
+        console.log(this.tokenDataBase);
         return number;
     }
 }

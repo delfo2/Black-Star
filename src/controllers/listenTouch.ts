@@ -25,17 +25,19 @@ export class ListenTouch {
 
     public startToListen () : void {
         window.addEventListener('click', (e) => {
-            if(e.target instanceof HTMLImageElement) {
-                changeSourceImg(e.target, this.ImageDatabase.getOneSource());
-                return;
-            }
-            this.imgChildrenCheck(e.target);
-
-            if(e.target instanceof Element 
-                && e.target.previousElementSibling instanceof HTMLImageElement) {
-
-                changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
-                return;
+            if(this.imgCartCheck(e.target as Element)) {
+                if(e.target instanceof HTMLImageElement) {
+                    changeSourceImg(e.target, this.ImageDatabase.getOneSource());
+                    return;
+                }
+                this.imgChildrenCheck(e.target);
+    
+                if(e.target instanceof Element 
+                    && e.target.previousElementSibling instanceof HTMLImageElement) {
+    
+                    changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
+                    return;
+                }
             }
             if(e.target instanceof HTMLButtonElement &&
                 e.target.textContent?.toUpperCase().includes('CARRINHO')) {
@@ -45,6 +47,10 @@ export class ListenTouch {
 
                 this.ProductDataBase.updateMenuProducts();
                 return;
+            }
+            if(e.target instanceof HTMLButtonElement 
+                && e.target.textContent?.toUpperCase().includes('X')) {
+                    this.ProductDataBase.deleteProduct(e.target.parentNode as HTMLElement);
             }
             else {
                 return;
@@ -79,7 +85,8 @@ export class ListenTouch {
                 figCaptionSibling = searchPreviousElement(btn.previousElementSibling, HTMLElement);
             }
 
-            const imgSibling = searchPreviousElement(btn, HTMLImageElement);
+            const imgSibling : HTMLImageElement = searchPreviousElement(btn, HTMLImageElement);
+            
             btnData = this.transformIntoArrayProduct(pSibling, figCaptionSibling, imgSibling);
             return btnData;
         } else {
@@ -112,7 +119,14 @@ export class ListenTouch {
         }
     };
 
-    private elementCanHaveInternalChange(element: Element) {
+    private imgCartCheck (element : Element | null) : boolean {
+        if(element && element instanceof HTMLImageElement && element.dataset.lock === 'locked') {
+            return false;
+        }
+        return true;
+    }
+
+    private elementCanHaveInternalChange(element: Element) : boolean {
         return !this.cantChangeElements.includes(element.nodeName.toUpperCase());
     };
 }

@@ -18,16 +18,18 @@ export class ListenTouch {
     ;
     startToListen() {
         window.addEventListener('click', (e) => {
-            var _a;
-            if (e.target instanceof HTMLImageElement) {
-                changeSourceImg(e.target, this.ImageDatabase.getOneSource());
-                return;
-            }
-            this.imgChildrenCheck(e.target);
-            if (e.target instanceof Element
-                && e.target.previousElementSibling instanceof HTMLImageElement) {
-                changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
-                return;
+            var _a, _b;
+            if (this.imgCartCheck(e.target)) {
+                if (e.target instanceof HTMLImageElement) {
+                    changeSourceImg(e.target, this.ImageDatabase.getOneSource());
+                    return;
+                }
+                this.imgChildrenCheck(e.target);
+                if (e.target instanceof Element
+                    && e.target.previousElementSibling instanceof HTMLImageElement) {
+                    changeSourceImg(e.target.previousElementSibling, this.ImageDatabase.getOneSource());
+                    return;
+                }
             }
             if (e.target instanceof HTMLButtonElement &&
                 ((_a = e.target.textContent) === null || _a === void 0 ? void 0 : _a.toUpperCase().includes('CARRINHO'))) {
@@ -35,6 +37,10 @@ export class ListenTouch {
                 this.addCartProduct(productArray);
                 this.ProductDataBase.updateMenuProducts();
                 return;
+            }
+            if (e.target instanceof HTMLButtonElement
+                && ((_b = e.target.textContent) === null || _b === void 0 ? void 0 : _b.toUpperCase().includes('X'))) {
+                this.ProductDataBase.deleteProduct(e.target.parentNode);
             }
             else {
                 return;
@@ -89,6 +95,12 @@ export class ListenTouch {
         }
     }
     ;
+    imgCartCheck(element) {
+        if (element && element instanceof HTMLImageElement && element.dataset.lock === 'locked') {
+            return false;
+        }
+        return true;
+    }
     elementCanHaveInternalChange(element) {
         return !this.cantChangeElements.includes(element.nodeName.toUpperCase());
     }
