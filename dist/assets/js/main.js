@@ -14,8 +14,15 @@ import { TokenGenarator } from "./helpers/functionHelpers.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
 export const start = () => {
+    const btn1 = document.querySelector('[data-load="1"]');
+    const btn2 = document.querySelector('[data-load="2"]');
     const HtmlRender = new HtmlPageController();
-    HtmlRender.defaultLoad();
+    btn1 === null || btn1 === void 0 ? void 0 : btn1.addEventListener('click', () => {
+        HtmlRender.defaultLoad();
+    });
+    btn2 === null || btn2 === void 0 ? void 0 : btn2.addEventListener('click', () => {
+        HtmlRender.productLoad();
+    });
 };
 export const action = () => __awaiter(void 0, void 0, void 0, function* () {
     listenBtnMenu();
@@ -26,4 +33,5 @@ export const action = () => __awaiter(void 0, void 0, void 0, function* () {
     const ListenTouchController = new ListenTouch(ImgDatabase, ProductDataBase);
     ListenTouchController.startToListen();
 });
+start();
 action();

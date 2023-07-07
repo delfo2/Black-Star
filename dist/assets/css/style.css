@@ -72,6 +72,16 @@
     height: 1px;
 }
 
+.dofida {
+    display: flex;
+    justify-content: center;
+}
+
+.butao__dofidod {
+    cursor: pointer;
+    margin-top: 5rem;
+}
+
 @media screen and (max-width: 1000px) {
     
     .estrela {

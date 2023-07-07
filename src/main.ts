@@ -7,8 +7,17 @@ import { ImageDatabase } from "./models/ImageDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
 
 export const start = () => {
+    const btn1 = document.querySelector('[data-load="1"]');
+    const btn2 = document.querySelector('[data-load="2"]');
+    
     const HtmlRender = new HtmlPageController();
-    HtmlRender.defaultLoad();
+    
+    btn1?.addEventListener('click', () => {
+        HtmlRender.defaultLoad();
+    })
+    btn2?.addEventListener('click', () => {
+        HtmlRender.productLoad();
+    })
 }
 
 export const action = async () => {
@@ -31,5 +40,5 @@ export const action = async () => {
     ListenTouchController.startToListen();
 }
 
-// start();
+start();
 action();
