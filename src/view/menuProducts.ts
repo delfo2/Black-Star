@@ -12,6 +12,13 @@ export class MenuProducts {
         this.tokenGenarator = tokenGenarator;
     }
 
+    public transformIntoArrayProduct (
+        p : HTMLParagraphElement,
+        figCaption : HTMLElement,
+        img : HTMLImageElement): ObjProducts {
+            return {produto : {p, figCaption, img}};
+    }
+
     public updateMenuProducts () : void {
         this.divFather.innerHTML = this.stringifyAllProducts();
     }

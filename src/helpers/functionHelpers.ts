@@ -21,7 +21,6 @@ export class TokenGenarator {
     }
     public deleteToken (id : number) : void {
         this.tokenDataBase.splice(id, 1);
-        console.log(this.tokenDataBase);
     }
 
     private genarate () : number {
@@ -30,8 +29,6 @@ export class TokenGenarator {
             number++;
         }
         this.tokenDataBase.push(number);
-
-        console.log(this.tokenDataBase);
         return number;
     }
 }

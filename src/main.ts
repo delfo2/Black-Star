@@ -1,9 +1,15 @@
+import { HtmlPageController } from "./controllers/HtmlPageController.js";
 import { ListenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
 import { TokenGenarator } from "./helpers/functionHelpers.js";
 // import { searchImages } from "./controllers/searchController.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
+
+export const start = () => {
+    const HtmlRender = new HtmlPageController();
+    HtmlRender.defaultLoad();
+}
 
 export const action = async () => {
     listenBtnMenu();
@@ -25,4 +31,5 @@ export const action = async () => {
     ListenTouchController.startToListen();
 }
 
+// start();
 action();

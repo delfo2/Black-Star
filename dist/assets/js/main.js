@@ -7,11 +7,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { HtmlPageController } from "./controllers/HtmlPageController.js";
 import { ListenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
 import { TokenGenarator } from "./helpers/functionHelpers.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
+export const start = () => {
+    const HtmlRender = new HtmlPageController();
+    HtmlRender.defaultLoad();
+};
 export const action = () => __awaiter(void 0, void 0, void 0, function* () {
     listenBtnMenu();
     const tokenGenarator = new TokenGenarator();

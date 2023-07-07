@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./assets/css/destaques.css">
     <link rel="stylesheet" href="./assets/css/categorias.css">
     <link rel="stylesheet" href="./assets/css/rodape.css">
+    <link rel="stylesheet" href="./assets/css/product.css">
     <link rel="shortcut icon" href="./assets/img/icon.png" type="image/x-icon">
     <title>Black Star</title>
 </head>
@@ -56,154 +57,48 @@
             </div>
         </div>
     </header>
-    <main class="estrela">
-        <!-- <ul class="estrela__pickcollor">
-            <p>Escolha a sua cor desejada</p>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-            <li><button class="pickcollor__button"></button></li>
-        </ul> -->
-
-
-        <!-- Coleção inverno preview -->
-
-
-        <div class="estrela__inverno">
-            <div class="inverno__container">
-                <div class="inverno__textArea">
-                    <h3 class="textArea__titulo"><strong>Coleção</strong><br>Inverno 2023</h3>
-                    <p class="textArea__descricao">Nosso moletom é flanelado por dentro, por isso é muito mais quentinho e fofo, é uma peça de extrema qualidade, proporcionando conforto e estilo para te aquecer nesse inverno. Os moletons são unissex, possuem capuz e bolsos laterais... assim todos podem ficar quentinhos e formidáveis!</p>
-                    <a href="#" class="link">Conferir Coleção  </a>
+    <main class="estrela" data-main="">
+        <section class="product">
+            <article class="product__card">
+                <div>
+                    <img src="./assets/img/just test images/categorias1.webp" alt="" class="product__card-img">
                 </div>
-                <img class="inverno__foto-destaque" src="./assets/img/just test images/modelocelb.webp" alt="Homem vestido com camisa jeans aberta em conjunto com calça jeans">
-                <div class="inverno__preview">
-                    <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno1.webp" alt=""></a>
-                    <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno2.webp" alt=""></a>
-                    <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno3.webp" alt=""></a>
-                    <a href="#" class="preview__cartao"><img src="./assets/img/just test images/inverno4.webp" alt=""></a>
+                <h2 class="product__card-titulo">Roupa roupa roupa</h2>
+                <div>
+                    <h3 class="product__card-price">R$12,34</h3>
+                    <span class="product__card-rating"></span>
                 </div>
-            </div>
-        </div>
+                <div class="product__card-size">
+                    <div>
+                        <p>Tamanho:</p>
+                        <p>M</p>
+                    </div>
+                    <div>
+                        <button class="link" data-button="PP">PP</button>
+                        <button class="link" data-button="P">P</button>
+                        <button class="link" data-button="M">M</button>
+                        <button class="link" data-button="G">G</button>
+                        <button class="link" data-button="GG">GG</button>
+                    </div>
+                </div>
+                <button class="link product__card-button">Adicionar Ao Carrinho</button>
+                <article class="product__description desktop">
+                    <button class="product__description-title" data-button="description">
+                        <h4>Detalhes</h4>
+                        <p>+</p>
+                    </button>
+                    <p class="product__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
+                </article>
+            </article>
+            <article class="product__description">
+                <button class="product__description-title" data-button="description">
+                    <h4>Detalhes</h4>
+                    <p>+</p>
+                </button>
+                <p class="product__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
+            </article>
 
-
-        <!-- destaques -->
-
-
-        <div class="estrela__destaques">
-            <div class="destaques__texto">
-                <a href="#" class="destaques__titulo"><h3>Destaques</h3></a>
-                <a href="#" class="link destaques__link">Ver Mais </a>
-            </div>
-            <section class="destaques__secao">
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 1.jpg" alt="">
-                    <figcaption>RoupaRoupaRoupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 2.jpg" alt="">
-                    <figcaption>Roupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 3.webp" alt="">
-                    <figcaption>Roupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 4.webp" alt="">
-                    <figcaption>Roupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-            </section>
-        </div>
-
-
-        <!-- categorias -->
-
-
-        <!-- <span class="estrela__linha"></span> -->
-        <section class="estrela__categorias">
-            <h3 class="categorias__titulo">Categorias</h3>
-            <a href="#" class="categorias__card">
-                <figure>
-                    <img src="./assets/img/just test images/categorias1.webp" alt="">
-                    <figcaption>Moletons</figcaption>
-                    <p>conheça</p>
-                </figure>
-            </a>
-            <a href="#" class="categorias__card">
-                <figure>
-                    <img src="./assets/img/just test images/categorias2.webp" alt="">
-                    <figcaption>Conjuntos</figcaption>
-                    <p>conheça</p>
-                </figure>
-            </a>
-            <a href="#" class="categorias__card">
-                <figure>
-                    <img src="./assets/img/just test images/categorias3.webp" alt="">
-                    <figcaption>Manga Longa</figcaption>
-                    <p>conheça</p>
-                </figure>
-            </a>
-            <a href="#" class="categorias__card">
-                <figure>
-                    <img src="./assets/img/just test images/categorias4.webp" alt="">
-                    <figcaption>Camisas</figcaption>
-                    <p>conheça</p>
-                </figure>
-            </a>
         </section>
-        
-
-        <!-- Novidades -->
-
-
-        <div class="estrela__destaques">
-            <div class="destaques__texto">
-                <a href="#" class="destaques__titulo"><h3>Novidades</h3></a>
-                <a href="#" class="link destaques__link">Ver Mais </a>
-            </div>
-            <section class="destaques__secao">
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 1.jpg" alt="">
-                    <figcaption>RoupaRoupaRoupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 2.jpg" alt="">
-                    <figcaption>Roupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 3.webp" alt="">
-                    <figcaption>Roupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-                <figure class="secao__card">
-                    <img src="./assets/img/just test images/destaques 4.webp" alt="">
-                    <figcaption>Roupa</figcaption>
-                    <p>R$0,00</p>
-                    <button class="link">Adicionar ao Carrinho</button>
-                </figure>
-            </section>
-        </div>
     </main>
         
 

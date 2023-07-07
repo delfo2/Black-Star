@@ -28,6 +28,7 @@
 .cabecalho__container {
     display: flex;
     align-items: stretch;
+    justify-content: center;
     margin-top: 3rem;
     width: 90%;
 }
@@ -73,7 +74,7 @@
 .cabecalho__menu {
     align-items: center;
     display:  flex;
-    margin-left: 17%;
+    margin: 0 20% 0 10%;
     height: 100%;
 }
 
@@ -93,10 +94,6 @@
     background: var(--preto);
     text-decoration: none;
     outline: none;
-}
-
-.cabecalho__carrinho {
-    margin-left: 30%;
 }
 
 .carrinho__botao {
@@ -152,6 +149,11 @@
     justify-content: space-around;
     height: 60px;
     width: 100%;
+}
+
+.carrinho__card-item p{
+    font-size: .8rem;
+    text-align: center;
 }
 
 .carrinho__card-item img {
