@@ -19,9 +19,11 @@ export const start = () => {
     const HtmlRender = new HtmlPageController();
     btn1 === null || btn1 === void 0 ? void 0 : btn1.addEventListener('click', () => {
         HtmlRender.defaultLoad();
+        action();
     });
     btn2 === null || btn2 === void 0 ? void 0 : btn2.addEventListener('click', () => {
         HtmlRender.productLoad();
+        action();
     });
 };
 export const action = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -34,4 +36,3 @@ export const action = () => __awaiter(void 0, void 0, void 0, function* () {
     ListenTouchController.startToListen();
 });
 start();
-action();

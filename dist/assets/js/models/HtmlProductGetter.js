@@ -3,7 +3,9 @@ export class HtmlProductGetter {
         this.sectionStart = `
         <section class="product">`;
         this.sectionEnd = `
-        ${this.descriptionGenerator(false)}
+        ${this.subMenuGenerator(true, 'Detalhes')}
+        ${this.subMenuGenerator(true, 'Material')}
+        ${this.subMenuGenerator(true, 'Tamanhos')}
         </section>`;
         this.product = `
         <article class="product__card">
@@ -29,7 +31,9 @@ export class HtmlProductGetter {
                 </div>
             </div>
             <button class="link product__card-button">Adicionar Ao Carrinho</button>
-            ${this.descriptionGenerator(true)}
+            ${this.subMenuGenerator(false, 'Detalhes')}
+            ${this.subMenuGenerator(false, 'Material')}
+            ${this.subMenuGenerator(false, 'Tamanhos')}    
         </article>`;
     }
     getSectionStart() {
@@ -44,19 +48,19 @@ export class HtmlProductGetter {
         const tempProduct = this.product;
         return tempProduct;
     }
-    descriptionGenerator(isMobile) {
+    subMenuGenerator(isMobile, title) {
         return isMobile ?
-            this.descriptionDefault('product__description')
-            : this.descriptionDefault('product__description desktop');
+            this.subMenuDefault('product__description', title)
+            : this.subMenuDefault('product__description desktop', title);
     }
-    descriptionDefault(cssClass) {
+    subMenuDefault(cssClass, title) {
         return `
             <article class="${cssClass}">
-                <button class="product__description-title" data-button="description">
-                    <h4>Detalhes</h4>
+                <button class="product__description-title" data-button="${title}">
+                    <h4>${title} </h4>
                     <p>+</p>
                 </button>
-                <p class="product__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
+                <p class="product__description-text escondido">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
             </article>`;
     }
 }

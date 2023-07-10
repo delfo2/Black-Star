@@ -35,7 +35,7 @@ export class ImgHandle {
     private changeSourceImg (element : HTMLImageElement, scr : string) : void {
         const lockCheck = element.dataset.lock === 'locked' ? false : true;
 
-        if(lockCheck) {
+        if(lockCheck && scr !== '') {
             element.src = scr;
         }
     }

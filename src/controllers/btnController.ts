@@ -20,6 +20,46 @@ export class ButtonController {
             && el.textContent?.toUpperCase().includes('X')) {
                 productMemory.deleteProduct(el.parentNode as HTMLElement);
         }
+        this.isDescriptionButton(el);
+    }
+
+    private isDescriptionButton (el : Element | null) : void {
+        if(el instanceof HTMLButtonElement) {
+            this.showDescription(el);
+        }
+        if(el?.nodeName === 'H4'
+            && el.parentNode
+                && el.parentNode.nodeName === 'BUTTON'
+                    && el.parentNode instanceof HTMLButtonElement) {
+            this.showDescription(el.parentNode);
+        }
+    }
+
+    private showDescription (btn : HTMLButtonElement) : void {
+        if(btn instanceof HTMLButtonElement
+            && btn.nextElementSibling
+                && btn.dataset.button 
+                    && btn.dataset.button.length > 5) {
+
+            const sibling = btn.nextElementSibling as HTMLElement;
+
+            if(sibling.classList.contains('escondido')) {
+                this.changeButtonText(btn.children, '+', '-');
+                sibling.classList.remove('escondido');
+            } else {
+                this.changeButtonText(btn.children, '-', '+');
+                sibling.classList.add('escondido');
+            }
+        }
+    }
+    private changeButtonText (node : HTMLCollection | undefined, atual : string, newName : string) : void {
+        if(node) {
+            for (const filho of node) {
+                if(filho.textContent === atual) {
+                    filho.textContent = newName;
+                }
+            }
+        }
     }
     
     private btnGetData (btn : HTMLButtonElement, productMemory : MenuProducts) : ObjProducts {

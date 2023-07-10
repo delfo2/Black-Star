@@ -14,9 +14,11 @@ export const start = () => {
     
     btn1?.addEventListener('click', () => {
         HtmlRender.defaultLoad();
+        action();
     })
     btn2?.addEventListener('click', () => {
         HtmlRender.productLoad();
+        action();
     })
 }
 
@@ -41,4 +43,3 @@ export const action = async () => {
 }
 
 start();
-action();
