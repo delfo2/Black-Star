@@ -20,7 +20,6 @@ export class HtmlPageController {
         this.loadPage.refresh(`
             ${this.htmlProduct.getSectionStart()}
                 ${this.htmlProduct.getProduct()}
-                ${this.htmlProduct.getDescription()}
             ${this.htmlProduct.getSectionEnd()}
         `);
     }

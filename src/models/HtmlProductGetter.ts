@@ -2,6 +2,7 @@ export class HtmlProductGetter {
     private sectionStart = `
         <section class="product">`;
     private sectionEnd = `
+        ${this.descriptionGenerator(false)}
         </section>`;
 
     private product = `
@@ -28,22 +29,7 @@ export class HtmlProductGetter {
                 </div>
             </div>
             <button class="link product__card-button">Adicionar Ao Carrinho</button>
-            <article class="product__description desktop">
-                <button class="product__description-title" data-button="description">
-                    <h4>Detalhes</h4>
-                    <p>+</p>
-                </button>
-                <p class="product__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
-            </article>
-        </article>`;
-
-    private description = `
-        <article class="product__description">
-            <button class="product__description-title" data-button="description">
-                <h4>Detalhes</h4>
-                <p>+</p>
-            </button>
-            <p class="product__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
+            ${this.descriptionGenerator(true)}
         </article>`;
 
     public getSectionStart () : string {
@@ -58,8 +44,19 @@ export class HtmlProductGetter {
         const tempProduct = this.product;
         return tempProduct;
     }
-    public getDescription () : string {
-        const tempDescription = this.description;
-        return tempDescription;
+    private descriptionGenerator (isMobile : boolean) : string {
+        return isMobile ?
+            this.descriptionDefault('product__description') 
+            : this.descriptionDefault('product__description desktop');
+    }
+    private descriptionDefault (cssClass : string) : string {
+        return `
+            <article class="${cssClass}">
+                <button class="product__description-title" data-button="description">
+                    <h4>Detalhes</h4>
+                    <p>+</p>
+                </button>
+                <p class="product__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
+            </article>`;
     }
 }
