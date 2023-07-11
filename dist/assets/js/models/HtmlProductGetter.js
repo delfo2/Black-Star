@@ -3,18 +3,18 @@ export class HtmlProductGetter {
         this.sectionStart = `
         <section class="product">`;
         this.sectionEnd = `
-        ${this.subMenuGenerator(true, 'Detalhes')}
-        ${this.subMenuGenerator(true, 'Material')}
-        ${this.subMenuGenerator(true, 'Tamanhos')}
+            ${this.generateSubMenu(true, 'Detalhes')}
+            ${this.generateSubMenu(true, 'Material')}
+            ${this.generateSubMenu(true, 'Tamanhos')}
         </section>`;
         this.product = `
         <article class="product__card">
             <div>
-                <img src="./assets/img/just test images/categorias1.webp" alt="" class="product__card-img">
+                <img src="./assets/img/just test images/categorias1.webp" alt="" class="product__card-img" data-img="productPage">
             </div>
-            <h2 class="product__card-titulo">Roupa roupa roupa</h2>
+            <h2 class="product__card-titulo" data-p="productPage">Roupa roupa roupa</h2>
             <div>
-                <h3 class="product__card-price">R$12,34</h3>
+                <h3 class="product__card-price" data-h3="productPage">R$12,34</h3>
                 <span class="product__card-rating"></span>
             </div>
             <div class="product__card-size">
@@ -22,45 +22,42 @@ export class HtmlProductGetter {
                     <p>Tamanho:</p>
                     <p>M</p>
                 </div>
-                <div>
-                    <button class="link" data-button="PP">PP</button>
-                    <button class="link" data-button="P">P</button>
-                    <button class="link" data-button="M">M</button>
-                    <button class="link" data-button="G">G</button>
-                    <button class="link" data-button="GG">GG</button>
+                <div>                    
+                    ${this.generateButton('PP')}
+                    ${this.generateButton('P')}
+                    ${this.generateButton('M')}
+                    ${this.generateButton('G')}
+                    ${this.generateButton('GG')}
                 </div>
             </div>
-            <button class="link product__card-button">Adicionar Ao Carrinho</button>
-            ${this.subMenuGenerator(false, 'Detalhes')}
-            ${this.subMenuGenerator(false, 'Material')}
-            ${this.subMenuGenerator(false, 'Tamanhos')}    
+            <button class="link product__card-button" data-button="productPage">Adicionar Ao Carrinho</button>
+            ${this.generateSubMenu(false, 'Detalhes')}
+            ${this.generateSubMenu(false, 'Material')}
+            ${this.generateSubMenu(false, 'Tamanhos')}    
         </article>`;
     }
     getSectionStart() {
-        const tempSection = this.sectionStart;
-        return tempSection;
+        return this.sectionStart;
     }
     getSectionEnd() {
-        const tempSection = this.sectionEnd;
-        return tempSection;
+        return this.sectionEnd;
     }
     getProduct() {
-        const tempProduct = this.product;
-        return tempProduct;
+        return this.product;
     }
-    subMenuGenerator(isMobile, title) {
-        return isMobile ?
-            this.subMenuDefault('product__description', title)
-            : this.subMenuDefault('product__description desktop', title);
-    }
-    subMenuDefault(cssClass, title) {
+    generateSubMenu(isMobile, title) {
+        const cssClass = isMobile ? 'product__description' : 'product__description desktop';
+        const subMenuText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.';
         return `
             <article class="${cssClass}">
                 <button class="product__description-title" data-button="${title}">
                     <h4>${title} </h4>
                     <p>+</p>
                 </button>
-                <p class="product__description-text escondido">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.</p>
+                <p class="product__description-text escondido">${subMenuText}</p>
             </article>`;
+    }
+    generateButton(label) {
+        return `<button class="link" data-button="${label}">${label}</button>`;
     }
 }
