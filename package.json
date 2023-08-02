@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --reporter verbose --environment happy-dom"
+    "test": "vitest --reporter verbose --environment happy-dom",
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +19,11 @@
   "homepage": "https://github.com/delfo2/Black-Star#readme",
   "description": "a project that consumes searchApi from Google and change the website",
   "dependencies": {
+    "tsc": "^2.0.4",
     "vitest": "^0.31.1"
   },
   "devDependencies": {
-    "happy-dom": "^9.20.3"
+    "happy-dom": "^9.20.3",
+    "typescript": "^5.1.6"
   }
 }

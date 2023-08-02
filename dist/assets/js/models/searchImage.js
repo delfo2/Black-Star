@@ -21,9 +21,11 @@ export function fetchGoogleImgs(q) {
             if (itemsResult) {
                 return yield itemsResult;
             }
+            throw new Error();
         }
         catch (error) {
             throwError(error);
+            throw new Error();
         }
     });
 }

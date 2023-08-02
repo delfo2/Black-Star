@@ -1,11 +1,13 @@
 import { HtmlPageGetter } from "../models/HtmlPageGetter.js";
 import { HtmlProductGetter } from "../models/HtmlProductGetter.js";
 import { htmlAllProductsGetter } from "../models/htmlAllProductsGetter.js";
+import { HtmlProductsPage } from "../models/HtmlProductsPage.js";
 import { LoadPage } from "../view/LoadPage.js";
 export class HtmlPageController {
     constructor() {
         this.htmlModel = new HtmlPageGetter();
         this.htmlProduct = new HtmlProductGetter();
+        this.htmlProductsPage = new HtmlProductsPage();
         this.loadPage = new LoadPage();
         this.htmlProducts = new htmlAllProductsGetter();
     }

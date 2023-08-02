@@ -15,8 +15,10 @@ export async function fetchGoogleImgs (q : string) : Promise<[GoogleItemObject] 
         if(itemsResult) {
             return await itemsResult;
         }
+        throw new Error();
     } catch (error) {
         throwError(error);
+        throw new Error();
     }
 }
 

@@ -1,13 +1,14 @@
 import { HtmlPageGetter } from "../models/HtmlPageGetter.js";
 import { HtmlProductGetter } from "../models/HtmlProductGetter.js";
+import { HtmlProductsPage } from "../models/HtmlProductsPage.js";
 import { htmlAllProductsGetter } from "../models/htmlAllProductsGetter.js";
 import { LoadPage } from "../view/LoadPage.js";
 
 export class HtmlPageController {
     private htmlModel = new HtmlPageGetter();
     private htmlProduct = new HtmlProductGetter();
+    private htmlProductsPage = new HtmlProductsPage();
     private loadPage = new LoadPage();
-    private htmlProducts = new htmlAllProductsGetter();
 
     public defaultLoad () : void {
         const html = `
@@ -22,21 +23,22 @@ export class HtmlPageController {
     public productLoad () : void {
         this.loadPage.refresh(`
         ${this.htmlProduct.getSectionStart()}
-            ${this.htmlProducts.getIndice()}
+            ${this.htmlProductsPage.getIndice()}
                 ${this.htmlProduct.getProduct()}
             ${this.htmlProduct.getSectionEnd()}
         `);
     }
 
-    public allProductsLoad () : void {
-        this.loadPage.refresh(`
-            ${this.htmlProducts.getSStart()}
-                ${this.htmlProducts.getIndice()}
-                ${this.htmlProducts.getPArticle()}
-                ${this.htmlProducts.getPArticle()}
-                ${this.htmlProducts.getBArticle()}
-                ${this.htmlProducts.getBArticle()}
-            ${this.htmlProducts.getSEnd()}
-        `)
+    public productsPage () : void {
+        const innerHtml = `${
+            this.htmlProductsPage.getBasicProduct(
+                "Produto",
+                12.23,
+                98,
+                "./assets/img/just test images/categorias1.webp"
+            )
+        }`;
+        const html = this.htmlProductsPage.getSection(innerHtml);
+        this.loadPage.refresh(html);
     }
 }

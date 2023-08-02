@@ -16,15 +16,15 @@ export const start = () => {
     btn1?.addEventListener('click', () => {
         HtmlRender.defaultLoad();
         action();
-    })
+    });
     btn2?.addEventListener('click', () => {
         HtmlRender.productLoad();
         action();
-    })
+    });
     btn3?.addEventListener('click', () => {
-        HtmlRender.allProductsLoad();
+        HtmlRender.productsPage();
         action();
-    })
+    });
 }
 
 export const action = async () => {

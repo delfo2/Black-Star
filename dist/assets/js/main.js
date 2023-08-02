@@ -17,6 +17,7 @@ export const start = () => {
     const btn1 = document.querySelector('[data-load="1"]');
     const btn2 = document.querySelector('[data-load="2"]');
     const btn3 = document.querySelector('[data-load="3"]');
+    const btn3 = document.querySelector('[data-load="3"]');
     const HtmlRender = new HtmlPageController();
     btn1 === null || btn1 === void 0 ? void 0 : btn1.addEventListener('click', () => {
         HtmlRender.defaultLoad();
@@ -24,6 +25,10 @@ export const start = () => {
     });
     btn2 === null || btn2 === void 0 ? void 0 : btn2.addEventListener('click', () => {
         HtmlRender.productLoad();
+        action();
+    });
+    btn3 === null || btn3 === void 0 ? void 0 : btn3.addEventListener('click', () => {
+        HtmlRender.productsPage();
         action();
     });
     btn3 === null || btn3 === void 0 ? void 0 : btn3.addEventListener('click', () => {
