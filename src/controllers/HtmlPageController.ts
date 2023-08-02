@@ -30,14 +30,14 @@ export class HtmlPageController {
     }
 
     public productsPage () : void {
-        const innerHtml = `${
-            this.htmlProductsPage.getBasicProduct(
-                "Produto",
-                12.23,
-                98,
-                "./assets/img/just test images/categorias1.webp"
-            )
-        }`;
+        
+        const product = {
+            titulo : "Produto",
+            preco : 12.23,
+            avaliacao : 98,
+            srcImg : "./assets/img/just test images/categorias1.webp"
+        };
+        const innerHtml = `${this.htmlProductsPage.getBasicProduct(product)}`;
         const html = this.htmlProductsPage.getSection(innerHtml);
         this.loadPage.refresh(html);
     }
