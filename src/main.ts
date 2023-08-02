@@ -6,12 +6,13 @@ import { TokenGenarator } from "./helpers/functionHelpers.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
 
+const HtmlRender = new HtmlPageController();
+/*
 export const start = () => {
     const btn1 = document.querySelector('[data-load="1"]');
     const btn2 = document.querySelector('[data-load="2"]');
     const btn3 = document.querySelector('[data-load="3"]');
     
-    const HtmlRender = new HtmlPageController();
     
     btn1?.addEventListener('click', () => {
         HtmlRender.defaultLoad();
@@ -26,8 +27,9 @@ export const start = () => {
         action();
     });
 }
+*/
 
-export const action = async () => {
+export const jsLoad = async () => {
     listenBtnMenu();
 
     // const srcImg = await searchImages();
@@ -44,9 +46,8 @@ export const action = async () => {
     const ImgDatabase = new ImageDatabase(['']);
     const ListenTouchController = new ListenTouch(ImgDatabase, ProductDataBase);
     
-    ListenTouchController.startToListen();
+    ListenTouchController.startToListen(HtmlRender);
 }
 
-start();
-
-//botão de tamanho mudar o p;
+HtmlRender.defaultLoad();
+jsLoad();

@@ -1,6 +1,5 @@
 import { HtmlPageGetter } from "../models/HtmlPageGetter.js";
 import { HtmlProductGetter } from "../models/HtmlProductGetter.js";
-import { htmlAllProductsGetter } from "../models/htmlAllProductsGetter.js";
 import { HtmlProductsPage } from "../models/HtmlProductsPage.js";
 import { LoadPage } from "../view/LoadPage.js";
 export class HtmlPageController {
@@ -9,7 +8,6 @@ export class HtmlPageController {
         this.htmlProduct = new HtmlProductGetter();
         this.htmlProductsPage = new HtmlProductsPage();
         this.loadPage = new LoadPage();
-        this.htmlProducts = new htmlAllProductsGetter();
     }
     defaultLoad() {
         const html = `
@@ -23,20 +21,20 @@ export class HtmlPageController {
     productLoad() {
         this.loadPage.refresh(`
         ${this.htmlProduct.getSectionStart()}
-            ${this.htmlProducts.getIndice()}
+            ${this.htmlProductsPage.getIndice()}
                 ${this.htmlProduct.getProduct()}
             ${this.htmlProduct.getSectionEnd()}
         `);
     }
-    allProductsLoad() {
-        this.loadPage.refresh(`
-            ${this.htmlProducts.getSStart()}
-                ${this.htmlProducts.getIndice()}
-                ${this.htmlProducts.getPArticle()}
-                ${this.htmlProducts.getPArticle()}
-                ${this.htmlProducts.getBArticle()}
-                ${this.htmlProducts.getBArticle()}
-            ${this.htmlProducts.getSEnd()}
-        `);
+    productsPage() {
+        const product = {
+            titulo: "Produto",
+            preco: 12.23,
+            avaliacao: 98,
+            srcImg: "./assets/img/just test images/categorias1.webp"
+        };
+        const innerHtml = `${this.htmlProductsPage.getBasicProduct(product)}`;
+        const html = this.htmlProductsPage.getSection(innerHtml);
+        this.loadPage.refresh(html);
     }
 }

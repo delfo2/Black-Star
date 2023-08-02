@@ -13,36 +13,15 @@ import { listenBtnMenu } from "./controllers/menuController.js";
 import { TokenGenarator } from "./helpers/functionHelpers.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
-export const start = () => {
-    const btn1 = document.querySelector('[data-load="1"]');
-    const btn2 = document.querySelector('[data-load="2"]');
-    const btn3 = document.querySelector('[data-load="3"]');
-    const btn3 = document.querySelector('[data-load="3"]');
-    const HtmlRender = new HtmlPageController();
-    btn1 === null || btn1 === void 0 ? void 0 : btn1.addEventListener('click', () => {
-        HtmlRender.defaultLoad();
-        action();
-    });
-    btn2 === null || btn2 === void 0 ? void 0 : btn2.addEventListener('click', () => {
-        HtmlRender.productLoad();
-        action();
-    });
-    btn3 === null || btn3 === void 0 ? void 0 : btn3.addEventListener('click', () => {
-        HtmlRender.productsPage();
-        action();
-    });
-    btn3 === null || btn3 === void 0 ? void 0 : btn3.addEventListener('click', () => {
-        HtmlRender.allProductsLoad();
-        action();
-    });
-};
-export const action = () => __awaiter(void 0, void 0, void 0, function* () {
+const HtmlRender = new HtmlPageController();
+export const jsLoad = () => __awaiter(void 0, void 0, void 0, function* () {
     listenBtnMenu();
     const tokenGenarator = new TokenGenarator();
     const ProductDataBase = new MenuProducts(document.querySelector('[data-produtos="menu"]'), [], tokenGenarator);
     ProductDataBase.updateMenuProducts();
     const ImgDatabase = new ImageDatabase(['']);
     const ListenTouchController = new ListenTouch(ImgDatabase, ProductDataBase);
-    ListenTouchController.startToListen();
+    ListenTouchController.startToListen(HtmlRender);
 });
-start();
+HtmlRender.defaultLoad();
+jsLoad();

@@ -18,8 +18,8 @@ export class ButtonController {
                 const parentNode = el.parentNode as HTMLElement;
                 productMemory.deleteProduct(parentNode);
             }
-          }
-          
+        }
+        
         this.isDescriptionButton(el);
     }
 
@@ -63,7 +63,7 @@ export class ButtonController {
         }
       
         return dataset.button.length > 5;
-      }
+    }
       
     
     private toggleDescription(children: HTMLCollection, hideText: string, showText: string): void {

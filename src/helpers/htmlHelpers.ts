@@ -28,12 +28,11 @@ export class HtmlHelpers {
 
     public previousSearchLoop (htmlElement : Element, type : any) : any {
         const el = htmlElement.previousElementSibling;
-        let result;
         if(el) {
             if(el instanceof type) {
                 return el;
             } else {
-                result = this.previousSearchLoop(el, type);
+                let result = this.previousSearchLoop(el, type);
                 return result;
             }
         } else {
