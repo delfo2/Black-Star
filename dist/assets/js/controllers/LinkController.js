@@ -1,14 +1,11 @@
-import { HtmlHelpers } from "../helpers/htmlHelpers.js";
 export class LinkController {
-    constructor() {
-        this.htmlFinder = new HtmlHelpers();
-    }
-    linkHandle(element, pageController) {
+    linkHandle(element, pageController, products) {
+        var _a;
         if (!this.validation(element)
             && !this.parentNodeValidation(element)) {
             return;
         }
-        pageController.productsPage();
+        pageController.productsPage(products, (_a = element.textContent) !== null && _a !== void 0 ? _a : "Indice");
     }
     validation(el) {
         return el.nodeName.toUpperCase() === "A" && el instanceof HTMLAnchorElement;
@@ -18,13 +15,8 @@ export class LinkController {
         if (el instanceof HTMLAnchorElement) {
             return false;
         }
-        if (this.validation(father)) {
-            return true;
-        }
-        if ((father === null || father === void 0 ? void 0 : father.nodeName.toLowerCase()) === "figure"
-            && this.validation(father.parentNode)) {
-            return true;
-        }
-        return false;
+        return this.validation(father) ||
+            (father === null || father === void 0 ? void 0 : father.nodeName.toLowerCase()) === "figure"
+                && this.validation(father.parentNode);
     }
 }

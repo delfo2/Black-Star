@@ -1,3 +1,4 @@
+import { MathHelp } from "../helpers/functionHelpers.js";
 export class HtmlProductsPage {
     constructor() {
         this.productsSectionFather = (content, btnIndice) => `<section class="all">
@@ -5,9 +6,9 @@ export class HtmlProductsPage {
             ${content}
         </section>`;
         this.productsDivFather = (content) => `<div class="all_content">${content}</div>`;
-        this.indice = `
+        this.indice = (name) => `
         <div class="all_indice">
-            <h2>índice</h2>
+            <h2>${this.indiceChecker(name)}</h2>
             <div class="all_indice-btn">
                 <button></button>
                 <button></button>
@@ -24,7 +25,9 @@ export class HtmlProductsPage {
                     <p class="all_rating-number">${product.avaliacao}</p>
                 </div>
             </article>`;
-        this.promotionalProduct = (data) => `
+        this.promotionalProduct = (data) => {
+            var _a;
+            return `
         <article class="all_article">
             <img src="${data.srcImg}" alt="">
             <h2>${data.titulo}</h2>
@@ -32,13 +35,14 @@ export class HtmlProductsPage {
                 <span class="all_oferta">${data.desconto}% off</span>
                 <span class="all_oferta-help">oferta</span>
             </div>
-            <h3>R$${data.preco}</h3>
-            <span class="all_oferta-preco">R$${data.preco + (data.preco * (data.desconto / 100))}</span>
+            <h3>R$${MathHelp.discount(data.preco, (_a = data.desconto) !== null && _a !== void 0 ? _a : 0)}</h3>
+            <span class="all_oferta-preco">R$${data.preco}</span>
             <div class="all_article-rating">
                 <span class="product__card-rating all_rating"></span>
                 <p class="all_rating-number">${data.avaliacao}</p>
             </div>
         </article>`;
+        };
     }
     getBasicProduct(product) {
         return this.basicProduct(product);
@@ -48,10 +52,28 @@ export class HtmlProductsPage {
         return this.promotionalProduct(product);
     }
     ;
-    getSection(innerHtml) {
-        return this.productsSectionFather(this.productsDivFather(innerHtml), this.indice);
+    getSection(innerHtml, name) {
+        return this.productsSectionFather(this.productsDivFather(innerHtml), this.indice(name));
     }
-    getIndice() {
-        return this.indice;
+    getIndice(name) {
+        return this.indice(name);
+    }
+    createManyProducts(array) {
+        let result = ``;
+        array.forEach(item => result += this.createOneProduct(item));
+        return result;
+    }
+    createOneProduct(arr) {
+        let result = ``;
+        if (!arr.desconto) {
+            result += this.getBasicProduct(arr);
+        }
+        else {
+            result += this.getPromotionalProduct(arr);
+        }
+        return result;
+    }
+    indiceChecker(ind) {
+        return ind.replace(/\s/g, '') === '' || ind.toLowerCase().replace(/\s/g, '') === 'vermais' ? "Produtos" : ind;
     }
 }

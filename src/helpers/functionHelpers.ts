@@ -52,3 +52,11 @@ export class AllowChange {
         }
     }
 }
+
+export class MathHelp {
+    static discount (price : number, percentage : number) : number {
+        const discountAmount = (price * percentage) / 100;
+        const finalPrice = price - discountAmount;
+        return parseFloat(finalPrice.toFixed(2));
+    }
+}

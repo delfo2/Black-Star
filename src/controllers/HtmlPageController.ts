@@ -1,8 +1,10 @@
+import { Converter } from "../helpers/converter.js";
 import { HtmlPageGetter } from "../models/HtmlPageGetter.js";
 import { HtmlProductGetter } from "../models/HtmlProductGetter.js";
 import { HtmlProductsPage } from "../models/HtmlProductsPage.js";
-import { htmlAllProductsGetter } from "../models/htmlAllProductsGetter.js";
+import { ProductsDatabase } from "../models/ProductsDatabase.js";
 import { LoadPage } from "../view/LoadPage.js";
+import { MenuProducts } from "../view/menuProducts.js";
 
 export class HtmlPageController {
     private htmlModel = new HtmlPageGetter();
@@ -23,22 +25,15 @@ export class HtmlPageController {
     public productLoad () : void {
         this.loadPage.refresh(`
         ${this.htmlProduct.getSectionStart()}
-            ${this.htmlProductsPage.getIndice()}
+            ${this.htmlProductsPage.getIndice("Indice")}
                 ${this.htmlProduct.getProduct()}
             ${this.htmlProduct.getSectionEnd()}
         `);
     }
 
-    public productsPage () : void {
-        
-        const product = {
-            titulo : "Produto",
-            preco : 12.23,
-            avaliacao : 98,
-            srcImg : "./assets/img/just test images/categorias1.webp"
-        };
-        const innerHtml = `${this.htmlProductsPage.getBasicProduct(product)}`;
-        const html = this.htmlProductsPage.getSection(innerHtml);
+    public productsPage (products : ProductsDatabase, sectionName : string) : void {
+        const innerHtml = this.htmlProductsPage.createManyProducts(products.getProducts());
+        const html = this.htmlProductsPage.getSection(innerHtml, sectionName);
         this.loadPage.refresh(html);
     }
 }

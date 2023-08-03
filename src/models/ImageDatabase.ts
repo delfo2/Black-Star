@@ -19,6 +19,13 @@ export class ImageDatabase {
         return imgSrc;
     }
 
+    public getSpecificSource (index : number) : string {
+        if(index > this.imgSrcData.length) {
+            return this.imgSrcData[index];
+        }
+        throw new Error (`o index passado (${index}) é maior que o tamanho do banco de dados.`);
+    }
+
     public updateSource (src : string) : void {
         this.imgSrcData.push(src);
     }

@@ -1,16 +1,14 @@
-import { HtmlHelpers } from "../helpers/htmlHelpers.js";
+import { ProductsDatabase } from "../models/ProductsDatabase.js";
 import { HtmlPageController } from "./HtmlPageController.js";
 
 export class LinkController {
-    private htmlFinder = new HtmlHelpers();
 
-    public linkHandle (element : Element, pageController : HtmlPageController ) : void {
+    public linkHandle (element : Element, pageController : HtmlPageController, products : ProductsDatabase) : void {
         if(!this.validation(element) 
             && !this.parentNodeValidation(element)) {
-
             return;
         }
-        pageController.productsPage();
+        pageController.productsPage(products, element.textContent ?? "Indice");
     }
 
     private validation (el : Element) : boolean {
@@ -22,13 +20,8 @@ export class LinkController {
         if(el instanceof HTMLAnchorElement) {
             return false;
         }
-        if(this.validation(father as Element)) {
-            return true;
-        }
-        if(father?.nodeName.toLowerCase() === "figure"
-            && this.validation(father.parentNode as Element)) {
-                return true;
-        }
-        return false;
+        return this.validation(father as Element) || 
+            father?.nodeName.toLowerCase() === "figure"
+                && this.validation(father.parentNode as Element);
     }
 }

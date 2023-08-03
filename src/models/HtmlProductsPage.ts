@@ -1,4 +1,5 @@
-import { ArrayProductData, ArrayProductDataComDesconto } from "../interface/ObjProducts.js";
+import { MathHelp } from "../helpers/functionHelpers.js";
+import { ArrayProductData } from "../interface/ObjProducts.js";
 
 export class HtmlProductsPage {
     private productsSectionFather = (content : string, btnIndice : string ) =>
@@ -9,9 +10,9 @@ export class HtmlProductsPage {
     
     private productsDivFather = (content : string) => `<div class="all_content">${content}</div>`;
 
-    private indice = `
+    private indice = (name : string) => `
         <div class="all_indice">
-            <h2>índice</h2>
+            <h2>${this.indiceChecker(name)}</h2>
             <div class="all_indice-btn">
                 <button></button>
                 <button></button>
@@ -32,7 +33,7 @@ export class HtmlProductsPage {
             </article>`;
     
     private promotionalProduct = 
-        (data : ArrayProductDataComDesconto) => `
+        (data : ArrayProductData) => `
         <article class="all_article">
             <img src="${data.srcImg}" alt="">
             <h2>${data.titulo}</h2>
@@ -40,8 +41,8 @@ export class HtmlProductsPage {
                 <span class="all_oferta">${data.desconto}% off</span>
                 <span class="all_oferta-help">oferta</span>
             </div>
-            <h3>R$${data.preco}</h3>
-            <span class="all_oferta-preco">R$${data.preco + (data.preco * (data.desconto / 100))}</span>
+            <h3>R$${MathHelp.discount(data.preco, data.desconto ?? 0)}</h3>
+            <span class="all_oferta-preco">R$${data.preco}</span>
             <div class="all_article-rating">
                 <span class="product__card-rating all_rating"></span>
                 <p class="all_rating-number">${data.avaliacao}</p>
@@ -52,15 +53,36 @@ export class HtmlProductsPage {
         return this.basicProduct(product);
     };
 
-    public getPromotionalProduct (product : ArrayProductDataComDesconto) : string {
+    public getPromotionalProduct (product : ArrayProductData) : string {
         return this.promotionalProduct(product);
     };
 
-    public getSection (innerHtml : string) : string {
-        return this.productsSectionFather(this.productsDivFather(innerHtml), this.indice);
+    public getSection (innerHtml : string, name : string) : string {
+        return this.productsSectionFather(this.productsDivFather(innerHtml), this.indice(name));
     }
 
-    public getIndice () : string {
-        return this.indice;
+    public getIndice (name : string) : string {
+        return this.indice(name);
+    }
+
+    public createManyProducts (array : Array<ArrayProductData>) : string {
+        let result = ``;
+        array.forEach(item => result += this.createOneProduct(item));
+
+        return result;
+    }
+
+    private createOneProduct (arr : ArrayProductData) : string {
+        let result = ``;
+        if(!arr.desconto) {
+            result += this.getBasicProduct(arr);
+        } else {
+            result += this.getPromotionalProduct(arr);
+        }
+        return result;
+    }
+
+    private indiceChecker (ind : string) : string {
+        return ind.replace(/\s/g,'') === '' || ind.toLowerCase().replace(/\s/g,'') === 'vermais' ? "Produtos" : ind;
     }
 }

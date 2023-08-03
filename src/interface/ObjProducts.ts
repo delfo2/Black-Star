@@ -19,9 +19,6 @@ export interface ArrayProductData {
     titulo : string,
     preco : number,
     avaliacao : number,
-    srcImg : string
-}
-
-export interface ArrayProductDataComDesconto extends ArrayProductData {
-    desconto : number
+    srcImg : string,
+    desconto : number | null
 }

@@ -4,6 +4,9 @@ export class MenuProducts {
         this.products = productArray;
         this.tokenGenarator = tokenGenarator;
     }
+    getProducts() {
+        return this.products;
+    }
     transformIntoArrayProduct(p, figCaption, img) {
         return { produto: { p, figCaption, img } };
     }

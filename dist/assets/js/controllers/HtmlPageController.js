@@ -21,20 +21,14 @@ export class HtmlPageController {
     productLoad() {
         this.loadPage.refresh(`
         ${this.htmlProduct.getSectionStart()}
-            ${this.htmlProductsPage.getIndice()}
+            ${this.htmlProductsPage.getIndice("Indice")}
                 ${this.htmlProduct.getProduct()}
             ${this.htmlProduct.getSectionEnd()}
         `);
     }
-    productsPage() {
-        const product = {
-            titulo: "Produto",
-            preco: 12.23,
-            avaliacao: 98,
-            srcImg: "./assets/img/just test images/categorias1.webp"
-        };
-        const innerHtml = `${this.htmlProductsPage.getBasicProduct(product)}`;
-        const html = this.htmlProductsPage.getSection(innerHtml);
+    productsPage(products, sectionName) {
+        const innerHtml = this.htmlProductsPage.createManyProducts(products.getProducts());
+        const html = this.htmlProductsPage.getSection(innerHtml, sectionName);
         this.loadPage.refresh(html);
     }
 }

@@ -1,4 +1,5 @@
 import { ImageDatabase } from "../models/ImageDatabase.js";
+import { ProductsDatabase } from "../models/ProductsDatabase.js";
 import { ImgHandle } from "../view/changeSrcImg.js";
 import { MenuProducts } from "../view/menuProducts.js";
 import { HtmlPageController } from "./HtmlPageController.js";
@@ -7,14 +8,16 @@ import { ButtonController } from "./btnController.js";
 
 export class ListenTouch {
     private ImgDatabase : ImageDatabase;
-    private ProductDataBase : MenuProducts;
+    private MenuProductDataBase : MenuProducts;
     private ImgHandle : ImgHandle | undefined;
     private buttonController = new ButtonController();
     private linkController = new LinkController();
+    private productsDatabase : ProductsDatabase;
     
-    constructor (ImageDatase : ImageDatabase, productData : MenuProducts) {
+    constructor (ImageDatase : ImageDatabase, productData : MenuProducts, products : ProductsDatabase) {
         this.ImgDatabase = ImageDatase;
-        this.ProductDataBase = productData;
+        this.MenuProductDataBase = productData;
+        this.productsDatabase = products;
         this.startImgHandle();
     };
 
@@ -26,8 +29,8 @@ export class ListenTouch {
 
     private eventHandle (e : MouseEvent, pageController : HtmlPageController) : void {
         this.ImgHandle?.imgHandle(e.target as Element, this.ImgDatabase);
-        this.buttonController.handle(e.target as Element, this.ProductDataBase);
-        this.linkController.linkHandle(e.target as Element, pageController);
+        this.buttonController.handle(e.target as Element, this.MenuProductDataBase);
+        this.linkController.linkHandle(e.target as Element, pageController, this.productsDatabase);
         return;
     }
 

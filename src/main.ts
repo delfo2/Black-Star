@@ -4,6 +4,7 @@ import { listenBtnMenu } from "./controllers/menuController.js";
 import { TokenGenarator } from "./helpers/functionHelpers.js";
 // import { searchImages } from "./controllers/searchController.js";
 import { ImageDatabase } from "./models/ImageDatabase.js";
+import { ProductsDatabase } from "./models/ProductsDatabase.js";
 import { MenuProducts } from "./view/menuProducts.js";
 
 const HtmlRender = new HtmlPageController();
@@ -36,15 +37,16 @@ export const jsLoad = async () => {
 
     const tokenGenarator = new TokenGenarator();
 
-    const ProductDataBase = new MenuProducts(
+    const MenuDataBase = new MenuProducts(
         <HTMLDivElement>document.querySelector('[data-produtos="menu"]'),
         [],
         tokenGenarator
     );
     
-    ProductDataBase.updateMenuProducts();
+    MenuDataBase.updateMenuProducts();
     const ImgDatabase = new ImageDatabase(['']);
-    const ListenTouchController = new ListenTouch(ImgDatabase, ProductDataBase);
+    const productsDatabase = new ProductsDatabase(ImgDatabase);
+    const ListenTouchController = new ListenTouch(ImgDatabase, MenuDataBase, productsDatabase);
     
     ListenTouchController.startToListen(HtmlRender);
 }
