@@ -1,20 +1,29 @@
 export class HtmlProductGetter {
     constructor() {
-        this.sectionStart = `
-        <section class="product">`;
+        this.sectionStart = (name) => `
+        <section class="product"> ${this.indice(name)}`;
         this.sectionEnd = `
             ${this.generateSubMenu(true, 'Detalhes')}
             ${this.generateSubMenu(true, 'Material')}
             ${this.generateSubMenu(true, 'Tamanhos')}
         </section>`;
-        this.product = `
+        this.indice = (name) => `
+        <div class="all_indice">
+            <h2>${this.indiceChecker(name)}</h2>
+            <div class="all_indice-btn">
+                <button data-btn="voltar_home"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>`;
+        this.product = (data) => `
         <article class="product__card">
             <div>
-                <img src="./assets/img/just test images/categorias1.webp" alt="" class="product__card-img" data-img="productPage">
+                <img src="${data.srcImg}" alt="" class="product__card-img" data-img="productPage">
             </div>
-            <h2 class="product__card-titulo" data-p="productPage">Roupa roupa roupa</h2>
+            <h2 class="product__card-titulo" data-p="productPage">${data.titulo}</h2>
             <div>
-                <h3 class="product__card-price" data-h3="productPage">R$12,34</h3>
+                <h3 class="product__card-price" data-h3="productPage">R$${data.preco}</h3>
                 <span class="product__card-rating"></span>
             </div>
             <div class="product__card-size">
@@ -36,14 +45,8 @@ export class HtmlProductGetter {
             ${this.generateSubMenu(false, 'Tamanhos')}    
         </article>`;
     }
-    getSectionStart() {
-        return this.sectionStart;
-    }
-    getSectionEnd() {
-        return this.sectionEnd;
-    }
-    getProduct() {
-        return this.product;
+    getFullProduct(name, product) {
+        return this.sectionStart(name) + this.product(product) + this.sectionEnd;
     }
     generateSubMenu(isMobile, title) {
         const cssClass = isMobile ? 'product__description' : 'product__description desktop';
@@ -59,5 +62,8 @@ export class HtmlProductGetter {
     }
     generateButton(label) {
         return `<button class="link" data-button="${label}">${label}</button>`;
+    }
+    indiceChecker(ind) {
+        return ind.replace(/\s/g, '') === '' || ind.toLowerCase().replace(/\s/g, '') === 'vermais' ? "Produtos" : ind;
     }
 }

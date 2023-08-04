@@ -10,6 +10,7 @@ export class Converter {
                 ? product.produto.figCaption.textContent
                 : "Roupa";
             array.push({
+                id: 0,
                 titulo: titulo,
                 preco: preco,
                 avaliacao: Math.random() * 10,

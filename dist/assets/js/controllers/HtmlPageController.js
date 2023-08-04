@@ -5,7 +5,7 @@ import { LoadPage } from "../view/LoadPage.js";
 export class HtmlPageController {
     constructor() {
         this.htmlModel = new HtmlPageGetter();
-        this.htmlProduct = new HtmlProductGetter();
+        this.htmlFullProduct = new HtmlProductGetter();
         this.htmlProductsPage = new HtmlProductsPage();
         this.loadPage = new LoadPage();
     }
@@ -18,13 +18,8 @@ export class HtmlPageController {
         `;
         this.loadPage.refresh(html);
     }
-    productLoad() {
-        this.loadPage.refresh(`
-        ${this.htmlProduct.getSectionStart()}
-            ${this.htmlProductsPage.getIndice("Indice")}
-                ${this.htmlProduct.getProduct()}
-            ${this.htmlProduct.getSectionEnd()}
-        `);
+    fullProductLoad(product) {
+        this.loadPage.refresh(this.htmlFullProduct.getFullProduct("", product));
     }
     productsPage(products, sectionName) {
         const innerHtml = this.htmlProductsPage.createManyProducts(products.getProducts());

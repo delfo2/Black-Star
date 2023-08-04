@@ -16,6 +16,7 @@ export interface ObjProductsComplete {
 }
 
 export interface ArrayProductData {
+    id : number,
     titulo : string,
     preco : number,
     avaliacao : number,

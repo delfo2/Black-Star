@@ -1,4 +1,5 @@
 import { Converter } from "../helpers/converter.js";
+import { ArrayProductData } from "../interface/ObjProducts.js";
 import { HtmlPageGetter } from "../models/HtmlPageGetter.js";
 import { HtmlProductGetter } from "../models/HtmlProductGetter.js";
 import { HtmlProductsPage } from "../models/HtmlProductsPage.js";
@@ -8,7 +9,7 @@ import { MenuProducts } from "../view/menuProducts.js";
 
 export class HtmlPageController {
     private htmlModel = new HtmlPageGetter();
-    private htmlProduct = new HtmlProductGetter();
+    private htmlFullProduct = new HtmlProductGetter();
     private htmlProductsPage = new HtmlProductsPage();
     private loadPage = new LoadPage();
 
@@ -22,13 +23,8 @@ export class HtmlPageController {
         this.loadPage.refresh(html);
     }
 
-    public productLoad () : void {
-        this.loadPage.refresh(`
-        ${this.htmlProduct.getSectionStart()}
-            ${this.htmlProductsPage.getIndice("Indice")}
-                ${this.htmlProduct.getProduct()}
-            ${this.htmlProduct.getSectionEnd()}
-        `);
+    public fullProductLoad (product : ArrayProductData) : void {
+        this.loadPage.refresh(this.htmlFullProduct.getFullProduct("", product))
     }
 
     public productsPage (products : ProductsDatabase, sectionName : string) : void {

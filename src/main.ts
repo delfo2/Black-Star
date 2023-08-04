@@ -1,4 +1,5 @@
 import { HtmlPageController } from "./controllers/HtmlPageController.js";
+import { FullProductPageController } from "./controllers/fullProductPageController.js";
 import { ListenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
 import { TokenGenarator } from "./helpers/functionHelpers.js";
@@ -46,7 +47,8 @@ export const jsLoad = async () => {
     MenuDataBase.updateMenuProducts();
     const ImgDatabase = new ImageDatabase(['']);
     const productsDatabase = new ProductsDatabase(ImgDatabase);
-    const ListenTouchController = new ListenTouch(ImgDatabase, MenuDataBase, productsDatabase);
+    const fullProduct = new FullProductPageController(HtmlRender, productsDatabase);
+    const ListenTouchController = new ListenTouch(ImgDatabase, MenuDataBase, productsDatabase, fullProduct);
     
     ListenTouchController.startToListen(HtmlRender);
 }

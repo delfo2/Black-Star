@@ -10,13 +10,13 @@ export class HtmlProductsPage {
         <div class="all_indice">
             <h2>${this.indiceChecker(name)}</h2>
             <div class="all_indice-btn">
-                <button></button>
+                <button data-btn="voltar_home"></button>
                 <button></button>
                 <button></button>
             </div>
         </div>`;
         this.basicProduct = (product) => `
-            <article class="all_article">
+            <a class="all_article" data-produto="link" data-idProduto="${product.id}">
                 <img src="${product.srcImg}" alt="">
                 <h2>${product.titulo}</h2>
                 <h3>R$${product.preco}</h3>
@@ -24,11 +24,11 @@ export class HtmlProductsPage {
                     <span class="product__card-rating all_rating"></span>
                     <p class="all_rating-number">${product.avaliacao}</p>
                 </div>
-            </article>`;
+            </a>`;
         this.promotionalProduct = (data) => {
             var _a;
             return `
-        <article class="all_article">
+        <a class="all_article" data-produto="link" data-idProduto="${data.id}">
             <img src="${data.srcImg}" alt="">
             <h2>${data.titulo}</h2>
             <div class="all_article-oferta">
@@ -41,7 +41,7 @@ export class HtmlProductsPage {
                 <span class="product__card-rating all_rating"></span>
                 <p class="all_rating-number">${data.avaliacao}</p>
             </div>
-        </article>`;
+        </a>`;
         };
     }
     getBasicProduct(product) {

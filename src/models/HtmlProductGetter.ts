@@ -1,20 +1,37 @@
+import { ArrayProductData } from "../interface/ObjProducts.js";
+
 export class HtmlProductGetter {
-    private sectionStart = `
-        <section class="product">`;
+
+    public getFullProduct (name : string, product : ArrayProductData) : string {
+        return this.sectionStart(name) + this.product(product) + this.sectionEnd;
+    }
+
+    private sectionStart = (name : string) => `
+        <section class="product"> ${this.indice(name)}`;
     private sectionEnd = `
             ${this.generateSubMenu(true, 'Detalhes')}
             ${this.generateSubMenu(true, 'Material')}
             ${this.generateSubMenu(true, 'Tamanhos')}
         </section>`;
 
-    private product = `
+    private indice = (name : string) => `
+        <div class="all_indice">
+            <h2>${this.indiceChecker(name)}</h2>
+            <div class="all_indice-btn">
+                <button data-btn="voltar_home"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>`;
+    
+    private product = (data : ArrayProductData) => `
         <article class="product__card">
             <div>
-                <img src="./assets/img/just test images/categorias1.webp" alt="" class="product__card-img" data-img="productPage">
+                <img src="${data.srcImg}" alt="" class="product__card-img" data-img="productPage">
             </div>
-            <h2 class="product__card-titulo" data-p="productPage">Roupa roupa roupa</h2>
+            <h2 class="product__card-titulo" data-p="productPage">${data.titulo}</h2>
             <div>
-                <h3 class="product__card-price" data-h3="productPage">R$12,34</h3>
+                <h3 class="product__card-price" data-h3="productPage">R$${data.preco}</h3>
                 <span class="product__card-rating"></span>
             </div>
             <div class="product__card-size">
@@ -36,18 +53,6 @@ export class HtmlProductGetter {
             ${this.generateSubMenu(false, 'Tamanhos')}    
         </article>`;
 
-    public getSectionStart(): string {
-        return this.sectionStart;
-    }
-
-    public getSectionEnd(): string {
-        return this.sectionEnd;
-    }
-
-    public getProduct(): string {
-        return this.product;
-    }
-
     private generateSubMenu(isMobile: boolean, title: string): string {
         const cssClass = isMobile ? 'product__description' : 'product__description desktop';
         const subMenuText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quam, tempora dolorum, officiis, architecto rem ut aliquam consequuntur nesciunt fuga est ipsa laboriosam. Eum optio nihil, earum vero perspiciatis sed.';
@@ -64,5 +69,9 @@ export class HtmlProductGetter {
 
     private generateButton(label: string): string {
         return `<button class="link" data-button="${label}">${label}</button>`;
+    }
+
+    private indiceChecker (ind : string) : string {
+        return ind.replace(/\s/g,'') === '' || ind.toLowerCase().replace(/\s/g,'') === 'vermais' ? "Produtos" : ind;
     }
 }

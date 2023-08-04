@@ -1,11 +1,12 @@
 import { HtmlHelpers } from "../helpers/htmlHelpers.js";
 import { ObjProducts } from "../interface/ObjProducts.js";
 import { MenuProducts } from "../view/menuProducts.js";
+import { HtmlPageController } from "./HtmlPageController.js";
 
 export class ButtonController {
     private htmlHelp = new HtmlHelpers();
 
-    public handle (el : Element | null, productMemory : MenuProducts) : void {
+    public handle (el : Element | null, productMemory : MenuProducts, pageController : HtmlPageController) : void {
         if (el instanceof HTMLButtonElement) {
             const buttonText = el.textContent?.toUpperCase() ?? '';
             
@@ -21,6 +22,14 @@ export class ButtonController {
         }
         
         this.isDescriptionButton(el);
+        this.isHomeButton(el, pageController);
+    }
+
+    private isHomeButton (el : Element | null, pageController : HtmlPageController) : void {
+        if(el instanceof HTMLButtonElement
+            && el.dataset.btn === "voltar_home") {
+                pageController.defaultLoad();
+        }
     }
 
     private isDescriptionButton (el : Element | null) : void {

@@ -1,4 +1,4 @@
-import { getRandomNumber } from "../helpers/functionHelpers.js";
+import { TokenGenarator, getRandomNumber } from "../helpers/functionHelpers.js";
 import { ArrayProductData } from "../interface/ObjProducts.js";
 import { ImageDatabase } from "./ImageDatabase.js";
 
@@ -6,6 +6,7 @@ export class ProductsDatabase {
     private imgs : ImageDatabase;
     private products : ArrayProductData[] = [];
     private ramdomize = new getRandomNumber();
+    private idGenerator = new TokenGenarator();
     private titleOptions = {
         tipo : [
             "Camisa", "Camiseta", "Manga Longa", "Blusão"
@@ -36,8 +37,17 @@ export class ProductsDatabase {
         this.imgs = img;
     }
 
+    public getOneProduct (index : number) : ArrayProductData {
+        if(this.products.length > index) {
+            return this.products[index];
+        }
+        throw new Error('The index provided does not exist.');
+    }
+
     public getProducts () : ArrayProductData[] {
-        this.createProducts();
+        if(this.products.length < 1) {
+            this.createProducts();
+        }
         return this.products;
     }
 
@@ -46,6 +56,7 @@ export class ProductsDatabase {
             if(img !== '') {
                 this.products.push(
                     {
+                        id : this.idGenerator.getToken(),
                         titulo : this.titleRandomize(),
                         preco : this.precoRandomize() + 10,
                         avaliacao : img.length + this.avaliationRandomize(),

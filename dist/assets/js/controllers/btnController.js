@@ -3,7 +3,7 @@ export class ButtonController {
     constructor() {
         this.htmlHelp = new HtmlHelpers();
     }
-    handle(el, productMemory) {
+    handle(el, productMemory, pageController) {
         var _a, _b;
         if (el instanceof HTMLButtonElement) {
             const buttonText = (_b = (_a = el.textContent) === null || _a === void 0 ? void 0 : _a.toUpperCase()) !== null && _b !== void 0 ? _b : '';
@@ -19,6 +19,13 @@ export class ButtonController {
             }
         }
         this.isDescriptionButton(el);
+        this.isHomeButton(el, pageController);
+    }
+    isHomeButton(el, pageController) {
+        if (el instanceof HTMLButtonElement
+            && el.dataset.btn === "voltar_home") {
+            pageController.defaultLoad();
+        }
     }
     isDescriptionButton(el) {
         if (el instanceof HTMLButtonElement) {
