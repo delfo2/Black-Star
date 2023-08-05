@@ -1,5 +1,5 @@
 import { HtmlPageController } from "./controllers/HtmlPageController.js";
-import { FullProductPageController } from "./controllers/fullProductPageController.js";
+import { FullProductPageController } from "./controllers/FullProductPageController.js";
 import { ListenTouch } from "./controllers/listenTouch.js";
 import { listenBtnMenu } from "./controllers/menuController.js";
 import { TokenGenarator } from "./helpers/functionHelpers.js";
