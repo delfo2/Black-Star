@@ -1,0 +1,25 @@
+<header class="estrela__header">
+	<div class="estrela__cabecalho">
+		<h1 class="cabecalho__titulo">Black Star</h1>
+		<div class="cabecalho__container" data-container="cabecalho">
+			<div class="cabecalho__pesquisa">
+				<form method="get" class="pesquisa__form" data-searchBar="">
+					<input type="search" name="search" id="search" required class="pesquisa__input" placeholder="Exemplo: Camisas" pattern="[\D*\s*]*" title="A pesquisa deve conter apenas letras de a-z">
+					<input type="submit" name="search" id="search" value="" class="pesquisa__icone">
+				</form>
+			</div>
+			<div class="cabecalho__menu">
+				<button class="menu__botao" data-btn="voltar_home">início</button>
+				<button class="menu__botao" data-btn="goTo_2nd_page">masculino</button>
+				<button class="menu__botao" data-btn="goTo_2nd_page">feminino</button>
+				<button class="menu__botao" data-btn="goTo_2nd_page">inverno</button>
+				<button class="menu__botao" data-btn="goTo_2nd_page">verão</button>
+			</div>
+			<div class="cabecalho__carrinho">
+				<button class="carrinho__botao" data-btn="carrinho" (click)="changeProductCartVisibity()"></button>
+			</div>
+		</div>
+	</div>
+	<app-button></app-button>
+	<app-cart *ngIf="showProductCart"></app-cart>
+</header>

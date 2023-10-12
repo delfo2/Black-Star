@@ -1,0 +1,15 @@
+.cabecalho__mobile,
+.cabecalho__mobile-menu {
+	display: none;
+}
+
+
+@media screen and (max-width: 1350px) {
+    .cabecalho__mobile {
+        display: block;
+    }
+    .cabecalho__mobile-menu {
+        display: flex;
+        flex-direction: column;
+    }
+}
