@@ -1,9 +1,5 @@
 <div class="cabecalho__mobile">
 	<div class="cabecalho__mobile-menu">
-		<button class="menu__botao">início</button>
-		<button class="menu__botao">masculino</button>
-		<button class="menu__botao">feminino</button>
-		<button class="menu__botao">inverno</button>
-		<button class="menu__botao">verão</button>
+		<button class="menu__botao" *ngFor="let option of menuOptions">{{ option }}</button>
 	</div>
 </div>
