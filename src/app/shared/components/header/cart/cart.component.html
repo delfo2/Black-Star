@@ -1,0 +1,16 @@
+<div class="cabecalho__carrinho-menu" data-menu="carrinho">
+	<div class="carrinho__card" data-produtos="menu">
+		<figure class="carrinho__card-item" *ngIf="products.length < 1">
+			<p>Nenhum Produto escolhido</p>
+		</figure>
+		<figure
+			class="carrinho__card-item slideInRight"
+			*ngFor="let p of products; let i = index"
+			[style.animation-delay]="getAnimateDelay(i, 100)"
+		>
+			<img src="{{ p.render.img }}" alt="" />
+			<figcaption>{{ p.render.description }}</figcaption>
+			<button>X</button>
+		</figure>
+	</div>
+</div>

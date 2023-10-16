@@ -1,0 +1,11 @@
+<div class="cabecalho__mobile">
+	<div class="cabecalho__mobile-menu">
+		<button
+			class="menu__botao slideInBottom"
+			*ngFor="let option of menuOptions; let i = index;"
+			[style.animation-delay]="getAnimateDelay(i, 50, true, menuOptions.length + 1)"
+		>
+			{{ option }}
+		</button>
+	</div>
+</div>

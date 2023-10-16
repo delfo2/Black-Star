@@ -1,0 +1,61 @@
+/* RESET & NORMALIZE */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Germania+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+
+:root {
+	--regular-font: "Open Sans", sans-serif;
+	--handwriting-font: "Pacifico", cursive;
+	--winter-font: "Rowdies", cursive;
+	--trending-font: "UnifrakturCook", cursive;
+
+	--branco: #fff;
+	--cinza-claro: #a7a7a7;
+	--cinza-comum: #5c5c5c;
+	--cinza-escuro: #222222;
+	--vermelho: #ff4e4e;
+	--preto: #000;
+	--preto-transparente: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(8, 8, 8, 0.7231267507002801) 55%,
+		rgba(0, 0, 0, 0.8995973389355743) 100%
+	);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	25%, 100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes slideInLeft {
+	0% {
+		transform: translateX(300px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slideInBottom {
+	0% {
+		transform: translateY(-200px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
