@@ -7,15 +7,9 @@ import { HomeModule } from './pages/home/home.module';
 import { SelectedProductsService } from './services/selected-products.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-	HomeModule
-  ],
-  providers: [SelectedProductsService],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent],
+	imports: [BrowserModule, AppRoutingModule, HomeModule],
+	providers: [SelectedProductsService],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

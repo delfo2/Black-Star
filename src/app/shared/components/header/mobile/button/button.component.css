@@ -1,3 +1,7 @@
+.slideInBottom {
+	animation: slideInBottom 500ms both;
+}
+
 .cabecalho__mobile,
 .cabecalho__mobile-menu {
 	display: none;
@@ -7,9 +11,11 @@
 @media screen and (max-width: 1350px) {
     .cabecalho__mobile {
         display: block;
+		overflow: hidden;
     }
     .cabecalho__mobile-menu {
-        display: flex;
+		display: flex;
         flex-direction: column;
+		overflow: hidden;
     }
 }

@@ -4,18 +4,28 @@ import { disableIfMobile } from '../../decorator/disableFunction';
 import { isMobile } from '../../utils/deviceIndentifier';
 import { MenuOptions } from 'src/app/shared/components/header/MenuOptions';
 import { SelectedProductsService } from 'src/app/services/selected-products.service';
+import { Product } from 'src/app/model/Product';
+import { calculateAnimationDelay } from '../../utils/stylesFunctions';
 
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
-	styleUrls: [
-		'./header.component.css',
-		'./header.responsive.component.css',
-		'header.animate.component.css',
-	],
+	styleUrls: ['./header.component.css', './header.responsive.component.css'],
 })
 export class HeaderComponent {
-	constructor(private selectedProducts: SelectedProductsService) {}
+	constructor(private selectedProducts: SelectedProductsService) {
+		this.selectedProducts.getObservable().subscribe({
+			next: (value) => {
+				this.products.push(value);
+
+				this.cartNumber = this.convertCartNumber(this.products.length);
+				this.showCartNumber = this.canShowCartNumber();
+			},
+		});
+	}
+	public products: Product[] = [];
+	public cartNumber: number | string = this.products.length;
+	public showCartNumber: boolean = this.canShowCartNumber();
 
 	public buttonsStats = {
 		search: Filters.off,
@@ -23,11 +33,6 @@ export class HeaderComponent {
 		cart: Filters.off,
 	};
 	public menuOptions = MenuOptions.options;
-	public i = this.selectedProducts.counter;
-	public ii() {
-		this.selectedProducts.ii();
-		this.i = this.selectedProducts.counter;
-	}
 
 	public showProductCart = false;
 	public showMobileMenuOptions = false;
@@ -70,6 +75,18 @@ export class HeaderComponent {
 		this.switchMarkButton();
 	}
 
+	public canShowCartNumber(): boolean {
+		return (
+			typeof this.cartNumber == 'string' ||
+			(typeof this.cartNumber == 'number' && this.cartNumber > 0)
+		);
+	}
+
+	public calculateAnimationDelay = calculateAnimationDelay;
+	// public calculateAnimationDelay(i: number): string {
+	// 	return `animation-delay: ${calculateAnimationDelay(i)};`;
+	// }
+
 	private switchMarkButton(): void {
 		this.buttonsStats.search = this.searchMode ? Filters.on : Filters.off;
 		this.buttonsStats.menu = this.showMobileMenuOptions
@@ -97,5 +114,9 @@ export class HeaderComponent {
 
 	private changeSearchButtonBorder(): string {
 		return this.searchMode ? '0%' : '10%';
+	}
+
+	private convertCartNumber(number: number): number | string {
+		return number > 9 ? '9+' : number;
 	}
 }

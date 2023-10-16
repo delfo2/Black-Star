@@ -1,6 +1,5 @@
 import { SizingChart } from '../shared/enums/MetricsEnum';
-
-type rating = 0 | 1 | 2 | 3 | 4 | 5;
+import { StarRating } from '../shared/types/metricTypes';
 
 export interface Product {
 	id: number;
@@ -10,7 +9,7 @@ export interface Product {
 	details: {
 		size: SizingChart;
 		gender: 'F' | 'M';
-		rating: rating;
+		rating: StarRating;
 		views: number;
 	};
 	render: {
