@@ -1,9 +1,9 @@
 export function calculateAnimationDelay(
 	index: number,
-	waitingTime = 100
+	waitingTime: number = 100,
+	decrement: number = 0
 ): string {
-	let i = index > 10 ? 0 : index;
-	console.log(i);
-
+	let i = index >= 5 ? index % 5 : index;
+	i = decrement - i <= 0 ? i : decrement - i;
 	return `${i * waitingTime}ms`;
 }

@@ -6,7 +6,7 @@
 		<figure
 			class="carrinho__card-item slideInRight"
 			*ngFor="let p of products; let i = index"
-			[style.animation-delay]="calculateAnimationDelay(i)"
+			[style.animation-delay]="calculateAnimationDelay(i, 100, 0)"
 		>
 			<img src="{{ p.render.img }}" alt="" />
 			<figcaption>{{ p.render.description }}</figcaption>

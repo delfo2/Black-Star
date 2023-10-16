@@ -32,7 +32,7 @@ export class SelectedProductsService {
 		return this.selectedProducts.asObservable();
 	}
 	public addProduct(product: Product) {
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 5; i++) {
 			this.selectedProducts.next(this.p(i));
 		}
 	}
