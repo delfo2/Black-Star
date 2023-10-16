@@ -3,7 +3,7 @@
 		<button
 			class="menu__botao slideInBottom"
 			*ngFor="let option of menuOptions; let i = index;"
-			[style.animation-delay]="calculateAnimationDelay(i, 50, menuOptions.length + 1)"
+			[style.animation-delay]="getAnimateDelay(i, 50, true, menuOptions.length + 1)"
 		>
 			{{ option }}
 		</button>

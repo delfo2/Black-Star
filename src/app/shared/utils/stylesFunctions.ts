@@ -1,9 +1,15 @@
-export function calculateAnimationDelay(
-	index: number,
-	waitingTime: number = 100,
-	decrement: number = 0
+export function getAnimateDelay(
+	increment: number,
+	baseDelay: number = 100,
+	inverse: boolean = false,
+	listLength: number = 1
 ): string {
-	let i = index >= 5 ? index % 5 : index;
-	i = decrement - i <= 0 ? i : decrement - i;
-	return `${i * waitingTime}ms`;
+	let positiveIncrement = Math.max(0, increment);
+	positiveIncrement =
+		positiveIncrement > 5 ? positiveIncrement % 5 : positiveIncrement;
+
+	if (inverse && listLength > 1) {
+		positiveIncrement = listLength - increment;
+	}
+	return `${positiveIncrement * baseDelay}ms`;
 }

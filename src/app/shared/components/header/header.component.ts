@@ -5,7 +5,7 @@ import { isMobile } from '../../utils/deviceIndentifier';
 import { MenuOptions } from 'src/app/shared/components/header/MenuOptions';
 import { SelectedProductsService } from 'src/app/services/selected-products.service';
 import { Product } from 'src/app/model/Product';
-import { calculateAnimationDelay } from '../../utils/stylesFunctions';
+import { getAnimateDelay } from '../../utils/stylesFunctions';
 
 @Component({
 	selector: 'app-header',
@@ -82,9 +82,9 @@ export class HeaderComponent {
 		);
 	}
 
-	public calculateAnimationDelay = calculateAnimationDelay;
-	// public calculateAnimationDelay(i: number): string {
-	// 	return `animation-delay: ${calculateAnimationDelay(i)};`;
+	public getAnimateDelay = getAnimateDelay;
+	// public getAnimateDelay(i: number): string {
+	// 	return `animation-delay: ${getAnimateDelay(i)};`;
 	// }
 
 	private switchMarkButton(): void {

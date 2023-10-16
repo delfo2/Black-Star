@@ -1,6 +1,7 @@
 @media screen and (max-width: 1350px) {
 	.estrela__header {
 		border-bottom: 2px solid var(--preto);
+		transition: all 200ms;
 	}
 	.estrela__cabecalho {
 		align-items: center;
@@ -13,6 +14,12 @@
 
 	.cabecalho__titulo {
 		margin: 0;
+		font-size: 1.5rem;
+		width: 40%;
+		&::before {
+			height: 20px;
+			width: 20px;
+		}
 	}
 
 	.cabecalho__container {
@@ -21,7 +28,12 @@
 		justify-content: flex-end;
 		margin-top: 0;
 		height: 50px;
-		width: initial;
+		width: 60%;
+	}
+
+	.cabecalho__pesquisa {
+		max-width: 100%;
+		height: 50px;
 	}
 
 	.pesquisa__form,
@@ -30,18 +42,26 @@
 	.pesquisa__form:focus-visible,
 	.pesquisa__form:focus-within,
 	.pesquisa__form:target {
+		box-sizing: border-box;
 		border: none;
 		outline: none;
+		height: 100%;
+		width: 100%;
 	}
 
 	.pesquisa__input {
 		display: none;
+		width: 80%;
 	}
 
 	.pesquisa__icone {
 		background-size: 60%;
+		box-sizing: border-box;
+		padding-inline: 0;
+		padding-block: 0;
+		width: 50px;
 		line-height: 0;
-		padding: 25px;
+		height: 48px;
 		outline: none;
 	}
 
@@ -54,7 +74,6 @@
 		border: none;
 		cursor: pointer;
 		display: inline-block;
-		margin: 0 1rem;
 		height: 0;
 		padding: 25px;
 	}
