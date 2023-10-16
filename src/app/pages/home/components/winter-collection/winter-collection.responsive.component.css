@@ -1,0 +1,50 @@
+@keyframes photoMoveHorizontal {
+	0%, 50%, 100%{
+		object-position: left;
+	}
+	25%, 75%{
+		object-position: right;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.estrela__inverno {
+		padding: 2rem 1rem;
+	}
+	.inverno__container {
+		gap: 0 4%;
+		grid-template-columns: 48% 48%;
+		grid-template-rows: 80% 20%;
+		grid-template-areas:
+			"text pic"
+			"preview preview";
+		height: 70vh;
+		width: 100%;
+	}
+
+	.textArea__titulo {
+		font-size: 2rem;
+	}
+	.textArea__titulo strong {
+		font-size: 2rem;
+	}
+
+	.textArea__descricao {
+		font-size: 0.7rem;
+	}
+
+	.inverno__foto-destaque {
+		animation-name: photoMoveHorizontal;
+		animation-delay: 0s;
+		height: 90%;
+	}
+
+	.preview__cartao {
+		justify-content: center;
+	}
+
+	.preview__cartao img {
+		width: 80px;
+		height: 80px;
+	}
+}

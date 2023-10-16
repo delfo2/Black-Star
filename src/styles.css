@@ -4,9 +4,10 @@
 
 /* FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Germania+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
 
 :root {
 	--regular-font: "Open Sans", sans-serif;
@@ -30,6 +31,7 @@
 
 * {
 	box-sizing: border-box;
+	font-family: var(--regular-font);
 }
 
 /* ANIMATIONS */
@@ -47,6 +49,35 @@
 		transform: translateX(300px);
 	}
 	100% {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slideInRight {
+	0% {
+		transform: translateX(-300px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slideInRight-middle {
+	0% {
+		transform: translateX(-350px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slideInRight-far {
+	0% {
+		opacity: 0;
+		transform: translateX(-635px);
+	}
+	100% {
+		opacity: 1;
 		transform: translateX(0px);
 	}
 }

@@ -1,7 +1,15 @@
 .main__header {
 	display: block;
-	height: 100%;
+	min-height: 76px;
 }
-h2 {
-	margin-top: 10rem;
+.estrela {
+	margin-top: 6rem;
+	padding: 0 2rem;
+}
+
+@media screen and (max-width: 1350px) {
+	.estrela {
+		margin-top: 2rem;
+		padding: 0 1rem;
+	}
 }

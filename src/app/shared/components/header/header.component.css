@@ -20,7 +20,7 @@
 }
 .cabecalho__titulo::before {
 	animation: spin 10s 3s infinite both;
-	background: url("../../../../assets/svg/star.svg") center no-repeat;
+	background: url("../../../../assets/img/svg/star.svg") center no-repeat;
 	background-size: cover;
 	content: "";
 	display: inline-block;
@@ -79,7 +79,7 @@
 	font-weight: 100;
 }
 .pesquisa__icone {
-	background: url("../../../../assets/svg/search.svg") center no-repeat;
+	background: url("../../../../assets/img/svg/search.svg") center no-repeat;
 	background-size: 50%;
 	border: none;
 	cursor: pointer;
@@ -121,7 +121,7 @@
 
 .carrinho__botao {
 	border: none;
-	background: url("../../../../assets/svg/cart.svg") center no-repeat;
+	background: url("../../../../assets/img/svg/cart.svg") center no-repeat;
 	background-size: 60%;
 	cursor: pointer;
 	padding: 25px 25px;
