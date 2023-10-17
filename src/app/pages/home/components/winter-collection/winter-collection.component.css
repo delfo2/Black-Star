@@ -50,7 +50,6 @@
 	font-size: 3.5rem;
 	font-family: var(--winter-font);
 	font-weight: 500;
-	padding-top: 10px;
 	text-transform: uppercase;
 }
 .textArea__titulo strong {
@@ -63,34 +62,6 @@
 	font-size: 0.9rem;
 	font-weight: 100;
 	margin: 1rem 0;
-}
-
-.textArea__link {
-	align-items: center;
-	background-color: white;
-	border: 1px solid black;
-	color: black;
-	display: flex;
-	font-weight: 500;
-	justify-content: center;
-	padding: 0.5rem 1rem;
-	text-decoration: none;
-	width: 100%;
-	&:hover {
-		background-color: white;
-		border-color: white;
-		filter: invert();
-	}
-	&::after {
-		content: "";
-		background-image: url(../../../../../assets/img/svg/link.svg);
-		background-size: cover;
-		background-repeat: no-repeat;
-		display: block;
-		height: 15px;
-		width: 15px;
-		margin-left: 5px;
-	}
 }
 
 .inverno__foto {

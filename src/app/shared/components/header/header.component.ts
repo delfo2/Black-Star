@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Filters } from '../../enums/StylesEnums';
 import { disableIfMobile } from '../../decorator/disableFunction';
 import { isMobile } from '../../utils/deviceIndentifier';
@@ -13,19 +13,9 @@ import { getAnimateDelay } from '../../utils/stylesFunctions';
 	styleUrls: ['./header.component.css', './header.responsive.component.css'],
 })
 export class HeaderComponent {
-	constructor(private selectedProducts: SelectedProductsService) {
-		this.selectedProducts.getObservable().subscribe({
-			next: (value) => {
-				this.products.push(value);
-
-				this.cartNumber = this.convertCartNumber(this.products.length);
-				this.showCartNumber = this.canShowCartNumber();
-			},
-		});
-	}
+	constructor() {}
+	@Input()
 	public products: Product[] = [];
-	public cartNumber: number | string = this.products.length;
-	public showCartNumber: boolean = this.canShowCartNumber();
 
 	public buttonsStats = {
 		search: Filters.off,
@@ -75,17 +65,11 @@ export class HeaderComponent {
 		this.switchMarkButton();
 	}
 
-	public canShowCartNumber(): boolean {
-		return (
-			typeof this.cartNumber == 'string' ||
-			(typeof this.cartNumber == 'number' && this.cartNumber > 0)
-		);
-	}
-
 	public getAnimateDelay = getAnimateDelay;
-	// public getAnimateDelay(i: number): string {
-	// 	return `animation-delay: ${getAnimateDelay(i)};`;
-	// }
+
+	public convertCartNumber(number: number): number | string {
+		return number > 9 ? '9+' : number;
+	}
 
 	private switchMarkButton(): void {
 		this.buttonsStats.search = this.searchMode ? Filters.on : Filters.off;
@@ -114,9 +98,5 @@ export class HeaderComponent {
 
 	private changeSearchButtonBorder(): string {
 		return this.searchMode ? '0%' : '10%';
-	}
-
-	private convertCartNumber(number: number): number | string {
-		return number > 9 ? '9+' : number;
 	}
 }

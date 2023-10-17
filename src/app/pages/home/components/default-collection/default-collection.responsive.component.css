@@ -1,0 +1,58 @@
+@media screen and (max-width: 1000px) {
+	.estrela__destaques {
+		width: 90%;
+	}
+
+	.destaques__texto {
+		margin-bottom: 1rem;
+	}
+
+	.destaques__titulo {
+		font-size: 1.5rem;
+	}
+
+	.destaques__titulo,
+	.destaques__titulo h3 {
+		height: auto;
+	}
+
+	.destaques__link {
+		font-size: 1rem;
+		padding: 10px;
+		width: 40%;
+		&::after {
+			height: 12px;
+			width: 12px;
+		}
+	}
+
+	.destaques__secao {
+		flex-wrap: wrap;
+	}
+
+	.secao__card figcaption {
+		font-size: 1rem;
+	}
+
+	.secao__card button {
+		display: flex;
+		font-size: 0.001rem;
+		padding: 10px 15px;
+
+		&::before {
+			content: "Adicionar";
+			font-size: 1rem;
+		}
+	}
+
+	.secao__card > div {
+		height: 200px;
+		width: 150px;
+		overflow: hidden;
+	}
+
+	.secao__card img {
+		height: 200px;
+		width: 150px;
+	}
+}

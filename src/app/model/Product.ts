@@ -1,5 +1,5 @@
 import { SizingChart } from '../shared/enums/MetricsEnum';
-import { StarRating } from '../shared/types/metricTypes';
+import { StarRating, ClothesTypes } from '../shared/types/clothesTypes';
 
 export interface Product {
 	id: number;
@@ -10,6 +10,7 @@ export interface Product {
 		size: SizingChart;
 		gender: 'F' | 'M';
 		rating: StarRating;
+		type: ClothesTypes,
 		views: number;
 	};
 	render: {

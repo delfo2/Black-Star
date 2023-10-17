@@ -11,7 +11,7 @@
 				Os moletons são unissex, possuem capuz e bolsos laterais...
 				assim todos podem ficar quentinhos e formidáveis!
 			</p>
-			<a href="#" class="textArea__link">Conferir Coleção </a>
+			<a href="#" class="link">Conferir Coleção </a>
 		</div>
 		<div class="inverno__foto">
 			<img
@@ -21,23 +21,8 @@
 			/>
 		</div>
 		<div class="inverno__preview">
-			<a href="#" class="preview__cartao"
-				><img src="../../../../../assets/img/webp/inverno1.webp" alt=""
-			/></a>
-			<a href="#" class="preview__cartao"
-				><img
-					src="../../../../../assets/img/webp/inverno2.webp"
-					alt=""
-			/></a>
-			<a href="#" class="preview__cartao"
-				><img
-					src="../../../../../assets/img/webp/inverno3.webp"
-					alt=""
-			/></a>
-			<a href="#" class="preview__cartao"
-				><img
-					src="../../../../../assets/img/webp/inverno4.webp"
-					alt=""
+			<a href="#" class="preview__cartao" *ngFor="let product of products"
+				><img src="{{ product.render.img }}" alt=""
 			/></a>
 		</div>
 	</div>

@@ -1,1 +1,10 @@
-<p>categories works!</p>
+<section class="estrela__categorias">
+	<h3 class="categorias__titulo">Categorias</h3>
+	<a href="#" class="categorias__card" *ngFor="let product of products">
+		<figure>
+			<img src="{{ product.render.img }}" alt="" />
+			<figcaption>{{ product.details.type }}</figcaption>
+			<p>conheça</p>
+		</figure>
+	</a>
+</section>

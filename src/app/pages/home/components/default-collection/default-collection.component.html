@@ -1,1 +1,22 @@
-<p>default-collection works!</p>
+<div class="estrela__destaques fadeIn">
+	<div class="destaques__texto">
+		<a href="#" class="destaques__titulo slideInRight"
+			><h3>{{title}}</h3></a
+		>
+		<a href="#" class="link destaques__link slideInLeft">Ver Mais </a>
+	</div>
+	<section class="destaques__secao">
+		<figure
+			class="secao__card"
+			[ngClass]="getAnimationSide(i + 1)"
+			*ngFor="let product of products; let i = index"
+		>
+			<div>
+				<img src="{{ product.render.img }}" alt="" />
+			</div>
+			<figcaption>{{ product.title }}</figcaption>
+			<p>R${{product.price}}</p>
+			<button class="link">Adicionar ao Carrinho</button>
+		</figure>
+	</section>
+</div>

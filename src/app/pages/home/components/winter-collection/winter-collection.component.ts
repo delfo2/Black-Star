@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from 'src/app/model/Product';
 
 @Component({
   selector: 'app-winter-collection',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./winter-collection.component.css', 'winter-collection.responsive.component.css']
 })
 export class WinterCollectionComponent {
-
+	@Input()
+	public products : Product[] = [];
 }

@@ -54,8 +54,8 @@
 					[style]="buttonsStats.cart"
 					(click)="changeProductCartVisibility()"
 				>
-					<p *ngIf="showCartNumber" [style]="buttonsStats.cart">
-						{{ cartNumber }}
+					<p *ngIf="this.products.length" [style]="buttonsStats.cart">
+						{{ convertCartNumber(this.products.length) }}
 					</p>
 				</button>
 			</div>

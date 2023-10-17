@@ -15,6 +15,7 @@ export class MainComponent {
 				this.i = this.products.length;
 			},
 		})
+		this.selectedProducts.fakeAdd();
 	}
 	public products : Product[] = [];
 	public i = this.products.length;

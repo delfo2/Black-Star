@@ -32,12 +32,10 @@
 	.textArea__descricao {
 		font-size: 0.7rem;
 	}
-	.textArea__link {
-		padding: 0.5rem .5rem;
-	}
 
 	.inverno__foto-destaque {
-		animation: photoMoveHorizontal 5s infinite both;
+		animation: 7s infinite ease-in-out 0s backwards;
+		animation-name: photoMoveHorizontal;
 		height: 90%;
 	}
 
