@@ -1,16 +1,16 @@
 @keyframes photoMoveHorizontal {
-	0%, 50%, 100%{
+	0%,
+	50%,
+	100% {
 		object-position: left;
 	}
-	25%, 75%{
+	25%,
+	75% {
 		object-position: right;
 	}
 }
 
 @media screen and (max-width: 1000px) {
-	.estrela__inverno {
-		padding: 2rem 1rem;
-	}
 	.inverno__container {
 		gap: 0 4%;
 		grid-template-columns: 48% 48%;
@@ -32,19 +32,18 @@
 	.textArea__descricao {
 		font-size: 0.7rem;
 	}
+	.textArea__link {
+		padding: 0.5rem .5rem;
+	}
 
 	.inverno__foto-destaque {
-		animation-name: photoMoveHorizontal;
-		animation-delay: 0s;
+		animation: photoMoveHorizontal 5s infinite both;
 		height: 90%;
 	}
 
 	.preview__cartao {
-		justify-content: center;
-	}
-
-	.preview__cartao img {
 		width: 80px;
 		height: 80px;
+		justify-content: center;
 	}
 }
