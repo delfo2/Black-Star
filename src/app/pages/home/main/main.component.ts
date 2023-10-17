@@ -8,18 +8,14 @@ import { SelectedProductsService } from 'src/app/services/selected-products.serv
 	styleUrls: ['./main.component.css'],
 })
 export class MainComponent {
-	constructor(private selectedProducts: SelectedProductsService) {
-		this.selectedProducts.getObservable().subscribe({
+	constructor(private selectedProductsService: SelectedProductsService) {
+		this.selectedProductsService.getObservable().subscribe({
 			next: (value) => {
 				this.products.push(value);
-				this.i = this.products.length;
 			},
 		})
-		this.selectedProducts.fakeAdd();
+		this.selectedProductsService.fakeAdd();
 	}
 	public products : Product[] = [];
-	public i = this.products.length;
-	public increment(): void {
-		this.selectedProducts.addTest();
-	}
+	public selectedProducts : Product[] = [];
 }

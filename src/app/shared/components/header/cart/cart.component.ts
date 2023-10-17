@@ -11,4 +11,9 @@ export class CartComponent {
 	@Input()
 	public products: Product[] = [];
 	public getAnimateDelay = getAnimateDelay;
+	public removeById(id: number): void {
+		const index = this.products.findIndex((product) => product.id === id);
+		this.products.splice(index, 1);
+		console.log(index);
+	}
 }

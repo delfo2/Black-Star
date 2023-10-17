@@ -1,5 +1,5 @@
-<div class="cabecalho__carrinho-menu" data-menu="carrinho">
-	<div class="carrinho__card" data-produtos="menu">
+<div class="cabecalho__carrinho-menu">
+	<div class="carrinho__card">
 		<figure class="carrinho__card-item" *ngIf="products.length < 1">
 			<p>Nenhum Produto escolhido</p>
 		</figure>
@@ -10,7 +10,8 @@
 		>
 			<img src="{{ p.render.img }}" alt="" />
 			<figcaption>{{ p.render.description }}</figcaption>
-			<button>X</button>
+			<button (click)="removeById(p.id)">X</button>
 		</figure>
 	</div>
+	<a href="#" class="link carrinho__link" *ngIf="products.length >= 1">Ver carrinho</a>
 </div>

@@ -1,15 +1,11 @@
-<app-header class="main__header" [products]="products"></app-header>
+<app-header class="main__header" [products]="selectedProducts"></app-header>
 <main class="estrela">
-	<app-winter-collection
-		[products]="products.slice(0, 4)"
-	></app-winter-collection>
+	<app-winter-collection [products]="products"></app-winter-collection>
+	<app-default-collection [products]="products" [selectedProducts]="selectedProducts"></app-default-collection>
+	<app-categories [products]="products"></app-categories>
 	<app-default-collection
-		[products]="products.slice(0, 4)"
-	></app-default-collection>
-	<app-categories [products]="products.slice(0, 4)"></app-categories>
-	<app-default-collection
-		[products]="products.slice(0, 4)"
-		title="Novidades"
+		[products]="products"
+		title="Novidades" [selectedProducts]="selectedProducts"
 	></app-default-collection>
 </main>
 <app-footer></app-footer>

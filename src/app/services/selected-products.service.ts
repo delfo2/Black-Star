@@ -34,17 +34,11 @@ export class SelectedProductsService {
 		};
 	};
 
-	constructor() {}
 	public getObservable(): Observable<Product> {
 		return this.selectedProducts.asObservable();
 	}
 	public addProduct(product: Product) {
 		this.selectedProducts.next(product);
-	}
-	public addTest() {
-		for (let i = 0; i < 5; i++) {
-			this.addProduct(this.p(1));
-		}
 	}
 	public fakeAdd() {
 		this.addProduct(

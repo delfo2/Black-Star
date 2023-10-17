@@ -21,7 +21,10 @@
 			/>
 		</div>
 		<div class="inverno__preview">
-			<a href="#" class="preview__cartao" *ngFor="let product of products"
+			<a
+				href="#"
+				class="preview__cartao"
+				*ngFor="let product of products.slice(0, 4)"
 				><img src="{{ product.render.img }}" alt=""
 			/></a>
 		</div>

@@ -1,21 +1,40 @@
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #747474 #d4d4d4;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #000000;
+	border-radius: 100px;
+	border: 4px solid #ffffff;
+}
 .cabecalho__carrinho-menu {
 	background-color: var(--branco);
 	border: 2px solid var(--preto);
 	border-top: none;
 	border-right: none;
 	border-bottom-left-radius: 20px;
-	max-height: 240px;
+	display: flex;
+	flex-direction: column;
 	position: absolute;
-	padding-bottom: 1rem;
-	overflow: auto;
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
 	right: 0;
-	width: 50%;
+	width: 60%;
 }
-
-.cabecalho__carrinho-menu::-webkit-scrollbar {
-	display: none;
+.carrinho__card {
+	max-height: 240px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .carrinho__card-item {
@@ -71,6 +90,21 @@
 	&:focus-within {
 		border-color: white;
 		filter: invert();
+	}
+}
+
+.carrinho__link {
+	border: none;
+	border-bottom-left-radius: 17px;
+	border-top: 2px solid black;
+	width: 100%;
+	padding: 1rem 0;
+	&:hover {
+		border-top: 2px solid white;
+	}
+	&::after {
+		background-image: url("../../../../../assets/img/svg/cart.svg");
+		background-size: contain;
 	}
 }
 
