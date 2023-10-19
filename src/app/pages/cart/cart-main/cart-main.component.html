@@ -7,6 +7,7 @@
 		<app-cart-item [selectedProducts]="selectedProducts"></app-cart-item>
 	</div>
 	<app-cart-resume
+		[selectedProducts]="selectedProducts"
 		*ngIf="selectedProducts.length > 0"
 		class="cart__resume"
 	></app-cart-resume>

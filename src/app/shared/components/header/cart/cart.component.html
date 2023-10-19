@@ -8,10 +8,20 @@
 			*ngFor="let p of selectedProducts; let i = index"
 			[style.animation-delay]="getAnimateDelay(i, 100)"
 		>
+			<p *ngIf="p.getAmount() > 1" class="amount">
+				{{ convertProductAmount(p.getAmount()) }}
+			</p>
 			<img src="{{ p.getProduct().render.img }}" alt="" />
 			<figcaption>{{ p.getProduct().render.description }}</figcaption>
-			<button (click)="removeSelectedProductById(p.getProduct().id)">X</button>
+			<button (click)="removeSelectedProductById(p.getProduct().id)">
+				X
+			</button>
 		</figure>
 	</div>
-	<a [routerLink]="['cart']" class="link carrinho__link" *ngIf="selectedProducts.length >= 1">Ver carrinho</a>
+	<a
+		[routerLink]="['cart']"
+		class="link carrinho__link"
+		*ngIf="selectedProducts.length >= 1"
+		>Ver carrinho</a
+	>
 </div>

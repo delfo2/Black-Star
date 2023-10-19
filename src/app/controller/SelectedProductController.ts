@@ -1,13 +1,22 @@
 import { Product } from '../model/Product';
 import { SelectedProduct } from '../model/SelectedProduct';
+import { LocalSave } from '../services/LocalStorageHandler';
 
 export class SelectedProductController {
 	public selectedProducts: SelectedProduct[] = [];
 
+	public fetch(products: Product[]): void {
+		const tempSelectedProducts =
+			LocalSave.collectSelectedProducts(products);
+		if (tempSelectedProducts) {
+			this.selectedProducts = tempSelectedProducts;
+		}
+	}
+
 	public removeSelectedProductById(id: number): void {
 		const index = this.findIndexProduct(id);
 		this.selectedProducts.splice(index, 1);
-		console.log(`removing product with the id ${id}`);
+		this.localSave();
 	}
 
 	public selectProduct(id: number, products: Product[]): void {
@@ -17,34 +26,34 @@ export class SelectedProductController {
 				this.changeProductAmount(id);
 			} else {
 				this.selectedProducts.push(new SelectedProduct(product));
-				console.log(`adding product with the id ${id}`);
+				this.localSave();
 			}
-		} else {
-			console.error('não foi possível adicionar o produto selecionado!');
 		}
 	}
 
 	public removeAllSelectedProduct(): void {
 		this.selectedProducts.splice(0, this.selectedProducts.length);
-		console.log(`removing all product`);
+		LocalSave.deleteSelectedProducts();
 	}
 
 	public changeProductAmount(id: number, add: number = 1): void {
-		console.log(`---------------------`);
-		console.log(`changing product amount, the id is: ${id}`);
 		const index = this.findIndexProduct(id);
 		const actualAmount = this.selectedProducts[index].getAmount();
-		console.log(`amount: ${actualAmount}`);
 		this.selectedProducts[index].setAmount(actualAmount + add);
-		console.log(`amount: ${this.selectedProducts[index].getAmount()}`);
-
-		console.log(`---------------------`);
+		if(this.selectedProducts[index].getAmount() < 1) {
+			this.removeSelectedProductById(id);
+		}
+		this.localSave();
 	}
 
 	private findIndexProduct(id: number): number {
 		return this.selectedProducts.findIndex(
 			(product) => product.getId() === id
 		);
+	}
+
+	private localSave(): void {
+		LocalSave.saveSelectedProducts(this.selectedProducts);
 	}
 
 	private productAlreadyExists(id: number): boolean {

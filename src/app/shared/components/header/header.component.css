@@ -94,10 +94,12 @@
 	border: none;
 	background: none;
 	cursor: pointer;
+	color: black;
 	font-weight: 500;
 	padding: 0.5rem 0.5rem 26px 0.5rem;
 	text-transform: uppercase;
-	vertical-align: top;
+	text-decoration: none;
+	height: 100%;
 	&:hover,
 	&:active,
 	&:focus,
