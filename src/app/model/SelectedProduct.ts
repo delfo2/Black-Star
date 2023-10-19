@@ -4,9 +4,10 @@ export class SelectedProduct {
 	private amount: number = 1;
 	private product: Product;
 	private id: number;
-	constructor(product: Product) {
+	constructor(product: Product, amount: number = 1) {
 		this.product = product;
 		this.id = product.id;
+		this.amount = amount;
 	}
 	public setAmount(number: number): void {
 		this.amount = number;

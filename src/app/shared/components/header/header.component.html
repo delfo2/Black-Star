@@ -43,8 +43,9 @@
 				<button
 					class="menu__botao"
 					*ngFor="let option of menuOptions; let i = index"
+					[routerLink]="[option.path]"
 				>
-					{{ option }}
+					{{ option.name }}
 				</button>
 			</div>
 			<div class="cabecalho__carrinho">
