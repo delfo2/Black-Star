@@ -54,13 +54,13 @@
 					[style]="buttonsStats.cart"
 					(click)="changeProductCartVisibility()"
 				>
-					<p *ngIf="this.products.length" [style]="buttonsStats.cart">
-						{{ convertCartNumber(this.products.length) }}
+					<p *ngIf="this.selectedProducts.length" [style]="buttonsStats.cart">
+						{{ convertCartNumber(this.selectedProducts.length) }}
 					</p>
 				</button>
 			</div>
 		</div>
 	</div>
 	<app-button *ngIf="showMobileMenuOptions"></app-button>
-	<app-cart *ngIf="showProductCart" [products]="products"></app-cart>
+	<app-cart *ngIf="showProductCart" [selectedProducts]="selectedProducts"></app-cart>
 </header>

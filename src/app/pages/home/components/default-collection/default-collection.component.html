@@ -16,7 +16,7 @@
 			</div>
 			<figcaption>{{ product.title }}</figcaption>
 			<p>R${{ product.price }}</p>
-			<button class="link" (click)="addProduct(product.id)">
+			<button class="link" (click)="selectProduct(product.id, products)">
 				Adicionar ao Carrinho
 			</button>
 		</figure>

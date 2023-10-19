@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { Product } from 'src/app/model/Product';
-import { SelectedProductsService } from 'src/app/services/selected-products.service';
+import { SelectedProduct } from 'src/app/model/SelectedProduct';
 
 @Component({
 	selector: 'app-default-collection',
@@ -10,12 +11,14 @@ import { SelectedProductsService } from 'src/app/services/selected-products.serv
 		'default-collection.responsive.component.css',
 	],
 })
-export class DefaultCollectionComponent {
-	constructor(private selectedProductsService: SelectedProductsService) {}
+export class DefaultCollectionComponent extends SelectedProductController{
+	constructor() {
+		super();
+	}
 	@Input()
 	public products: Product[] = [];
 	@Input()
-	public selectedProducts: Product[] = [];
+	public override selectedProducts: SelectedProduct[] = [];
 	@Input()
 	public title: string = 'Destaques';
 
@@ -25,15 +28,5 @@ export class DefaultCollectionComponent {
 			className = 'slideInLeft';
 		}
 		return className;
-	}
-	public addProduct(id: number): void {
-		const product: Product | undefined = this.products.find(
-			(p) => p.id === id
-		);
-		if(product) {
-			this.selectedProducts.push(product);
-		} else {
-			console.error('não foi possível adicionar o produto selecionado!');
-		}
 	}
 }

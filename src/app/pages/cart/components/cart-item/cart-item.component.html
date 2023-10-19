@@ -1,0 +1,20 @@
+<section *ngFor="let product of selectedProducts" class="product">
+	<img src="{{ product.getProduct().render.img }}" alt="" class="product__img"/>
+	<span class="product__details">
+		<p>{{ product.getProduct().title.substring(0, 25) }}</p>
+		<span>{{ product.getProduct().render.material.substring(0, 10) }}</span>
+		<span>{{ product.getProduct().details.size }}</span>
+	</span>
+	<div class="product__control">
+		<div class="product__control-dashboard">
+			<button>-</button>
+			<input type="number" name="" id="" pattern="^[0-9]*$">
+			<button>+</button>
+		</div>
+		<button class="product__control-delete" (click)="removeSelectedProductById(product.getProduct().id)">Excluir</button>
+	</div>
+	<div class="product__price" >
+		<span>R$</span>
+		<input type="number" disabled value="23.34">
+	</div>
+</section>

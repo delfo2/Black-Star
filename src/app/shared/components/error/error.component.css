@@ -1,0 +1,25 @@
+.error {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10rem;
+}
+.error__img {
+	width: 100px;
+}
+.error__h1 {
+	font-size: 1.3rem;
+	font-weight: 500;
+}
+.error__h2 {
+	font-weight: 100;
+}
+.error__link {
+	margin-top: 1rem;
+	width: 50%;
+	&::after {
+		background-image: url("../../../../assets/img/svg/star.svg");
+		background-size: contain;
+	}
+}

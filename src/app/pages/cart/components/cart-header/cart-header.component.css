@@ -1,0 +1,40 @@
+* {
+	text-transform: capitalize;
+}
+div {
+	display: grid;
+	grid-template-areas:
+		"titulo titulo titulo botao botao"
+		"produto produto produto quantidade preco";
+	gap: 10px 0;
+}
+h2 {
+	font-family: var(--winter-font);
+	font-size: 1.5rem;
+	font-weight: 500;
+	grid-area: titulo;
+}
+button {
+	cursor: pointer;
+	font-size: 0.9rem;
+	grid-area: botao;
+	&::after {
+		background-image: url("../../../../../assets/img/svg/trash.svg");
+		background-size: contain;
+	}
+}
+
+span {
+	color: var(--cinza-comum);
+	text-transform: uppercase;
+	font-weight: 100;
+}
+div > :nth-child(3) {
+	grid-area: produto;
+}
+div > :nth-child(4) {
+	grid-area: quantidade;
+}
+div > :nth-child(5) {
+	grid-area: preco;
+}

@@ -1,0 +1,19 @@
+<app-header [selectedProducts]="selectedProducts" class="header"></app-header>
+<main class="cart">
+	<div class="cart__products" *ngIf="selectedProducts.length > 0">
+		<app-cart-header
+			[selectedProducts]="selectedProducts"
+		></app-cart-header>
+		<app-cart-item [selectedProducts]="selectedProducts"></app-cart-item>
+	</div>
+	<app-cart-resume
+		*ngIf="selectedProducts.length > 0"
+		class="cart__resume"
+	></app-cart-resume>
+	<app-error
+		*ngIf="selectedProducts.length <= 0"
+		title="Carrinho vazio"
+		description="Você removeu todos os produtos do seu carrinho, por favor escolha alguns produtos e volte aqui :D"
+	></app-error>
+</main>
+<app-footer></app-footer>

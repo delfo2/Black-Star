@@ -3,19 +3,21 @@ import { Filters } from '../../enums/StylesEnums';
 import { disableIfMobile } from '../../decorator/disableFunction';
 import { isMobile } from '../../utils/deviceIndentifier';
 import { MenuOptions } from 'src/app/shared/components/header/MenuOptions';
-import { SelectedProductsService } from 'src/app/services/selected-products.service';
-import { Product } from 'src/app/model/Product';
 import { getAnimateDelay } from '../../utils/stylesFunctions';
+import { SelectedProductController } from 'src/app/controller/SelectedProductController';
+import { SelectedProduct } from 'src/app/model/SelectedProduct';
 
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.css', './header.responsive.component.css'],
 })
-export class HeaderComponent {
-	constructor() {}
+export class HeaderComponent extends SelectedProductController {
+	constructor() {
+		super()
+	}
 	@Input()
-	public products: Product[] = [];
+	public override selectedProducts: SelectedProduct[] = [];
 
 	public buttonsStats = {
 		search: Filters.off,

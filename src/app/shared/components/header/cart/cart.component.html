@@ -1,17 +1,17 @@
 <div class="cabecalho__carrinho-menu">
 	<div class="carrinho__card">
-		<figure class="carrinho__card-item" *ngIf="products.length < 1">
+		<figure class="carrinho__card-item" *ngIf="selectedProducts.length < 1">
 			<p>Nenhum Produto escolhido</p>
 		</figure>
 		<figure
 			class="carrinho__card-item slideInRight"
-			*ngFor="let p of products; let i = index"
+			*ngFor="let p of selectedProducts; let i = index"
 			[style.animation-delay]="getAnimateDelay(i, 100)"
 		>
-			<img src="{{ p.render.img }}" alt="" />
-			<figcaption>{{ p.render.description }}</figcaption>
-			<button (click)="removeById(p.id)">X</button>
+			<img src="{{ p.getProduct().render.img }}" alt="" />
+			<figcaption>{{ p.getProduct().render.description }}</figcaption>
+			<button (click)="removeSelectedProductById(p.getProduct().id)">X</button>
 		</figure>
 	</div>
-	<a href="#" class="link carrinho__link" *ngIf="products.length >= 1">Ver carrinho</a>
+	<a [routerLink]="['cart']" class="link carrinho__link" *ngIf="selectedProducts.length >= 1">Ver carrinho</a>
 </div>

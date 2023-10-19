@@ -1,0 +1,58 @@
+.resume--price {
+	&::before {
+		content: "R$";
+	}
+}
+.resume {
+	border: 1px solid var(--cinza-claro);
+	border-radius: 10px;
+	width: 100%;
+	& > * {
+		padding: 1rem 1rem 0 1rem;
+	}
+}
+
+.resume__itens {
+	border-bottom: 1px solid var(--cinza-claro);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.resume__itens > * {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 1rem;
+	& > * {
+		color: var(--cinza-comum);
+		font-weight: 100;
+	}
+}
+
+.resume__total {
+	display: flex;
+	flex-direction: column;
+	& > * {
+		margin-bottom: 1rem;
+	}
+}
+.resume__total-value {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	& > span {
+		font-weight: 500;
+		font-size: 1.2rem;
+	}
+}
+
+.resume__total-button {
+	border-radius: 10px;
+	border-color: white;
+	cursor: pointer;
+	filter: invert();
+	&::after {
+		background-image: url("../../../../../assets/img/svg/cart.svg");
+		background-size: contain;
+	}
+}

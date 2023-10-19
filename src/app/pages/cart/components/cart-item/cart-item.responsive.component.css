@@ -1,0 +1,29 @@
+@media screen and (max-width: 1000px) {
+	.product {
+		grid-template-columns: 15% 33% calc(52% / 2) calc(52% / 2);
+	}
+
+	.product__control-dashboard {
+		width: 100%;
+		& > input {
+			width: 20%;
+		}
+		& > button {
+			width: 40%;
+		}
+	}
+
+	.product__control-delete {
+		width: 100%;
+		font-size: 0.0001px;
+	}
+
+	.product__price {
+		font-size: 1rem;
+		height: 1rem;
+		padding-left: 18px;
+		& > input {
+			width: 90%;
+		}
+	}
+}

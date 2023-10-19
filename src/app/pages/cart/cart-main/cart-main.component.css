@@ -1,0 +1,32 @@
+.header {
+	display: block;
+	min-height: 150px;
+}
+.cart {
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 2rem;
+	padding: 0 2rem;
+	& > * {
+		margin-bottom: 2rem;
+	}
+}
+.cart__products {
+	width: 60%;
+}
+.cart__resume {
+	width: 30%;
+}
+@media screen and (max-width: 1000px) {
+	.header {
+		display: block;
+		min-height: 70px;
+	}
+	.cart {
+		padding: 0 1rem;
+		flex-direction: column;
+	}
+	.cart__products, .cart__resume {
+		width: 100%;
+	}
+}
