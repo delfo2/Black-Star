@@ -3,6 +3,7 @@ import { SelectedProductController } from 'src/app/controller/SelectedProductCon
 import { Product } from 'src/app/model/Product';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
 import { SelectedProductsService } from 'src/app/services/selected-products.service';
+import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 
 @Component({
 	selector: 'app-cart-main',
@@ -12,13 +13,14 @@ import { SelectedProductsService } from 'src/app/services/selected-products.serv
 export class CartMainComponent extends SelectedProductController {
 	constructor(private selectedProductsService: SelectedProductsService) {
 		super();
+		WindowHelper.moveToUp();
 		this.selectedProductsService.getObservable().subscribe({
 			next: (value) => {
 				this.products.push(value);
-				this.selectProduct(value.id, this.products);
 			},
 		});
 		this.selectedProductsService.fakeAdd();
+		this.fetch(this.products);
 	}
 	public products: Product[] = [];
 	public override selectedProducts: SelectedProduct[] = [];

@@ -12,4 +12,7 @@ export class CartComponent extends SelectedProductController {
 	@Input()
 	public override selectedProducts: SelectedProduct[] = [];
 	public getAnimateDelay = getAnimateDelay;
+	public convertProductAmount(number: number): number | string {
+		return number > 9 ? '9+' : number;
+	}
 }
