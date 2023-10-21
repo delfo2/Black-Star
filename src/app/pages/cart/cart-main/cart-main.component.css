@@ -3,6 +3,7 @@
 	min-height: 150px;
 }
 .cart {
+	animation-duration: 500ms;
 	display: flex;
 	justify-content: space-evenly;
 	margin-top: 2rem;
@@ -12,9 +13,12 @@
 	}
 }
 .cart__products {
+	animation-duration: 500ms;
 	width: 60%;
+	overflow: hidden;
 }
 .cart__resume {
+	animation-duration: 800ms;
 	width: 30%;
 }
 @media screen and (max-width: 1000px) {

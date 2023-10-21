@@ -1,0 +1,36 @@
+<div class="all_content fadeIn">
+	<a
+		class="all_article"
+		*ngFor="let product of products; let i = index"
+		[ngClass]="getAnimationSide(i + 1)"
+	>
+		<div class="all_article-img">
+			<span class="all_article-oferta">
+				{{ product.discountPercentage }}% off
+			</span>
+			<img src="{{ product.render.img }}" alt="" />
+		</div>
+		<h2>{{ product.title }}</h2>
+		<span class="all_article-price">
+			<h3>
+				R${{
+					getProductPriceWithDiscount(
+						product.price,
+						product.discountPercentage
+					).toFixed(2)
+				}}
+			</h3>
+			<span *ngIf="product.discountPercentage > 0"
+				>R${{ product.price }}</span
+			>
+		</span>
+		<div class="all_article-rating slideInRight">
+			<span
+				class="product__card-rating rating rating-{{
+					product.details.rating
+				}}"
+			></span>
+			<p class="all_rating-number">{{ product.details.views }}</p>
+		</div>
+	</a>
+</div>

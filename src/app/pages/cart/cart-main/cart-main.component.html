@@ -1,6 +1,6 @@
 <app-header [selectedProducts]="selectedProducts" class="header"></app-header>
-<main class="cart">
-	<div class="cart__products" *ngIf="selectedProducts.length > 0">
+<main class="cart fadeIn">
+	<div class="cart__products slideInRight" *ngIf="selectedProducts.length > 0">
 		<app-cart-header
 			[selectedProducts]="selectedProducts"
 		></app-cart-header>
@@ -9,7 +9,7 @@
 	<app-cart-resume
 		[selectedProducts]="selectedProducts"
 		*ngIf="selectedProducts.length > 0"
-		class="cart__resume"
+		class="cart__resume slideInLeft"
 	></app-cart-resume>
 	<app-error
 		*ngIf="selectedProducts.length <= 0"

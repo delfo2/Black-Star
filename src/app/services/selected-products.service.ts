@@ -18,7 +18,7 @@ export class SelectedProductsService {
 			id: id,
 			title: `Product`,
 			price: 23.99,
-			discount: 0,
+			discountPercentage: 13,
 			details: {
 				size: SizingChart.M,
 				gender: 'M',

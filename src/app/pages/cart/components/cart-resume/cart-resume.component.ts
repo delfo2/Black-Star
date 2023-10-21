@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
+import { getDiscountValue } from 'src/app/shared/utils/mathHelper';
 
 @Component({
 	selector: 'app-cart-resume',
@@ -18,7 +19,13 @@ export class CartResumeComponent {
 	}
 	public getDiscount(): number {
 		const total: number[] = this.selectedProducts.map((product) => {
-			return product.getAmount() * product.getProduct().discount;
+			return (
+				product.getAmount() *
+				getDiscountValue(
+					product.getProduct().price,
+					product.getProduct().discountPercentage
+				)
+			);
 		});
 		return total.reduce((acc, value) => acc + value, 0);
 	}

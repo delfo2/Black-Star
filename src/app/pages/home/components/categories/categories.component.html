@@ -1,6 +1,6 @@
 <section class="estrela__categorias">
 	<h3 class="categorias__titulo">Categorias</h3>
-	<a href="#" class="categorias__card" *ngFor="let product of products.slice(0, 4)">
+	<a [routerLink]="['/list']" class="categorias__card" *ngFor="let product of products.slice(0, 4)">
 		<figure>
 			<img src="{{ product.render.img }}" alt="" />
 			<figcaption>{{ product.details.type }}</figcaption>

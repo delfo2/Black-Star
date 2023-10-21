@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { WinterCollectionComponent } from './components/winter-collection/winter-collection.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { DefaultCollectionComponent } from './components/default-collection/default-collection.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 	declarations: [
@@ -13,6 +14,6 @@ import { DefaultCollectionComponent } from './components/default-collection/defa
 		CategoriesComponent,
 		DefaultCollectionComponent,
 	],
-	imports: [CommonModule, ComponentsModule],
+	imports: [CommonModule, ComponentsModule, RouterModule],
 })
 export class HomeModule {}

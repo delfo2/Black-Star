@@ -5,7 +5,7 @@ export interface Product {
 	id: number;
 	title: string;
 	price: number;
-	discount: number;
+	discountPercentage: number;
 	details: {
 		size: SizingChart;
 		gender: 'F' | 'M';

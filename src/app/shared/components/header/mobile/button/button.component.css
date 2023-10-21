@@ -1,7 +1,3 @@
-.slideInBottom {
-	animation: slideInBottom 500ms both;
-}
-
 .cabecalho__mobile,
 .cabecalho__mobile-menu {
 	display: none;

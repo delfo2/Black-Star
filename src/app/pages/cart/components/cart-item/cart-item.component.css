@@ -17,6 +17,7 @@ input[type="number"] {
 	grid-template-columns: 10% 43% calc(47% / 2) calc(47% / 2);
 	padding-top: 1rem;
 	margin-top: 1rem;
+	overflow: hidden;
 }
 
 .product__img {

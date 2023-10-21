@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { Product } from 'src/app/model/Product';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
+import { getAnimationSide } from 'src/app/shared/utils/stylesFunctions';
 
 @Component({
 	selector: 'app-default-collection',
@@ -21,12 +22,5 @@ export class DefaultCollectionComponent extends SelectedProductController{
 	public override selectedProducts: SelectedProduct[] = [];
 	@Input()
 	public title: string = 'Destaques';
-
-	public getAnimationSide(number: number): string {
-		let className = 'slideInRight';
-		if (number % 3 === 0 || number % 4 === 0) {
-			className = 'slideInLeft';
-		}
-		return className;
-	}
+	public getAnimationSide = getAnimationSide;
 }

@@ -1,4 +1,8 @@
-<section *ngFor="let product of selectedProducts" class="product">
+<section
+	*ngFor="let product of selectedProducts; let i = index"
+	class="product slideInTop"
+	[style.animation-delay]="getAnimateDelay(i + 1, 200)"
+>
 	<img
 		src="{{ product.getProduct().render.img }}"
 		alt=""
@@ -36,7 +40,7 @@
 		<input
 			type="number"
 			disabled
-			[valueAsNumber]="product.getProduct().price * product.getAmount()"
+			[valueAsNumber]="(product.getProduct().price * product.getAmount()).toFixed(2)"
 		/>
 	</div>
 </section>

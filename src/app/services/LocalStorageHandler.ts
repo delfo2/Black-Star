@@ -1,47 +1,50 @@
 import { Product } from '../model/Product';
 import { SelectedProduct } from '../model/SelectedProduct';
-import { TypeChecker } from '../shared/utils/TypeChecker';
+import { LocalProductAmount } from '../shared/types/storageTypes';
 
 export class LocalSave {
 	static saveSelectedProducts(selectedProducts: SelectedProduct[]): void {
-		const selectedProductsId = selectedProducts.map((p) => [
-			p.getId(),
-			p.getAmount(),
-		]);
-		localStorage.setItem(
-			'selectedProducts',
-			JSON.stringify(selectedProductsId)
+		const selectedProductsId: LocalProductAmount[] = selectedProducts.map(
+			(p) => ({ id: p.getId(), amount: p.getAmount() })
 		);
+		try {
+			localStorage.setItem(
+				'selectedProducts',
+				JSON.stringify(selectedProductsId)
+			);
+		} catch (error) {
+			console.error(
+				'Error while saving selected products to localStorage:',
+				error
+			);
+		}
 	}
 	static collectSelectedProducts(
 		products: Product[]
 	): SelectedProduct[] | null {
-		let selectedProducts: SelectedProduct[] | null = [];
-		let productsAmountValues = localStorage.getItem('selectedProducts');
+		const productsAmountValues = JSON.parse(
+			localStorage.getItem('selectedProducts') || '[]'
+		);
 
-		if (productsAmountValues) {
-			productsAmountValues = JSON.parse(productsAmountValues);
-			const selectedProductsNumbers =
-				TypeChecker.isArrayOfArraysOfNumbers(productsAmountValues);
-			if (selectedProductsNumbers && products.length > 0) {
-				for (const productNumber of selectedProductsNumbers) {
-					const index = products.findIndex(
-						(p) => p.id === productNumber[0]
+		if (Array.isArray(productsAmountValues) && products.length > 0) {
+			const selectedProducts = productsAmountValues
+				.filter((productAmount) =>
+					products.some((p) => p.id === productAmount.id)
+				)
+				.map((productAmount) => {
+					const product = <Product>(
+						products.find((p) => p.id === productAmount.id)
 					);
-					const selectedProduct = new SelectedProduct(
-						products[index],
-						productNumber[1]
-					);
-					selectedProducts.push(selectedProduct);
-				}
+					return new SelectedProduct(product, productAmount.amount);
+				});
+
+			if (selectedProducts.length > 0) {
+				return selectedProducts;
 			}
-		}
-		if (selectedProducts.length > 0) {
-			return selectedProducts;
 		}
 		return null;
 	}
 	static deleteSelectedProducts(): void {
-		localStorage.removeItem("selectedProducts");
+		localStorage.removeItem('selectedProducts');
 	}
 }
