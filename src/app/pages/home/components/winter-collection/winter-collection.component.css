@@ -91,6 +91,7 @@
 .preview__cartao {
 	align-items: center;
 	border-radius: 100%;
+	cursor: pointer;
 	display: flex;
 	overflow: hidden;
 	height: 100px;

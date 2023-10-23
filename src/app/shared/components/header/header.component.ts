@@ -2,10 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Filters } from '../../enums/StylesEnums';
 import { disableIfMobile } from '../../decorator/disableFunction';
 import { isMobile } from '../../utils/deviceIndentifier';
-import { MenuOptions } from 'src/app/shared/components/header/MenuOptions';
 import { getAnimateDelay } from '../../utils/stylesFunctions';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-header',
@@ -13,8 +14,8 @@ import { SelectedProduct } from 'src/app/model/SelectedProduct';
 	styleUrls: ['./header.component.css', './header.responsive.component.css'],
 })
 export class HeaderComponent extends SelectedProductController {
-	constructor() {
-		super()
+	constructor(private router: Router) {
+		super();
 	}
 	@Input()
 	public override selectedProducts: SelectedProduct[] = [];
@@ -24,7 +25,6 @@ export class HeaderComponent extends SelectedProductController {
 		menu: Filters.off,
 		cart: Filters.off,
 	};
-	public menuOptions = MenuOptions.options;
 
 	public showProductCart = false;
 	public showMobileMenuOptions = false;
@@ -32,11 +32,19 @@ export class HeaderComponent extends SelectedProductController {
 	public btnCartVisibility = true;
 	public btnMenuVisibility = true;
 
+	// search variables
 	public searchMode = false;
 	public searchVisibility = isMobile() ? 'none' : 'block';
 	public searchBorder = '';
 	public searchButtonBorder = '10%';
+	public clothesSearch = new FormGroup({
+		searchInput: new FormControl('', [
+			Validators.required,
+			Validators.pattern('[A-Za-zÀ-ÿ ]*'),
+		]),
+	});
 
+	// visibility modifiers
 	public changeProductCartVisibility(): void {
 		if (!this.showMobileMenuOptions) {
 			this.showProductCart = !this.showProductCart;
@@ -66,12 +74,24 @@ export class HeaderComponent extends SelectedProductController {
 		this.searchStylesModifier();
 		this.switchMarkButton();
 	}
+	// Form Controller
+	public onSubmit(): void {
+		if (this.clothesSearch.valid && this.clothesSearch.value.searchInput) {
+			const search: string = this.clothesSearch.value.searchInput;
+			this.router.navigate(['/list'], {
+				queryParams: { q: search },
+			});
+		}
+	}
 
+	// html helpers
 	public getAnimateDelay = getAnimateDelay;
 
 	public convertCartNumber(number: number): number | string {
 		return number > 9 ? '9+' : number;
 	}
+
+	// private modifiers
 
 	private switchMarkButton(): void {
 		this.buttonsStats.search = this.searchMode ? Filters.on : Filters.off;

@@ -1,11 +1,14 @@
-<div class="all_content fadeIn">
+<div class="all_content fadeIn" *ngIf="products.length > 1">
 	<a
 		class="all_article"
 		*ngFor="let product of products; let i = index"
 		[ngClass]="getAnimationSide(i + 1)"
 	>
 		<div class="all_article-img">
-			<span class="all_article-oferta">
+			<span
+				class="all_article-oferta"
+				*ngIf="product.discountPercentage > 0"
+			>
 				{{ product.discountPercentage }}% off
 			</span>
 			<img src="{{ product.render.img }}" alt="" />
@@ -34,3 +37,10 @@
 		</div>
 	</a>
 </div>
+<app-error
+	*ngIf="products.length < 1"
+	title="Nenhum produto achado!"
+	description="Infelizmente não achamos nenhum produto que atenda o que você buscou..."
+	destiny="Recarregar"
+	link="/list/"
+></app-error>

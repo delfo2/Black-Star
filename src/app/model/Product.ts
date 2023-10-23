@@ -1,5 +1,5 @@
 import { SizingChart } from '../shared/enums/MetricsEnum';
-import { StarRating, ClothesTypes } from '../shared/types/clothesTypes';
+import { StarRating, ClothesTypes, ClothesMaterial } from '../shared/types/clothesTypes';
 
 export interface Product {
 	id: number;
@@ -16,6 +16,6 @@ export interface Product {
 	render: {
 		img: string;
 		description: string;
-		material: string;
+		material: ClothesMaterial;
 	};
 }

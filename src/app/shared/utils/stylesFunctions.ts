@@ -15,9 +15,9 @@ export function getAnimateDelay(
 }
 
 export function getAnimationSide(number: number): string {
-	let className = 'slideInRight';
+	let className = 'slideInBottom';
 	if (number % 3 === 0 || number % 4 === 0) {
-		className = 'slideInLeft';
+		className = 'slideInTop';
 	}
 	return className;
 }

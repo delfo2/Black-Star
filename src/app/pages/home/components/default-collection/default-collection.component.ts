@@ -12,7 +12,7 @@ import { getAnimationSide } from 'src/app/shared/utils/stylesFunctions';
 		'default-collection.responsive.component.css',
 	],
 })
-export class DefaultCollectionComponent extends SelectedProductController{
+export class DefaultCollectionComponent extends SelectedProductController {
 	constructor() {
 		super();
 	}

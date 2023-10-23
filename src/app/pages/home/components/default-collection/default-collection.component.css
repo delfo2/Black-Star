@@ -13,6 +13,7 @@
 
 .destaques__titulo {
 	color: var(--preto);
+	cursor: pointer;
 	font-size: 2.5rem;
 	font-family: var(--winter-font);
 	outline: none;

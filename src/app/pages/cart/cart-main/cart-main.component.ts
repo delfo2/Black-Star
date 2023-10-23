@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { Product } from 'src/app/model/Product';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
-import { SelectedProductsService } from 'src/app/services/selected-products.service';
+import { ProductsService } from 'src/app/services/selected-products.service';
 import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 
 @Component({
@@ -11,17 +11,11 @@ import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 	styleUrls: ['./cart-main.component.css'],
 })
 export class CartMainComponent extends SelectedProductController {
-	constructor(private selectedProductsService: SelectedProductsService) {
+	constructor() {
 		super();
 		WindowHelper.moveToUp();
-		this.selectedProductsService.getObservable().subscribe({
-			next: (value) => {
-				this.products.push(value);
-			},
-		});
-		this.selectedProductsService.fakeAdd();
-		this.fetch(this.products);
+		this.fetch(this.productsService.getProducts());
 	}
-	public products: Product[] = [];
+	private productsService = new ProductsService();
 	public override selectedProducts: SelectedProduct[] = [];
 }

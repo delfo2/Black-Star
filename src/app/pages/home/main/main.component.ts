@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { Product } from 'src/app/model/Product';
-import { SelectedProductsService } from 'src/app/services/selected-products.service';
+import { ProductsService } from 'src/app/services/selected-products.service';
 import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 
 @Component({
@@ -10,16 +10,12 @@ import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 	styleUrls: ['./main.component.css'],
 })
 export class MainComponent extends SelectedProductController {
-	constructor(private selectedProductsService: SelectedProductsService) {
+	constructor() {
 		super();
 		WindowHelper.moveToUp();
-		this.selectedProductsService.getObservable().subscribe({
-			next: (value) => {
-				this.products.push(value);
-			},
-		});
-		this.selectedProductsService.fakeAdd();
-		this.fetch(this.products);
+		//coletando no LocalStorage os ids dos produtos selecionados
+		//e escolhendo eles com base na lista de produtos atual;
+		this.fetch(this.productsService.getProducts());
 	}
-	public products: Product[] = [];
+	public productsService = new ProductsService();
 }

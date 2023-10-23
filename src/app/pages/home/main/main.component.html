@@ -1,10 +1,10 @@
 <app-header class="main__header" [selectedProducts]="selectedProducts"></app-header>
 <main class="estrela">
-	<app-winter-collection [products]="products"></app-winter-collection>
-	<app-default-collection [products]="products" [selectedProducts]="selectedProducts"></app-default-collection>
-	<app-categories [products]="products"></app-categories>
+	<app-winter-collection [products]="productsService.getProducts()"></app-winter-collection>
+	<app-default-collection [products]="productsService.getProducts()" [selectedProducts]="selectedProducts"></app-default-collection>
+	<app-categories [products]="productsService.getOneProductOfEachCategory()"></app-categories>
 	<app-default-collection
-		[products]="products"
+		[products]="productsService.getProducts()"
 		title="Novidades" [selectedProducts]="selectedProducts"
 	></app-default-collection>
 </main>

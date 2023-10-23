@@ -7,14 +7,17 @@
 					method="get"
 					class="pesquisa__form"
 					[style.border]="searchBorder"
+					[formGroup]="clothesSearch"
+					(submit)="onSubmit()"
 				>
 					<input
 						type="search"
-						name="search"
-						id="search"
+						name="searchInput"
+						id="searchInput"
 						required
 						class="pesquisa__input"
 						[style.display]="searchVisibility"
+						formControlName="searchInput"
 						placeholder="Exemplo: Camisas"
 						pattern="[\D*\s*]*"
 						title="A pesquisa deve conter apenas letras de a-z"
@@ -22,31 +25,58 @@
 					<input
 						(click)="switchSearchMode()"
 						type="submit"
-						name="search"
-						id="search"
+						name="searchInput"
+						id="searchInput"
 						value=""
 						class="pesquisa__icone marked__button"
 						[style]="buttonsStats.search"
 						[style.border-radius]="searchButtonBorder"
 					/>
+					<span
+						*ngIf="
+							clothesSearch.invalid &&
+							(clothesSearch?.dirty || clothesSearch?.touched)
+							&& searchMode
+						"
+						class="alert-danger"
+					>
+						<div>
+							A pesquisa deve conter apenas letras.
+						</div>
+					</span>
 				</form>
 			</div>
 			<button
 				type="menu"
 				class="cabecalho__menu-mobile marked__button"
 				[style]="buttonsStats.menu"
-				data-menu="btn"
 				(click)="changeMobileMenuOptionsVisibility()"
 				*ngIf="btnMenuVisibility"
 			></button>
 			<div class="cabecalho__menu">
+				<button class="menu__botao" [routerLink]="['/']">início</button>
 				<button
 					class="menu__botao"
-					*ngFor="let option of menuOptions; let i = index"
-					[routerLink]="[option.path]"
+					[routerLink]="['/list']"
+					[queryParams]="{ q: 'masculino' }"
 				>
-					{{ option.name }}
+					masculino
 				</button>
+				<button
+					class="menu__botao"
+					[routerLink]="['/list']"
+					[queryParams]="{ q: 'feminino' }"
+				>
+					feminino
+				</button>
+				<a
+					class="menu__botao"
+					href="https://angular-blog-pink.vercel.app/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					noticias
+				</a>
 			</div>
 			<div class="cabecalho__carrinho">
 				<button
@@ -55,7 +85,10 @@
 					[style]="buttonsStats.cart"
 					(click)="changeProductCartVisibility()"
 				>
-					<p *ngIf="this.selectedProducts.length" [style]="buttonsStats.cart">
+					<p
+						*ngIf="this.selectedProducts.length"
+						[style]="buttonsStats.cart"
+					>
 						{{ convertCartNumber(this.selectedProducts.length) }}
 					</p>
 				</button>
@@ -63,5 +96,8 @@
 		</div>
 	</div>
 	<app-button *ngIf="showMobileMenuOptions"></app-button>
-	<app-cart *ngIf="showProductCart" [selectedProducts]="selectedProducts"></app-cart>
+	<app-cart
+		*ngIf="showProductCart"
+		[selectedProducts]="selectedProducts"
+	></app-cart>
 </header>

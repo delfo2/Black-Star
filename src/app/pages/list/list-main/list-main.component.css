@@ -55,6 +55,9 @@
 		filter: invert();
 	}
 }
+.all_product {
+	width: 100%;
+}
 
 @media screen and (min-width: 1200px) {
 	.all {

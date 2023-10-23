@@ -1,11 +1,11 @@
 <app-header class="header" [selectedProducts]="selectedProducts"></app-header>
 <main class="all fadeIn">
 	<div class="all_indice">
-		<h2 class="slideInRight">Masculino</h2>
+		<h2 class="slideInRight">{{ title }}</h2>
 		<div class="all_indice-btn slideInLeft">
 			<button [routerLink]="['']"></button>
 		</div>
 	</div>
-	<app-product [products]="products"></app-product>
+	<app-product class="all_product" [products]="products"></app-product>
 </main>
 <app-footer class="footer"></app-footer>

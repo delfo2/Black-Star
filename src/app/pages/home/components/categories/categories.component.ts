@@ -7,6 +7,7 @@ import { Product } from 'src/app/model/Product';
 	styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent {
+	constructor() {}
 	@Input()
 	public products: Product[] = [];
 }

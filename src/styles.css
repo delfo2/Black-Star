@@ -42,6 +42,7 @@
 	background-color: white;
 	border: 1px solid black;
 	color: black;
+	cursor: pointer;
 	display: flex;
 	font-weight: 500;
 	justify-content: center;
