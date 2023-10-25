@@ -36,13 +36,20 @@
 						*ngIf="
 							clothesSearch.invalid &&
 							(clothesSearch?.dirty || clothesSearch?.touched)
-							&& searchMode
 						"
 						class="alert-danger"
 					>
-						<div>
-							A pesquisa deve conter apenas letras.
-						</div>
+						<div>A pesquisa deve conter apenas letras.</div>
+					</span>
+					<span
+						*ngIf="
+							clothesSearch.invalid &&
+							(clothesSearch?.dirty || clothesSearch?.touched) &&
+							searchMode
+						"
+						class="alert-danger-mobile"
+					>
+						<div>A pesquisa deve conter apenas letras.</div>
 					</span>
 				</form>
 			</div>
@@ -86,11 +93,16 @@
 					(click)="changeProductCartVisibility()"
 				>
 					<p
-						*ngIf="this.selectedProducts.length"
+						*ngIf="reducer(selectedProducts) > 0"
 						[style]="buttonsStats.cart"
 					>
-						{{ convertCartNumber(this.selectedProducts.length) }}
+						{{ convertCartNumber(reducer(selectedProducts)) }}
 					</p>
+					<app-counter-animation
+						class="counter__animation"
+						[style]="buttonsStats.cart"
+						[number]="reducer(selectedProducts)"
+					></app-counter-animation>
 				</button>
 			</div>
 		</div>

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { Product } from 'src/app/model/Product';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
+import { ProductMessage } from 'src/app/shared/types/ProductPopUpObject';
 import { getAnimationSide } from 'src/app/shared/utils/stylesFunctions';
 
 @Component({
@@ -16,11 +17,17 @@ export class DefaultCollectionComponent extends SelectedProductController {
 	constructor() {
 		super();
 	}
+
 	@Input()
 	public products: Product[] = [];
 	@Input()
 	public override selectedProducts: SelectedProduct[] = [];
 	@Input()
 	public title: string = 'Destaques';
+	@Input()
+	public pagination: number = 0;
 	public getAnimationSide = getAnimationSide;
+
+	@Output()
+	public override Exception = new EventEmitter<ProductMessage>();
 }

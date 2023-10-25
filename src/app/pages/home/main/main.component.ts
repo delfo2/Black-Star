@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
-import { Product } from 'src/app/model/Product';
 import { ProductsService } from 'src/app/services/selected-products.service';
+import { ProductMessage } from 'src/app/shared/types/ProductPopUpObject';
 import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 
 @Component({
@@ -18,4 +18,16 @@ export class MainComponent extends SelectedProductController {
 		this.fetch(this.productsService.getProducts());
 	}
 	public productsService = new ProductsService();
+
+	public messageDialogObject: ProductMessage = {
+		alive: false,
+		description: '',
+		reason: 'você atingiu a quantidade máxima para um produto individual.'
+	}
+	public disposeMessageDialog(): void {
+		this.messageDialogObject.alive = false;
+	}
+	public showMessageDialog(productMessage: ProductMessage): void {
+		this.messageDialogObject = productMessage;
+	}
 }

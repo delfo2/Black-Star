@@ -11,7 +11,13 @@
 		<figure
 			class="secao__card"
 			[ngClass]="getAnimationSide(i + 1)"
-			*ngFor="let product of products.slice(0, 4); let i = index"
+			*ngFor="
+				let product of products.slice(
+					this.pagination,
+					this.pagination + 4
+				);
+				let i = index
+			"
 		>
 			<div>
 				<img src="{{ product.render.img }}" alt="" />

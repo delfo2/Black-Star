@@ -34,7 +34,6 @@
 	font-family: var(--regular-font);
 }
 
-
 /* GENERICS */
 /* LINK CLASS */
 .link {
@@ -70,7 +69,6 @@
 		padding: 0.5rem 0.5rem;
 	}
 }
-
 
 /* RATING CLASS */
 .rating {
@@ -129,7 +127,6 @@
 	}
 }
 
-
 /* ANIMATION CLASSES DEFAULT */
 .slideInLeft {
 	animation: slideInLeft 2s ease-in-out both;
@@ -146,7 +143,6 @@
 .fadeIn {
 	animation: fadeIn 1s ease-in-out both;
 }
-
 
 /* ANIMATIONS */
 @keyframes spin {

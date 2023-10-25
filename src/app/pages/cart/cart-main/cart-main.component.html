@@ -1,10 +1,30 @@
 <app-header [selectedProducts]="selectedProducts" class="header"></app-header>
+<app-confirmation-dialog
+	*ngIf="productConfirmation.alive"
+	style="margin: 0"
+	[question]="productConfirmation.question"
+	(buttonClicked)="confirmationDialogHandler($event)"
+></app-confirmation-dialog>
+<app-message-dialog
+	*ngIf="messageDialogObject.alive"
+	(buttonClicked)="disposeMessageDialog()"
+	[title]="messageDialogObject.reason"
+	[description]="messageDialogObject.description"
+></app-message-dialog>
 <main class="cart fadeIn">
-	<div class="cart__products slideInRight" *ngIf="selectedProducts.length > 0">
+	<div
+		class="cart__products slideInRight"
+		*ngIf="selectedProducts.length > 0"
+	>
 		<app-cart-header
 			[selectedProducts]="selectedProducts"
+			(Confirmation)="showConfirmationDialog($event)"
 		></app-cart-header>
-		<app-cart-item [selectedProducts]="selectedProducts"></app-cart-item>
+		<app-cart-item
+			(Confirmation)="showConfirmationDialog($event)"
+			(Exception)="showMessageDialog($event)"
+			[selectedProducts]="selectedProducts"
+		></app-cart-item>
 	</div>
 	<app-cart-resume
 		[selectedProducts]="selectedProducts"

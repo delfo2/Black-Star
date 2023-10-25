@@ -34,75 +34,6 @@
 	width: 90%;
 }
 
-.cabecalho__pesquisa {
-	display: inline-block;
-	height: 40px;
-}
-
-.pesquisa__form {
-	border: 1px solid var(--cinza-claro);
-	display: flex;
-	height: 100%;
-	align-items: stretch;
-	justify-content: space-between;
-	position: relative;
-	&:active,
-	&:focus,
-	&:focus-visible,
-	&:focus-within,
-	&:target {
-		border: 1px solid var(--preto);
-	}
-}
-
-.pesquisa__input {
-	border: none;
-	padding-left: 1rem;
-
-	&:focus,
-	&:active,
-	&:focus-visible {
-		border: none;
-		outline: none;
-	}
-	&::placeholder {
-		font-size: 1rem;
-		font-weight: 100;
-	}
-}
-.pesquisa__icone {
-	background: url("../../../../assets/img/svg/search.svg") center no-repeat;
-	background-size: 50%;
-	border: none;
-	cursor: pointer;
-	width: 50px;
-	height: 100%;
-	transition: all 300ms;
-}
-
-.alert-danger {
-	bottom: -60px;
-	color: var(--branco);
-	display: flex;
-	z-index: 1;
-	flex-direction: column;
-	position: absolute;
-	&::before {
-		content: "";
-		background-color: var(--vermelho);
-		clip-path: polygon(50% 0px, 45% 100%, 55% 100%);
-		display: inline-block;
-		height: 7px;
-		width: 100%;
-	}
-	& > div {
-		border-radius: 10px;
-		display: inline-block;
-		background-color: var(--vermelho);
-		padding: 10px;
-	}
-}
-
 .cabecalho__menu-mobile {
 	display: none;
 }
@@ -147,8 +78,13 @@
 	background: url("../../../../assets/img/svg/cart.svg") center no-repeat;
 	background-size: 60%;
 	cursor: pointer;
+	position: relative;
 	padding: 25px 25px;
 	transform: translateX(3rem);
+	& > .counter__animation {
+		position: absolute;
+		z-index: 3;
+	}
 }
 
 .carrinho__botao > p {

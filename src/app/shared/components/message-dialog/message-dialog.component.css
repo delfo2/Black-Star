@@ -1,0 +1,61 @@
+.message {
+	align-items: center;
+	border: 2px solid var(--preto);
+	background-color: var(--branco);
+	bottom: 0;
+	border-radius: 10px;
+	display: flex;
+	filter: drop-shadow(0 0 5px);
+	flex-direction: column;
+	left: 0;
+	justify-content: space-between;
+	height: 25%;
+	margin: auto;
+	padding: 1rem;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 70%;
+	z-index: 10;
+}
+
+.message__text {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	& > * {
+		text-align: center;
+	}
+	& > h2 {
+		text-transform: capitalize;
+		font-size: 1.1rem;
+		font-weight: 700;
+	}
+	& > p {
+		font-weight: 100;
+	}
+}
+
+.message__buttton {
+	background-color: var(--preto);
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+	color: var(--branco);
+	padding: 10px;
+}
+
+@media screen and (min-width: 1000px) {
+	.message {
+		width: 30%;
+	}
+}
+.blur {
+	filter: blur();
+	width: 100%;
+	height: 100%;	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.24); /* Cor de fundo opaca */
+	z-index: 9; /* Deve estar acima de outros elementos fixos */
+}

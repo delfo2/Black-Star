@@ -55,8 +55,11 @@ export class ProductsService {
 		return productsFilter;
 	}
 	public getProductsBySearch(q: string): Product[] {
-		return this.products.filter((p) =>
-			p.title.toLowerCase().includes(q.toLowerCase())
+		return this.products.filter(
+			(p) =>
+				p.title.toLowerCase().includes(q.toLowerCase()) ||
+				p.render.description.toLowerCase().includes(q.toLowerCase())||
+				p.render.material.toLowerCase().includes(q.toLowerCase())
 		);
 	}
 	private addProduct(product: Product) {
@@ -206,7 +209,7 @@ export class ProductsService {
 			},
 			render: {
 				img: 'https://static.eliani.com.br/public/eliani/imagens/produtos/blusa-manga-longa-meia-tunica-estampa-floral-preto-e-branco-9029.jpg',
-				description: `Moletom Flor Giz.`,
+				description: `Camisa Flor Giz.`,
 				material: 'Seda 100%',
 			},
 		});
@@ -314,7 +317,7 @@ export class ProductsService {
 			},
 			render: {
 				img: 'https://lojasanguelatino.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/0/200024-2_t-_35_.jpg',
-				description: `Babado Colorido.`,
+				description: `Camisa babado Colorido.`,
 				material: 'Seda 100%',
 			},
 		});
@@ -496,6 +499,204 @@ export class ProductsService {
 				img: 'https://st4.depositphotos.com/2760050/31515/i/1600/depositphotos_315155296-stock-photo-hipster-winter-fashion-outfit-guy.jpg',
 				description: `Moletom CouroJá.`,
 				material: 'Couro 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `VestiNteiro`,
+			price: 35.99,
+			discountPercentage: 0,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 3,
+				type: 'conjunto',
+				views: 161,
+			},
+			render: {
+				img: 'https://fernandaramosstore.com.br/wp-content/uploads/2023/06/fernandaramosstore_com_br-vestido-midi-sem-bojo-manga-longa-canelado-com-fenda-preto.jpg',
+				description: `Conjunto VestiNteiro.`,
+				material: 'Poliéster 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `Concatenado`,
+			price: 42.99,
+			discountPercentage: 10,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 4,
+				type: 'conjunto',
+				views: 261,
+			},
+			render: {
+				img: 'https://img.lojasrenner.com.br/item/607799701/large/3.jpg',
+				description: `Conjunto Concatenado.`,
+				material: 'Poliéster 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `Praiando`,
+			price: 12.99,
+			discountPercentage: 0,
+			details: {
+				size: SizingChart.M,
+				gender: 'M',
+				rating: 2,
+				type: 'camisa',
+				views: 281,
+			},
+			render: {
+				img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/0e932fcbf7a5779c7c621b810924c383.jpg?imageMogr2/auto-orient%7CimageView2/2/w/1300/q/80/format/webp',
+				description: `camisa Praiando.`,
+				material: 'Poliéster 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `SobreTCinza`,
+			price: 67.99,
+			discountPercentage: 30,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 4,
+				type: 'conjunto',
+				views: 361,
+			},
+			render: {
+				img: 'https://i.pinimg.com/564x/49/81/6b/49816b23fef365a54f4471e795b3d45e.jpg',
+				description: `Conjunto SobreTCinza.`,
+				material: 'Algodão 50%, poliamida 30%, elastano 20%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `LongeETude`,
+			price: 28.99,
+			discountPercentage: 17,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 5,
+				type: 'conjunto',
+				views: 269,
+			},
+			render: {
+				img: 'https://i.pinimg.com/736x/d0/b7/6f/d0b76fc8979a718a8db72a054604220a--dress-codes-outfits-inspiration.jpg',
+				description: `Conjunto LongeETude.`,
+				material: 'Algodão 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `Xaprex`,
+			price: 17.99,
+			discountPercentage: 0,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 3,
+				type: 'conjunto',
+				views: 61,
+			},
+			render: {
+				img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/903dbda4c269cc9fa28dbc8ec2c06310.jpg?imageMogr2/auto-orient%7CimageView2/2/w/1300/q/80/format/webp',
+				description: `Conjunto Xaprex.`,
+				material: 'Poliéster 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `Epredon`,
+			price: 14.99,
+			discountPercentage: 0,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 2,
+				type: 'conjunto',
+				views: 21,
+			},
+			render: {
+				img: 'https://img.kwcdn.com/product/1d14c6c05d8/78793c11-4849-42b2-8dcb-3a361013a19a_1755x2340.jpeg?imageMogr2/auto-orient%7CimageView2/2/w/1300/q/80/format/webp',
+				description: `Conjunto Epredon.`,
+				material: 'Poliéster 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `Flor Branca`,
+			price: 82.99,
+			discountPercentage: 10,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 1,
+				type: 'conjunto',
+				views: 261,
+			},
+			render: {
+				img: 'https://www.haremsbrides.com/cdn/shop/products/Vizara2_800x.jpg?v=1639826693',
+				description: `Conjunto Flor Branca.`,
+				material: 'Poliéster 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `Camisa Da Bahia`,
+			price: 8.99,
+			discountPercentage: 0,
+			details: {
+				size: SizingChart.M,
+				gender: 'M',
+				rating: 5,
+				type: 'camisa',
+				views: 751,
+			},
+			render: {
+				img: 'https://www.copafootball.com/images/articles/large/Atletico-de-Madrid-1986-Third-Retro-Football-Shirt-bl-7237.jpg',
+				description: `Camisa Da Bahia.`,
+				material: 'Algodão 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `NNenhum`,
+			price: 28.99,
+			discountPercentage: 5,
+			details: {
+				size: SizingChart.M,
+				gender: 'F',
+				rating: 5,
+				type: 'manga longa',
+				views: 236,
+			},
+			render: {
+				img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxtN5jeSrAh_R_mUa9_OBtdX_kScFasiTPEmn6XI2rnMdsj9Kz5GBz-J0ckGDiuGv3N7gRBW9Qf24u8uK306EtdLmLU3zvKXeQ2fe4E3M43IrXyGDMw6MQhA&usqp=CAE',
+				description: `Manga Longa NNenhum.`,
+				material: 'Algodão 100%',
+			},
+		});
+		this.addProduct({
+			id: this.getId(),
+			title: `PiraMind`,
+			price: 18.99,
+			discountPercentage: 0,
+			details: {
+				size: SizingChart.M,
+				gender: 'M',
+				rating: 3,
+				type: 'manga longa',
+				views: 201,
+			},
+			render: {
+				img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjkBMkqlCJj63QrPpakafe-G6mWVQnoqIq0TCukuWgrJirU5lmwZcH4WXjbx-u2w5pU3D6pqLw4R5jQKK9YDg02GfbEbMW6ZKua1ZgsFplw_UnJOK9Bwvnmg&usqp=CAE',
+				description: `Manga Longa PiraMind.`,
+				material: 'Algodão 100%',
 			},
 		});
 	}

@@ -11,7 +11,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.css', './header.responsive.component.css'],
+	styleUrls: [
+		'./header.pesquisa.component.css',
+		'./header.component.css',
+		'./header.responsive.component.css',
+	],
 })
 export class HeaderComponent extends SelectedProductController {
 	constructor(private router: Router) {
@@ -19,7 +23,6 @@ export class HeaderComponent extends SelectedProductController {
 	}
 	@Input()
 	public override selectedProducts: SelectedProduct[] = [];
-
 	public buttonsStats = {
 		search: Filters.off,
 		menu: Filters.off,
@@ -86,9 +89,15 @@ export class HeaderComponent extends SelectedProductController {
 
 	// html helpers
 	public getAnimateDelay = getAnimateDelay;
+	public isMobile = isMobile;
 
 	public convertCartNumber(number: number): number | string {
 		return number > 9 ? '9+' : number;
+	}
+	public reducer(products: SelectedProduct[]): number {
+		return products
+			.map((p) => p.getAmount())
+			.reduce((p, acc) => acc + p, 0);
 	}
 
 	// private modifiers

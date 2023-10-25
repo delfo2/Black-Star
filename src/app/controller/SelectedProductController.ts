@@ -1,9 +1,16 @@
+import { EventEmitter } from '@angular/core';
 import { Product } from '../model/Product';
 import { SelectedProduct } from '../model/SelectedProduct';
 import { LocalSave } from '../services/LocalStorageHandler';
+import {
+	ProductConfirmation,
+	ProductMessage,
+} from '../shared/types/ProductPopUpObject';
 
 export class SelectedProductController {
 	public selectedProducts: SelectedProduct[] = [];
+	public Exception = new EventEmitter<ProductMessage>();
+	public Confirmation = new EventEmitter<ProductConfirmation>();
 
 	public fetch(products: Product[]): void {
 		const tempSelectedProducts =
@@ -13,10 +20,23 @@ export class SelectedProductController {
 		}
 	}
 
-	public removeSelectedProductById(id: number): void {
-		const index = this.findIndexProduct(id);
-		this.selectedProducts.splice(index, 1);
-		this.localSave();
+	public removeSelectedProductById(
+		id: number,
+		confirmation: boolean = true
+	): void {
+		if (confirmation) {
+			const index = this.findIndexProduct(id);
+			this.selectedProducts.splice(index, 1);
+			this.localSave();
+		} else {
+			this.Confirmation.emit({
+				alive: true,
+				question: 'Deseja deletar esse produto?',
+				callbackFunction: (confirmation: boolean) => {
+					this.removeSelectedProductById(id, confirmation);
+				},
+			});
+		}
 	}
 
 	public selectProduct(id: number, products: Product[]): void {
@@ -31,19 +51,43 @@ export class SelectedProductController {
 		}
 	}
 
-	public removeAllSelectedProduct(): void {
-		this.selectedProducts.splice(0, this.selectedProducts.length);
-		LocalSave.deleteSelectedProducts();
+	public removeAllSelectedProduct(confirmation: boolean = true): void {
+		if (confirmation) {
+			this.selectedProducts.splice(0, this.selectedProducts.length);
+			LocalSave.deleteSelectedProducts();
+		} else {
+			this.Confirmation.emit({
+				alive: true,
+				question: 'Deseja deletar TODOS os produtos?',
+				callbackFunction: (confirmation: boolean) => {
+					this.removeAllSelectedProduct(confirmation);
+				},
+			});
+		}
 	}
 
 	public changeProductAmount(id: number, add: number = 1): void {
 		const index = this.findIndexProduct(id);
 		const actualAmount = this.selectedProducts[index].getAmount();
-		this.selectedProducts[index].setAmount(actualAmount + add);
-		if(this.selectedProducts[index].getAmount() < 1) {
-			this.removeSelectedProductById(id);
+		if (actualAmount >= 10 && add === 1) {
+			this.Exception.emit({
+				alive: true,
+				description:
+					'você atingiu a quantidade máxima para um produto individual.',
+				reason: 'Limite excedido',
+			});
+		} else if (actualAmount === 1 && add < 0) {
+			this.Confirmation.emit({
+				alive: true,
+				question: 'Deseja deletar esse produto?',
+				callbackFunction: (confirmation: boolean) => {
+					this.removeSelectedProductById(id, confirmation);
+				},
+			});
+		} else {
+			this.selectedProducts[index].setAmount(actualAmount + add);
+			this.localSave();
 		}
-		this.localSave();
 	}
 
 	private findIndexProduct(id: number): number {

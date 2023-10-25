@@ -1,15 +1,3 @@
-input[type="number"]::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-}
-input[type="number"] {
-	-moz-appearance: textfield;
-	appearance: textfield;
-}
-
-* {
-	text-transform: capitalize;
-}
-
 .product {
 	border-top: 1px solid var(--cinza-claro);
 	display: grid;
@@ -22,6 +10,7 @@ input[type="number"] {
 
 .product__img {
 	border-radius: 10px;
+	object-fit: cover;
 	grid-area: img;
 	width: 100%;
 }
@@ -53,11 +42,13 @@ input[type="number"] {
 .product__control {
 	display: flex;
 	flex-direction: column;
+	height: 95%;
 }
 
 .product__control-dashboard {
 	display: flex;
 	justify-content: stretch;
+	max-height: 60%;
 	width: 80%;
 	& > * {
 		padding: 5px 0;
@@ -102,6 +93,7 @@ input[type="number"] {
 	border-bottom-right-radius: 20px;
 	cursor: pointer;
 	padding: 5px 0;
+	max-height: 40%;
 	width: 80%;
 	&::after {
 		content: "";

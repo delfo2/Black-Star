@@ -1,11 +1,31 @@
-<app-header class="main__header" [selectedProducts]="selectedProducts"></app-header>
+<app-header
+	class="main__header"
+	[selectedProducts]="selectedProducts"
+></app-header>
 <main class="estrela">
-	<app-winter-collection [products]="productsService.getProducts()"></app-winter-collection>
-	<app-default-collection [products]="productsService.getProducts()" [selectedProducts]="selectedProducts"></app-default-collection>
-	<app-categories [products]="productsService.getOneProductOfEachCategory()"></app-categories>
-	<app-default-collection
+	<app-message-dialog
+		*ngIf="messageDialogObject.alive"
+		(buttonClicked)="disposeMessageDialog()"
+		[title]="messageDialogObject.reason"
+		[description]="messageDialogObject.description"
+	></app-message-dialog>
+	<app-winter-collection
 		[products]="productsService.getProducts()"
-		title="Novidades" [selectedProducts]="selectedProducts"
+	></app-winter-collection>
+	<app-default-collection
+		(Exception)="showMessageDialog($event)"
+		[products]="productsService.getProducts()"
+		[selectedProducts]="selectedProducts"
+	></app-default-collection>
+	<app-categories
+		[products]="productsService.getOneProductOfEachCategory()"
+	></app-categories>
+	<app-default-collection
+		(Exception)="showMessageDialog($event)"
+		[products]="productsService.getProducts()"
+		title="Novidades"
+		[selectedProducts]="selectedProducts"
+		[pagination]="4"
 	></app-default-collection>
 </main>
 <app-footer></app-footer>

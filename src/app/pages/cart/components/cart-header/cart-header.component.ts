@@ -1,6 +1,7 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
+import { ProductConfirmation } from 'src/app/shared/types/ProductPopUpObject';
 
 @Component({
 	selector: 'app-cart-header',
@@ -10,4 +11,6 @@ import { SelectedProduct } from 'src/app/model/SelectedProduct';
 export class CartHeaderComponent extends SelectedProductController {
 	@Input()
 	public override selectedProducts: SelectedProduct[] = [];
+	@Output()
+	public override Confirmation = new EventEmitter<ProductConfirmation>();
 }
