@@ -11,7 +11,11 @@
 			<p *ngIf="p.getAmount() > 1" class="amount">
 				{{ convertProductAmount(p.getAmount()) }}
 			</p>
-			<img src="{{ p.getProduct().render.img }}" alt="" />
+			<img
+				src="{{ p.getProduct().render.img }}"
+				alt=""
+				[routerLink]="['/product', p.getProduct().id]"
+			/>
 			<figcaption>{{ p.getProduct().render.description }}</figcaption>
 			<button (click)="removeSelectedProductById(p.getProduct().id)">
 				X

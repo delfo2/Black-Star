@@ -39,6 +39,9 @@ export class ProductsService {
 	public getOneProductOfEachCategory(): Product[] {
 		return this.categorySample;
 	}
+	public getProductById(id: number): Product | null{
+		return this.products.find(p => p.id === id) ?? null;
+	}
 	public getProductsByCategory(category: string): Product[] {
 		if (category.toLowerCase() === 'geral') {
 			return this.products;

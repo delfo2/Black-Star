@@ -7,6 +7,7 @@
 		src="{{ product.getProduct().render.img }}"
 		alt=""
 		class="product__img"
+		[routerLink]="['/product', product.getId()]"
 	/>
 	<span class="product__details">
 		<p>{{ product.getProduct().title.substring(0, 25) }}</p>
@@ -36,11 +37,16 @@
 		</button>
 	</div>
 	<div class="product__price">
-		<span>R$</span>
-		<input
-			type="number"
-			disabled
-			[valueAsNumber]="product.getProduct().price.toFixed(2)"
-		/>
+		<p>
+			R${{
+				getProductPriceWithDiscount(
+					product.getProduct().price,
+					product.getProduct().discountPercentage
+				).toFixed(2)
+			}}
+		</p>
+		<span *ngIf="product.getProduct().discountPercentage > 0"
+			>R${{ product.getProduct().price }}</span
+		>
 	</div>
 </section>

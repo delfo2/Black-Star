@@ -1,0 +1,30 @@
+article {
+	width: 100%;
+}
+.product__description-title {
+	align-items: center;
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	font-size: 1.3rem;
+	font-weight: 500;
+	justify-content: space-between;
+	padding: 5px 0;
+	width: 100%;
+	& > h4 {
+		margin-right: 5px;
+		text-transform: capitalize;
+	}
+	& > p {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.product__description-text {
+	color: var(--cinza-comum);
+	font-weight: 100;
+	font-size: 0.9rem;
+	margin-bottom: 10px;
+}

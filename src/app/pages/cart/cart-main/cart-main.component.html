@@ -12,6 +12,12 @@
 	[description]="messageDialogObject.description"
 ></app-message-dialog>
 <main class="cart fadeIn">
+	<div class="all_indice">
+		<div class="all_indice-btn">
+			<a [routerLink]="['/']"></a>
+			<a (click)="goBack()"></a>
+		</div>
+	</div>
 	<div
 		class="cart__products slideInRight"
 		*ngIf="selectedProducts.length > 0"

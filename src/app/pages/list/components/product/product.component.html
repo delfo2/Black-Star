@@ -3,6 +3,7 @@
 		class="all_article"
 		*ngFor="let product of products; let i = index"
 		[ngClass]="getAnimationSide(i + 1)"
+		[routerLink]="['/product', product.id]"
 	>
 		<div class="all_article-img">
 			<span

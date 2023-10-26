@@ -71,6 +71,7 @@
 }
 
 .carrinho__card-item img {
+	cursor: pointer;
 	border-radius: 5px;
 	height: 50px;
 	object-fit: cover;

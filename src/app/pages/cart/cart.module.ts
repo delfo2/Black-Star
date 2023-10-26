@@ -5,7 +5,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { CartHeaderComponent } from './components/cart-header/cart-header.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CartResumeComponent } from './components/cart-resume/cart-resume.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @NgModule({
 	declarations: [
@@ -14,6 +14,6 @@ import { RouterLink } from '@angular/router';
 		CartItemComponent,
 		CartResumeComponent,
 	],
-	imports: [CommonModule, ComponentsModule],
+	imports: [CommonModule, ComponentsModule, RouterModule],
 })
 export class CartModule {}

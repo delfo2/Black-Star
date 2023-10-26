@@ -6,11 +6,15 @@
 	animation-duration: 500ms;
 	display: flex;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
 	margin-top: 2rem;
 	padding: 0 2rem;
 	& > * {
 		margin-bottom: 2rem;
 	}
+}
+.all_indice {
+	width: 100%;
 }
 .cart__products {
 	animation-duration: 500ms;
@@ -30,7 +34,14 @@
 		padding: 0 1rem;
 		flex-direction: column;
 	}
-	.cart__products, .cart__resume {
+	.cart__products,
+	.cart__resume {
 		width: 100%;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.all_indice {
+		width: 100%;
+		padding: 0 2rem;
 	}
 }

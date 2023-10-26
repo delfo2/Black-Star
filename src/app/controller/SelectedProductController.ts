@@ -6,8 +6,10 @@ import {
 	ProductConfirmation,
 	ProductMessage,
 } from '../shared/types/ProductPopUpObject';
+import { SizingChart } from '../shared/enums/MetricsEnum';
+import { MessageDialogController } from './MessageDialogController';
 
-export class SelectedProductController {
+export class SelectedProductController extends MessageDialogController {
 	public selectedProducts: SelectedProduct[] = [];
 	public Exception = new EventEmitter<ProductMessage>();
 	public Confirmation = new EventEmitter<ProductConfirmation>();
@@ -86,6 +88,23 @@ export class SelectedProductController {
 			});
 		} else {
 			this.selectedProducts[index].setAmount(actualAmount + add);
+			this.localSave();
+		}
+	}
+
+	public changeSelectedProductSize(
+		id: number,
+		size: SizingChart,
+		products: Product[]
+	) {
+		const index = this.findIndexProduct(id);
+		if (index < 0) {
+			const product = products.find((p) => p.id === id);
+			if (product) {
+				product.details.size = size;
+			}
+		} else {
+			this.selectedProducts[index].setSize(size);
 			this.localSave();
 		}
 	}

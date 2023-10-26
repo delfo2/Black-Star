@@ -1,0 +1,25 @@
+.header {
+	display: block;
+	min-height: 78px;
+}
+
+.product {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 90%;
+}
+
+@media screen and (max-width: 700px) {
+	.header {
+		height: 76px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.all_indice {
+		padding: 0 9%;
+	}
+	.product {
+		margin-top: 5rem;
+	}
+}

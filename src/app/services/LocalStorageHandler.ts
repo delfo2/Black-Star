@@ -5,7 +5,7 @@ import { LocalProductAmount } from '../shared/types/storageTypes';
 export class LocalSave {
 	static saveSelectedProducts(selectedProducts: SelectedProduct[]): void {
 		const selectedProductsId: LocalProductAmount[] = selectedProducts.map(
-			(p) => ({ id: p.getId(), amount: p.getAmount() })
+			(p) => ({ id: p.getId(), amount: p.getAmount(), size: p.getSize() })
 		);
 		try {
 			localStorage.setItem(
@@ -35,6 +35,7 @@ export class LocalSave {
 					const product = <Product>(
 						products.find((p) => p.id === productAmount.id)
 					);
+					product.details.size = productAmount.size;
 					return new SelectedProduct(product, productAmount.amount);
 				});
 
