@@ -1,0 +1,9 @@
+<article>
+	<button class="product__description-title" (click)="changeTextVisibility()">
+		<h4>{{ title }}</h4>
+		<p>{{ titleSymbol }}</p>
+	</button>
+	<p class="product__description-text" *ngIf="textVisibility">
+		{{ text }}
+	</p>
+</article>

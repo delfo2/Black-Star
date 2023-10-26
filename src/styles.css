@@ -70,6 +70,46 @@
 	}
 }
 
+/* ÍNDICE CLASS */
+.all_indice-btn {
+	align-items: center;
+	animation: fadeIn 500ms ease-in-out both;
+	display: flex;
+	justify-content: space-between;
+	& > :nth-child(1)::after {
+		animation: slideInRight 1000ms ease-in-out both;
+		background-image: url("src/assets/img/svg/home.svg");
+	}
+	& > :nth-child(2)::after {
+		animation: slideInLeft 1000ms ease-in-out both;
+		background-image: url("src/assets/img/svg/reply.svg");
+	}
+}
+
+.all_indice-btn > a {
+	background: none;
+	border: none;
+	cursor: pointer;
+	&:after {
+		background-color: white;
+		background-repeat: no-repeat;
+		background-size: contain;
+		border-radius: 10px;
+		border: 5px solid white;
+		content: "";
+		display: block;
+		height: 30px;
+		width: 30px;
+	}
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible,
+	&:target {
+		filter: invert();
+	}
+}
+
 /* RATING CLASS */
 .rating {
 	font-size: 1rem;

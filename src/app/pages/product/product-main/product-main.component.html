@@ -1,0 +1,22 @@
+<app-header class="header" [selectedProducts]="selectedProducts"></app-header>
+<app-message-dialog
+	[title]="messageDialogObject.reason"
+	[description]="messageDialogObject.description"
+	(buttonClicked)="disposeMessageDialog()"
+	*ngIf="messageDialogObject.alive"
+></app-message-dialog>
+<section class="product">
+	<div class="all_indice">
+		<div class="all_indice-btn">
+			<a [routerLink]="['/']"></a>
+			<a (click)="goBack()"></a>
+		</div>
+	</div>
+	<app-product
+		[product]="getProduct()"
+		[products]="productsService.getProducts()"
+		[selectedProducts]="selectedProducts"
+		(Exception)="showMessageDialog($event)"
+	></app-product>
+</section>
+<app-footer></app-footer>

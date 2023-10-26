@@ -1,0 +1,60 @@
+<article class="product__card fadeIn" *ngIf="product !== null">
+	<div class="product__card-div-img">
+		<span *ngIf="product.discountPercentage > 0">
+			{{ product.discountPercentage }}% off
+		</span>
+		<img src="{{ product.render.img }}" alt="" class="product__card-img" />
+	</div>
+	<h2 class="product__card-titulo">{{ product.title }}</h2>
+	<div>
+		<span class="product__card-price all_article-price">
+			<h3>
+				R${{
+					getProductPriceWithDiscount(
+						product.price,
+						product.discountPercentage
+					).toFixed(2)
+				}}
+			</h3>
+			<span *ngIf="product.discountPercentage > 0"
+				>R${{ product.price }}</span
+			>
+		</span>
+		<span
+			class="product__card-rating rating-{{ product.details.rating }}"
+		></span>
+	</div>
+	<div class="product__card-size">
+		<div class="product__card-size-text">
+			<p>Tamanho:</p>
+			<p>{{ product.details.size }}</p>
+		</div>
+		<div class="product__card-size-buttons">
+			<button
+				[ngClass]="
+					product.details.size === size ? 'button__marked' : ''
+				"
+				*ngFor="let size of sizeArr"
+				(click)="changeSelectedProductSize(product.id, size, products)"
+			>
+				{{ size }}
+			</button>
+		</div>
+	</div>
+	<button
+		class="link product__card-button"
+		(click)="selectProduct(product.id, products)"
+	>
+		Adicionar Ao Carrinho
+	</button>
+	<app-sub-menu
+		class="product__card-descrition"
+		[title]="'descrição'"
+		[text]="product.render.description"
+	></app-sub-menu>
+	<app-sub-menu
+		class="product__card-descrition"
+		[title]="'material'"
+		[text]="product.render.material"
+	></app-sub-menu>
+</article>

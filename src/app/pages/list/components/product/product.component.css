@@ -8,6 +8,10 @@
 		opacity: 1;
 	}
 }
+* {
+	color: var(--black);
+	text-decoration: none;
+}
 .all_content {
 	display: grid;
 	grid-template-columns: repeat(4, 20%);
