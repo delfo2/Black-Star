@@ -91,7 +91,7 @@
 }
 
 .all_article-rating {
-	animation: slideInRightStar 1s ease-in-out 1s both;
+	animation: slideInRightStar 500ms ease-in-out 1s both;
 	align-items: center;
 	display: flex;
 	justify-content: space-between;

@@ -18,9 +18,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 	],
 })
 export class HeaderComponent extends SelectedProductController {
-	constructor(private router: Router) {
-		super();
-	}
 	@Input()
 	public override selectedProducts: SelectedProduct[] = [];
 	public buttonsStats = {
@@ -37,15 +34,20 @@ export class HeaderComponent extends SelectedProductController {
 
 	// search variables
 	public searchMode = false;
-	public searchVisibility = isMobile() ? 'none' : 'block';
+	public searchVisibility : string;
 	public searchBorder = '';
 	public searchButtonBorder = '10%';
+
 	public clothesSearch = new FormGroup({
 		searchInput: new FormControl('', [
 			Validators.required,
 			Validators.pattern('[A-Za-zÀ-ÿ ]*'),
 		]),
 	});
+	constructor(private router: Router) {
+		super();
+		this.searchVisibility = this.isMobile() ? 'none' : 'block';
+	}
 
 	// visibility modifiers
 	public changeProductCartVisibility(): void {
@@ -86,7 +88,6 @@ export class HeaderComponent extends SelectedProductController {
 			});
 		}
 	}
-
 	// html helpers
 	public getAnimateDelay = getAnimateDelay;
 	public isMobile = isMobile;

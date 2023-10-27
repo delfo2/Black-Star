@@ -4,7 +4,7 @@
 }
 
 .all {
-	animation-duration: 1s;
+	animation-duration: 500ms;
 	align-items: flex-start;
 	display: flex;
 	flex-direction: column;
@@ -21,7 +21,7 @@
 	justify-content: space-between;
 	width: 100%;
 	& > h2 {
-		animation-duration: 1s;
+		animation-duration: 500ms;
 	}
 }
 

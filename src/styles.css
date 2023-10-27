@@ -77,11 +77,11 @@
 	display: flex;
 	justify-content: space-between;
 	& > :nth-child(1)::after {
-		animation: slideInRight 1000ms ease-in-out both;
+		animation: slideInRight 500ms ease-in-out both;
 		background-image: url("src/assets/img/svg/home.svg");
 	}
 	& > :nth-child(2)::after {
-		animation: slideInLeft 1000ms ease-in-out both;
+		animation: slideInLeft 500ms ease-in-out both;
 		background-image: url("src/assets/img/svg/reply.svg");
 	}
 }
@@ -169,10 +169,10 @@
 
 /* ANIMATION CLASSES DEFAULT */
 .slideInLeft {
-	animation: slideInLeft 2s ease-in-out both;
+	animation: slideInLeft 500ms ease-in-out both;
 }
 .slideInRight {
-	animation: slideInRight 2s ease-in-out both;
+	animation: slideInRight 500ms ease-in-out both;
 }
 .slideInBottom {
 	animation: slideInBottom 500ms both;
@@ -181,7 +181,7 @@
 	animation: slideInTop 500ms both;
 }
 .fadeIn {
-	animation: fadeIn 1s ease-in-out both;
+	animation: fadeIn 500ms ease-in-out both;
 }
 
 /* ANIMATIONS */
