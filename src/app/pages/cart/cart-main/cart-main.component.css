@@ -22,7 +22,7 @@
 	overflow: hidden;
 }
 .cart__resume {
-	animation-duration: 800ms;
+	animation-duration: 500ms;
 	width: 30%;
 }
 @media screen and (max-width: 1000px) {

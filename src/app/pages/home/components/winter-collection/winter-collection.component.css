@@ -37,12 +37,12 @@
 }
 
 .inverno__textArea {
-	animation: slideInRight 2s;
+	animation: slideInRight 500ms;
 	grid-area: text;
 	height: 100%;
 	width: 100%;
 	& > * {
-		animation: fade 4s;
+		animation: fade 500ms;
 	}
 }
 
@@ -65,14 +65,14 @@
 }
 
 .inverno__foto {
-	animation: slideInLeft 2s;
+	animation: slideInLeft 500ms;
 	grid-area: pic;
 	height: 100%;
 	width: 100%;
 }
 
 .inverno__foto-destaque {
-	animation: 5s infinite ease-in-out 3s backwards;
+	animation: 5s infinite ease-in-out 0s backwards;
 	animation-name: photoMoveVertical;
 	object-fit: cover;
 	width: 100%;
@@ -81,7 +81,7 @@
 }
 
 .inverno__preview {
-	animation: slideInRight-far 2s backwards;
+	animation: 500ms slideInRight-far backwards;
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
