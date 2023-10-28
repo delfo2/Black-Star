@@ -2,80 +2,33 @@
 	<div class="estrela__cabecalho">
 		<h1 class="cabecalho__titulo">Black Star</h1>
 		<div class="cabecalho__container">
-			<div class="cabecalho__pesquisa">
-				<form
-					method="get"
-					class="pesquisa__form"
-					[style.border]="searchBorder"
-					[formGroup]="clothesSearch"
-					(submit)="onSubmit()"
-				>
-					<input
-						type="search"
-						name="searchInput"
-						id="searchInput"
-						required
-						class="pesquisa__input"
-						[style.display]="searchVisibility"
-						formControlName="searchInput"
-						placeholder="Exemplo: Camisas"
-						pattern="[\D*\s*]*"
-						title="A pesquisa deve conter apenas letras de a-z"
-					/>
-					<input
-						(click)="switchSearchMode()"
-						type="submit"
-						name="searchInput"
-						id="searchInput"
-						value=""
-						class="pesquisa__icone marked__button"
-						[style]="buttonsStats.search"
-						[style.border-radius]="searchButtonBorder"
-					/>
-					<span
-						*ngIf="
-							clothesSearch.invalid &&
-							(clothesSearch?.dirty || clothesSearch?.touched)
-						"
-						class="alert-danger"
-					>
-						<div>A pesquisa deve conter apenas letras.</div>
-					</span>
-					<span
-						*ngIf="
-							clothesSearch.invalid &&
-							(clothesSearch?.dirty || clothesSearch?.touched) &&
-							searchMode
-						"
-						class="alert-danger-mobile"
-					>
-						<div>A pesquisa deve conter apenas letras.</div>
-					</span>
-				</form>
-			</div>
+			<app-search
+				(buttonClicked)="changeButtonsVisibility($event)"
+			></app-search>
 			<button
 				type="menu"
 				class="cabecalho__menu-mobile marked__button"
 				[style]="buttonsStats.menu"
-				(click)="changeMobileMenuOptionsVisibility()"
+				(click)="changeCartAndMenuVisibility('menu')"
 				*ngIf="btnMenuVisibility"
+				aria-label="menu"
 			></button>
 			<div class="cabecalho__menu">
-				<button class="menu__botao" [routerLink]="['/']">início</button>
-				<button
+				<a class="menu__botao" [routerLink]="['/']">início</a>
+				<a
 					class="menu__botao"
 					[routerLink]="['/list']"
 					[queryParams]="{ q: 'masculino' }"
 				>
 					masculino
-				</button>
-				<button
+				</a>
+				<a
 					class="menu__botao"
 					[routerLink]="['/list']"
 					[queryParams]="{ q: 'feminino' }"
 				>
 					feminino
-				</button>
+				</a>
 				<a
 					class="menu__botao"
 					href="https://angular-blog-pink.vercel.app/"
@@ -87,10 +40,11 @@
 			</div>
 			<div class="cabecalho__carrinho">
 				<button
+					aria-label="carrinho"
 					*ngIf="btnCartVisibility"
 					class="carrinho__botao marked__button"
 					[style]="buttonsStats.cart"
-					(click)="changeProductCartVisibility()"
+					(click)="changeCartAndMenuVisibility('cart')"
 				>
 					<p
 						*ngIf="reducer(selectedProducts) > 0"

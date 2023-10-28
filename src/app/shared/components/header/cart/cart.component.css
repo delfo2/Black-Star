@@ -61,10 +61,6 @@
 	}
 }
 
-.slideInRight {
-	animation: slideInLeft 500ms both;
-}
-
 .carrinho__card-item p {
 	font-size: 0.8rem;
 	text-align: center;

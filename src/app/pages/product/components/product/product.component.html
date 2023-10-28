@@ -36,6 +36,7 @@
 				"
 				*ngFor="let size of sizeArr"
 				(click)="changeSelectedProductSize(product.id, size, products)"
+				aria-label="mudar tamanho"
 			>
 				{{ size }}
 			</button>

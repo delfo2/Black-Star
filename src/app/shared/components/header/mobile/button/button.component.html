@@ -1,28 +1,28 @@
 <div class="cabecalho__mobile">
 	<div class="cabecalho__mobile-menu">
-		<button
+		<a
 			class="menu__botao slideInBottom"
 			[style.animation-delay]="getAnimateDelay(3, 50)"
 			[routerLink]="['/']"
 		>
 			início
-		</button>
-		<button
+		</a>
+		<a
 			class="menu__botao slideInBottom"
 			[style.animation-delay]="getAnimateDelay(2, 50)"
 			[routerLink]="['/list']"
 			[queryParams]="{ q: 'masculino' }"
 		>
 			masculino
-		</button>
-		<button
+		</a>
+		<a
 			class="menu__botao slideInBottom"
 			[style.animation-delay]="getAnimateDelay(1, 50)"
 			[routerLink]="['/list']"
 			[queryParams]="{ q: 'feminino' }"
 		>
 			feminino
-		</button>
+		</a>
 		<a
 			class="menu__botao slideInBottom"
 			[style.animation-delay]="getAnimateDelay(0, 50)"

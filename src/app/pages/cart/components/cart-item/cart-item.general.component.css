@@ -9,3 +9,13 @@ input[type="number"] {
 * {
 	text-transform: capitalize;
 }
+.product__details,
+.product__control,
+.product__control-dashboard,
+.product__price {
+	display: flex;
+}
+button,
+.product__img {
+	cursor: pointer;
+}

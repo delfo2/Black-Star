@@ -1,5 +1,6 @@
 <div class="all_content fadeIn" *ngIf="products.length > 0">
 	<a
+		aria-label="ir para a página deste produto"
 		class="all_article"
 		*ngFor="let product of products; let i = index"
 		[ngClass]="getAnimationSide(i + 1)"

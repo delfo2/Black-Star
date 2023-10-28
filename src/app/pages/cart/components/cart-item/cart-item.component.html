@@ -16,10 +16,11 @@
 	</span>
 	<div class="product__control">
 		<div class="product__control-dashboard">
-			<button (click)="changeProductAmount(product.getId(), -1)">
+			<button (click)="changeProductAmount(product.getId(), -1)" aria-label="Remover produto">
 				-
 			</button>
 			<input
+				aria-label="quantidade de produtos"
 				type="number"
 				name=""
 				id=""
@@ -27,7 +28,7 @@
 				[valueAsNumber]="product.getAmount()"
 				disabled
 			/>
-			<button (click)="changeProductAmount(product.getId())">+</button>
+			<button (click)="changeProductAmount(product.getId())" aria-label="Adicionar produto">+</button>
 		</div>
 		<button
 			class="product__control-delete"

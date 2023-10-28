@@ -4,7 +4,7 @@
 			<p>Nenhum Produto escolhido</p>
 		</figure>
 		<figure
-			class="carrinho__card-item slideInRight"
+			class="carrinho__card-item slideInLeft"
 			*ngFor="let p of selectedProducts; let i = index"
 			[style.animation-delay]="getAnimateDelay(i, 100)"
 		>
@@ -17,7 +17,7 @@
 				[routerLink]="['/product', p.getProduct().id]"
 			/>
 			<figcaption>{{ p.getProduct().render.description }}</figcaption>
-			<button (click)="removeSelectedProductById(p.getProduct().id)">
+			<button (click)="removeSelectedProductById(p.getProduct().id)" aria-label="remover produto">
 				X
 			</button>
 		</figure>

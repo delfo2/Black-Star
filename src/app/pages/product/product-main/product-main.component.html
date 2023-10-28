@@ -8,8 +8,8 @@
 <section class="product">
 	<div class="all_indice">
 		<div class="all_indice-btn">
-			<a [routerLink]="['/']"></a>
-			<a (click)="goBack()"></a>
+			<a [routerLink]="['/']" id="btnHome" aria-label="ir para a página inicial"></a>
+			<a role="button" id="goBack" (click)="goBack()" aria-label="voltar para a última página acessada"></a>
 		</div>
 	</div>
 	<app-product

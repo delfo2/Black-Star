@@ -5,6 +5,7 @@
 		*ngFor="let product of products.slice(0, 4)"
 		[routerLink]="['/list']"
 		[queryParams]="{ q: product.details.type }"
+		aria-label="ir para página deste produto"
 	>
 		<figure>
 			<img src="{{ product.render.img }}" alt="" />
