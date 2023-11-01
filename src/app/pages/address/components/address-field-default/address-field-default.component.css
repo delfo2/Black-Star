@@ -1,0 +1,66 @@
+.field,
+.field--editable {
+	align-items: center;
+	border: 1px solid var(--cinza-medio);
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+	height: 6vh;
+	width: 100%;
+	&::after {
+		background: url("../../../../../assets/img/svg/pen.svg") no-repeat
+			center;
+		content: "";
+		display: inline-block;
+		filter: invert();
+		height: 15px;
+		width: 15px;
+		margin-right: 15px;
+	}
+}
+.field--editable {
+	border-color: var(--preto);
+	&::after {
+		filter: none;
+	}
+}
+
+.field__label {
+	align-items: center;
+	background-color: var(--cinza-medio);
+	border-radius: 8px 0 0 8px;
+	color: var(--branco);
+	display: flex;
+	justify-content: center;
+	text-transform: capitalize;
+	width: 20%;
+	height: 100%;
+}
+.field__label--editable {
+	background-color: var(--preto);
+}
+.field__input {
+	font-size: 1.3rem;
+	border: none;
+	background: none;
+	padding-left: 10px;
+	width: 70%;
+	&:focus-within {
+		outline: none;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.field__div,
+	.field--editable {
+		width: 100%;
+	}
+	.field__label {
+		width: 40%;
+	}
+	.field__input {
+		font-size: 0.9rem;
+		width: 60%;
+	}
+}

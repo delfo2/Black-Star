@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { Product } from 'src/app/model/Product';
-import { ProductsService } from 'src/app/services/selected-products.service';
+import { ProductsService } from 'src/app/services/ProductsService/Products.service';
 import {
 	ClothesTypes,
 	allClotheTypes,

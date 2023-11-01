@@ -1,0 +1,25 @@
+<fieldset class="field">
+	<legend class="field__legend">
+		Insira seu CEP para preenchermos seu endereço.
+	</legend>
+	<div
+		[ngClass]="
+			cepObject.loading && cepObject.complete
+				? 'field__div--loading'
+				: 'field__div'
+		"
+	>
+		<label for="input" class="div__label">CEP</label>
+		<input
+			class="div__input"
+			name="input"
+			id="input"
+			[mask]="'00000-000'"
+			[showMaskTyped]="true"
+			(keyup)="emitValue($event.target)"
+		/>
+	</div>
+	<span class="field__error" *ngIf="!cepObject.valid">
+		<p>Cep Inválido</p>
+	</span>
+</fieldset>

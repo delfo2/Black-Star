@@ -1,6 +1,8 @@
-import { Product } from '../model/Product';
-import { SelectedProduct } from '../model/SelectedProduct';
-import { LocalProductAmount } from '../shared/types/storageTypes';
+import { AddressEssential } from 'src/app/shared/types/addressTypes';
+import { Product } from '../../model/Product';
+import { SelectedProduct } from '../../model/SelectedProduct';
+import { LocalProductAmount } from '../../shared/types/storageTypes';
+import { isInstanceOfAddressEssencial } from 'src/app/shared/utils/addressHelpers';
 
 export class LocalSave {
 	static saveSelectedProducts(selectedProducts: SelectedProduct[]): void {
@@ -47,5 +49,28 @@ export class LocalSave {
 	}
 	static deleteSelectedProducts(): void {
 		localStorage.removeItem('selectedProducts');
+	}
+	static saveUserAddress(address: AddressEssential): void {
+		try {
+			localStorage.setItem('userAddress', JSON.stringify(address));
+		} catch (error) {
+			console.error(
+				'Error while saving user addres to localStorage:',
+				error
+			);
+		}
+	}
+	static collectUserAddress(): AddressEssential | null {
+		const userAddress = JSON.parse(
+			localStorage.getItem('userAddress') || '[]'
+		);
+
+		if (isInstanceOfAddressEssencial(userAddress)) {
+			return userAddress as AddressEssential;
+		}
+		return null;
+	}
+	static deleteUserAddress(): void {
+		localStorage.removeItem('userAddress');
 	}
 }

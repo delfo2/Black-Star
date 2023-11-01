@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
 import { SelectedProduct } from 'src/app/model/SelectedProduct';
-import { ProductsService } from 'src/app/services/selected-products.service';
+import { ProductsService } from 'src/app/services/ProductsService/Products.service';
 import { ProductConfirmation } from 'src/app/shared/types/ProductPopUpObject';
 import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 
@@ -22,7 +22,6 @@ export class CartMainComponent extends SelectedProductController {
 	}
 
 	private productsService = new ProductsService();
-	public override selectedProducts: SelectedProduct[] = [];
 
 	public productConfirmation : ProductConfirmation = {
 		alive: false, question: "Aceita?", callbackFunction: function(){}

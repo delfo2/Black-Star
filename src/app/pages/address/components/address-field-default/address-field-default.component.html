@@ -1,0 +1,16 @@
+<fieldset [ngClass]="disabled ? 'field' : 'field--editable'">
+	<label
+		for="{{ label }}"
+		class="field__label"
+		[ngClass]="disabled ? '' : 'field__label--editable'"
+		>{{ label }}
+	</label>
+	<input
+		class="field__input"
+		name="{{ label }}"
+		id="{{ label }}"
+		[value]="value"
+		[disabled]="disabled"
+		(keyup)="updateValue($event.target)"
+	/>
+</fieldset>

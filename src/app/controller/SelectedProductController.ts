@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { Product } from '../model/Product';
 import { SelectedProduct } from '../model/SelectedProduct';
-import { LocalSave } from '../services/LocalStorageHandler';
+import { LocalSave } from '../services/LocalStorage/LocalStorageHandler';
 import {
 	ProductConfirmation,
 	ProductMessage,

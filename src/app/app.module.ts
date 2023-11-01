@@ -7,10 +7,21 @@ import { HomeModule } from './pages/home/home.module';
 import { CartModule } from './pages/cart/cart.module';
 import { ListModule } from './pages/list/list.module';
 import { ProductModule } from './pages/product/product.module';
+import { AddressModule } from './pages/address/address.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule, HomeModule, CartModule, ListModule, ProductModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		HomeModule,
+		CartModule,
+		ListModule,
+		ProductModule,
+		AddressModule,
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

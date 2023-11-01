@@ -1,0 +1,10 @@
+.header {
+	display: block;
+	min-height: 150px;
+}
+@media screen and (max-width: 1000px) {
+	.header {
+		display: block;
+		min-height: 76px;
+	}
+}

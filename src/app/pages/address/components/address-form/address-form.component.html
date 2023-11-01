@@ -1,0 +1,64 @@
+<form class="form fadeIn" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+	<div
+		class="form__icon"
+		[style.animation-delay]="getAnimateDelay(1, 50, false, 1, true)"
+	>
+		<img
+			class="form__icon-img"
+			src="../../../../../assets/img/svg/local.svg"
+			alt="Simbolo de localidade com uma casa dentro dele"
+		/>
+		<h2 class="form__icon-title">Endereço</h2>
+	</div>
+	<app-address-field-cep
+		[style.animation-delay]="getAnimateDelay(2, 50, false, 1, true)"
+		class="form__cep"
+		[cepObject]="cepObject"
+		(cepObjectEmmiter)="getCep($event)"
+	></app-address-field-cep>
+	<app-address-field-default
+		[style.animation-delay]="getAnimateDelay(3, 50, false, 1, true)"
+		class="form__logradouro"
+		label="logradouro"
+		[value]="address.logradouro"
+		[disabled]="disableField(originalAddress.logradouro)"
+		(onUpdate)="address.logradouro = $event"
+	></app-address-field-default>
+	<app-address-field-default
+		[style.animation-delay]="getAnimateDelay(4, 50, false, 1, true)"
+		class="form__complemento"
+		label="complemento"
+		[value]="address.complemento"
+		[disabled]="disableField(originalAddress.complemento)"
+		(onUpdate)="address.complemento = $event"
+	></app-address-field-default>
+	<app-address-field-default
+		[style.animation-delay]="getAnimateDelay(5, 50, false, 1, true)"
+		class="form__bairro"
+		label="bairro"
+		[value]="address.bairro"
+		[disabled]="disableField(originalAddress.bairro)"
+		(onUpdate)="address.bairro = $event"
+	></app-address-field-default>
+	<app-address-field-default
+		[style.animation-delay]="getAnimateDelay(6, 50, false, 1, true)"
+		class="form__localidade"
+		label="localidade"
+		[value]="address.localidade"
+	></app-address-field-default>
+	<app-address-field-default
+		[style.animation-delay]="getAnimateDelay(7, 50, false, 1, true)"
+		class="form__UF"
+		label="UF"
+		[value]="address.uf"
+	></app-address-field-default>
+	<button
+		class="link form__button"
+		type="submit"
+		[style.animation-delay]="getAnimateDelay(8, 50, false, 1, true)"
+		[ngClass]="cepObject.valid && cepObject.complete ? 'form__button' : 'form__button--invalid'"
+	>
+		Continuar
+	</button>
+</form>
+<app-footer></app-footer>

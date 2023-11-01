@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SelectedProductController } from 'src/app/controller/SelectedProductController';
-import { ProductsService } from 'src/app/services/selected-products.service';
+import { ProductsService } from 'src/app/services/ProductsService/Products.service';
 import { ProductMessage } from 'src/app/shared/types/ProductPopUpObject';
 import { WindowHelper } from 'src/app/shared/utils/WindowHelper';
 

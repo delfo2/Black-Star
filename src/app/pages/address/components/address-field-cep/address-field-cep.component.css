@@ -1,0 +1,83 @@
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.field {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0;
+	width: 100%;
+}
+
+.field__legend {
+	color: var(--cinza-comum);
+	margin-bottom: 5px;
+	text-align: center;
+	width: 100%;
+}
+
+.field__div,
+.field__div--loading {
+	align-items: center;
+	border: 1px solid black;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	width: 30%;
+	height: 6vh;
+	&::after {
+		background: url("../../../../../assets/img/svg/loading.svg") no-repeat
+			center;
+		content: "";
+		display: inline-block;
+		filter: invert();
+		height: 15px;
+		width: 15px;
+		margin-right: 15px;
+	}
+}
+.field__div--loading::after {
+	animation: spin 1s ease-in-out infinite both;
+	filter: none;
+}
+.div__label {
+	align-items: center;
+	background-color: var(--preto);
+	border-radius: 8px 0 0 8px;
+	color: var(--branco);
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	width: 30%;
+}
+.div__input {
+	font-size: 1.3rem;
+	border: none;
+	background: none;
+	padding-left: 10px;
+	width: 70%;
+	&:focus-within {
+		outline: none;
+	}
+}
+
+.field__error {
+	color: var(--vermelho);
+	margin-top: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+	.field {
+		align-items: start;
+	}
+	.field__div,
+	.field__div--loading {
+		width: 100%;
+	}
+}

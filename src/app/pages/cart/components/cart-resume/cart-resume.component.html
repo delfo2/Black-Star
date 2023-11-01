@@ -14,6 +14,6 @@
 			<p>Total</p>
 			<span class="resume--price">{{ (getTotal() - getDiscount()).toFixed(2) }}</span>
 		</div>
-		<button class="resume__total-button link">Finalizar Compra</button>
+		<a [routerLink]="['/address']" class="resume__total-button link">Continuar</a>
 	</div>
 </section>
