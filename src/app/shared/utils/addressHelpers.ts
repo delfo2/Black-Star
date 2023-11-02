@@ -29,7 +29,3 @@ export function getOnlyEssentialFromAddress(
 		uf: address.uf,
 	};
 }
-
-export function parseCepNumbersToCepWithDash(cep: string): string {
-	return '';
-}

@@ -14,9 +14,10 @@
 			class="div__input"
 			name="input"
 			id="input"
+			(keyup)="emitValue($event.target)"
 			[mask]="'00000-000'"
 			[showMaskTyped]="true"
-			(keyup)="emitValue($event.target)"
+			[(ngModel)]="cepObject.cep"
 		/>
 	</div>
 	<span class="field__error" *ngIf="!cepObject.valid">

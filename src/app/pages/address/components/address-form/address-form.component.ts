@@ -10,7 +10,6 @@ import {
 import {
 	getOnlyEssentialFromAddress,
 	isInstanceOfAddressError,
-	parseCepNumbersToCepWithDash,
 } from 'src/app/shared/utils/addressHelpers';
 import { getAnimateDelay } from 'src/app/shared/utils/stylesFunctions';
 
@@ -53,7 +52,7 @@ export class AddressFormComponent implements OnInit {
 		if (localAddress) {
 			this.address = localAddress;
 			this.originalAddress = localAddress;
-			this.cepObject.cep = parseCepNumbersToCepWithDash(localAddress.cep);
+			this.cepObject.cep = localAddress.cep;
 			this.cepObject.complete = true;
 			this.cepObject.valid = true;
 		}
@@ -64,7 +63,7 @@ export class AddressFormComponent implements OnInit {
 		this.cepObject = cepObject;
 		this.cepObject.loading = true;
 
-		this.viaCepService.connect(this.cepObject.cep).subscribe({
+		this.viaCepService.connect(this.cepObject.cep.replace('-', '')).subscribe({
 			next: (value) => {
 				if (isInstanceOfAddressError(value)) {
 					this.cepObject.valid = !value.erro;

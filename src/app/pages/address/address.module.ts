@@ -4,9 +4,9 @@ import { AddressMainComponent } from './address-main/address-main.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { AddressFieldComponent } from './components/address-field-cep/address-field-cep.component';
 import { AddressFormComponent } from './components/address-form/address-form.component';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { AddressFieldDefaultComponent } from './components/address-field-default/address-field-default.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
 	declarations: [
@@ -18,9 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 	imports: [
 		CommonModule,
 		ComponentsModule,
+		ReactiveFormsModule,
+		FormsModule,
 		NgxMaskDirective,
 		NgxMaskPipe,
-		ReactiveFormsModule,
 	],
 	providers: [provideNgxMask()],
 })
