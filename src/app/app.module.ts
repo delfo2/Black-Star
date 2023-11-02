@@ -9,6 +9,7 @@ import { ListModule } from './pages/list/list.module';
 import { ProductModule } from './pages/product/product.module';
 import { AddressModule } from './pages/address/address.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationModule } from './pages/confirmation/confirmation.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 		ListModule,
 		ProductModule,
 		AddressModule,
+		ConfirmationModule
 	],
 	bootstrap: [AppComponent],
 })

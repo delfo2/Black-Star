@@ -1,0 +1,49 @@
+<app-header class="header" [selectedProducts]="selectedProducts"></app-header>
+<main
+	class="main fadeIn"
+	*ngIf="selectedProducts.length > 0 && addressIsValid && !orderConfirmed"
+>
+	<h1 class="main__title">Revisão</h1>
+	<div class="main__confirmation">
+		<app-cart-resume
+			class="main__confirmation-products"
+			[selectedProducts]="selectedProducts"
+			(buttonClicked)="userAcceptProducts = $event"
+		></app-cart-resume>
+		<app-address-resume
+			[address]="address"
+			(buttonClicked)="userAcceptAddress = $event"
+		></app-address-resume>
+		<app-confirmation-button
+			[userAcceptAddress]="userAcceptAddress"
+			[userAcceptProducts]="userAcceptProducts"
+			(confirmationEmit)="confirmOrder()"
+		></app-confirmation-button>
+	</div>
+</main>
+<app-error
+	title="Você não escolheu um produto!"
+	description="Para acessar essa página você deve escolher ao menos um produto."
+	destiny="Ir para Produtos"
+	link="/list"
+	*ngIf="selectedProducts.length < 1 && addressIsValid && !orderConfirmed"
+></app-error>
+<app-error
+	title="Você não definiu seu endereço!"
+	description="Para acessar essa página você deve definir seu endereço."
+	destiny="Definir endereço."
+	link="/address"
+	*ngIf="selectedProducts.length > 0 && !addressIsValid && !orderConfirmed"
+></app-error>
+<app-error
+	title="Faltam dados!"
+	description="Para acessar essa página você deve definir seu endereço e selecionar ao menos um produto."
+	*ngIf="selectedProducts.length < 1 && !addressIsValid && !orderConfirmed"
+></app-error>
+<h2 *ngIf="orderConfirmed" style="margin: 4rem auto; width: 100%; text-align: center;">
+	<p>
+		pedido confirmado :D
+	</p>
+	<p>até a próxima !</p>
+</h2>
+<app-footer></app-footer>

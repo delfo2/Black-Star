@@ -1,0 +1,28 @@
+.confirmation {
+	margin: 1rem auto;
+	height: 8vh;
+	width: 60%;
+}
+button,
+a {
+	border-radius: 5px;
+	height: 100%;
+	&::after {
+		background-image: url('../../../../../assets/img/svg/star.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}
+
+.confirmation__button--products::after {
+	background-image: url('../../../../../assets/img/svg/cart.svg');
+}
+
+.confirmation__button--address::after {
+	background-image: url('../../../../../assets/img/svg/local.svg');
+}
+.confirmation__button--correct {
+	border-color: white;
+	filter: invert();
+}

@@ -1,0 +1,21 @@
+<h2>Produtos</h2>
+<article class="product" *ngFor="let product of selectedProducts">
+	<img
+		src="{{ product.getProduct().render.img }}"
+		alt=""
+		class="product__img"
+	/>
+	<p class="product__name">{{ product.getProduct().title }}</p>
+	<span class="product__amount">
+		<p>Qtnd:</p>
+		<p>{{ product.getAmount() }}</p>
+	</span>
+	<p class="product__price">R${{ product.getProduct().price }}</p>
+</article>
+<app-accept-resume
+	legend="Os produtos escolhidos estão certos?"
+	option1="Sim"
+	option2="Não"
+	fieldName="selectedProductsConfirmation"
+	(buttonClicked)="emitConfirmation($event)"
+></app-accept-resume>

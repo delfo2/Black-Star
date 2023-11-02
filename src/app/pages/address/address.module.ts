@@ -24,5 +24,6 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 		NgxMaskPipe,
 	],
 	providers: [provideNgxMask()],
+	exports: [AddressFieldDefaultComponent],
 })
 export class AddressModule {}

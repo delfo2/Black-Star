@@ -1,0 +1,27 @@
+<div class="confirmation">
+	<button
+		class="link confirmation__button--correct"
+		*ngIf="userAcceptProducts && userAcceptAddress"
+		(click)="emitConfirmation()"
+	>
+		Finalizar Pedido
+	</button>
+	<a	[routerLink]="['']"
+		class="link confirmation__button--home"
+		*ngIf="!userAcceptProducts && !userAcceptAddress"
+	>
+		Voltar ao Inicio
+	</a>
+	<a
+		[routerLink]="['/cart']"
+		class="link confirmation__button--products"
+		*ngIf="!userAcceptProducts && userAcceptAddress"
+		>Editar Produtos</a
+	>
+	<a
+		[routerLink]="['/address']"
+		class="link confirmation__button--address"
+		*ngIf="userAcceptProducts && !userAcceptAddress"
+		>Editar Endereço</a
+	>
+</div>

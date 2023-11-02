@@ -1,0 +1,38 @@
+<section>
+	<h2>endereço</h2>
+	<div class="address">
+		<app-address-field-default
+			label="Cep"
+			value="{{ address.cep }}"
+		></app-address-field-default>
+		<app-address-field-default
+			label="logradouro"
+			value="{{ address.logradouro }}"
+		></app-address-field-default>
+		<app-address-field-default
+			label="complemento"
+			value="{{ address.complemento }}"
+		></app-address-field-default>
+		<app-address-field-default
+			label="bairro"
+			value="{{ address.bairro }}"
+		></app-address-field-default>
+		<app-address-field-default
+			class="address__localidade"
+			label="localidade"
+			value="{{ address.localidade }}"
+		></app-address-field-default>
+		<app-address-field-default
+			class="address__uf"
+			label="uf"
+			value="{{ address.uf }}"
+		></app-address-field-default>
+	</div>
+	<app-accept-resume
+		legend="O endereço está certo?"
+		option1="sim"
+		option2="não"
+		fieldName="addressFieldConfirmation"
+		(buttonClicked)="emitConfirmation($event)"
+	></app-accept-resume>
+</section>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LocalSave } from 'src/app/services/LocalStorage/LocalStorageHandler';
 import { ViaCepService } from 'src/app/services/ViaCep/via-cep.service';
 import {
@@ -44,7 +45,7 @@ export class AddressFormComponent implements OnInit {
 		uf: '',
 	};
 
-	constructor(private viaCepService: ViaCepService) {}
+	constructor(private viaCepService: ViaCepService, private router: Router) {}
 
 	public ngOnInit() {
 		const localAddress = LocalSave.collectUserAddress();
@@ -63,26 +64,30 @@ export class AddressFormComponent implements OnInit {
 		this.cepObject = cepObject;
 		this.cepObject.loading = true;
 
-		this.viaCepService.connect(this.cepObject.cep.replace('-', '')).subscribe({
-			next: (value) => {
-				if (isInstanceOfAddressError(value)) {
-					this.cepObject.valid = !value.erro;
-				} else {
-					this.cepObject.valid = true;
-					this.address = getOnlyEssentialFromAddress(value);
-					this.originalAddress = getOnlyEssentialFromAddress(value);
-				}
-			},
-			complete: () => {
-				setTimeout(() => {
-					this.cepObject.loading = false;
-				}, 500);
-			},
-		});
+		this.viaCepService
+			.connect(this.cepObject.cep.replace('-', ''))
+			.subscribe({
+				next: (value) => {
+					if (isInstanceOfAddressError(value)) {
+						this.cepObject.valid = !value.erro;
+					} else {
+						this.cepObject.valid = true;
+						this.address = getOnlyEssentialFromAddress(value);
+						this.originalAddress =
+							getOnlyEssentialFromAddress(value);
+					}
+				},
+				complete: () => {
+					setTimeout(() => {
+						this.cepObject.loading = false;
+					}, 500);
+				},
+			});
 	}
 	public onSubmit() {
 		if (this.cepObject.valid && this.cepObject.complete) {
 			LocalSave.saveUserAddress(this.address);
+			this.router.navigate(['confirmation'])
 		}
 	}
 	public disableField(field: string): boolean {

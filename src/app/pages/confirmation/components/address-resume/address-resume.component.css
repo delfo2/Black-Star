@@ -1,0 +1,24 @@
+h2 {
+	font-size: 1.5rem;
+	font-family: var(--winter-font);
+	margin: 1rem 0 2rem 0;
+	text-align: center;
+	text-transform: capitalize;
+	width: 100%;
+}
+.address {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	& > * {
+		animation: slideInTop 500ms both;
+		margin-bottom: 1rem;
+		width: 100%;
+	}
+}
+.address__localidade {
+	width: 65%;
+}
+.address__uf {
+	width: 30%;
+}

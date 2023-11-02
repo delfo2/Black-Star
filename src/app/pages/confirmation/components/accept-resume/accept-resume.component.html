@@ -1,0 +1,22 @@
+<fieldset class="accept">
+	<legend>{{ legend }}</legend>
+	<div class="toggle">
+		<input
+			type="radio"
+			name="{{ fieldName }}"
+			value="{{ option1 }}"
+			id="{{ option1 }}"
+			(click)="emitClick(true)"
+		/>
+		<label for="{{ option1 }}">{{ option1 }}</label>
+		<input
+			type="radio"
+			name="{{ fieldName }}"
+			value="{{ option2 }}"
+			id="{{ option2 }}"
+			checked="checked"
+			(click)="emitClick(false)"
+		/>
+		<label for="{{ option2 }}">{{ option2 }}</label>
+	</div>
+</fieldset>

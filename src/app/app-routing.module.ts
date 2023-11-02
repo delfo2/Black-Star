@@ -5,6 +5,7 @@ import { CartMainComponent } from './pages/cart/cart-main/cart-main.component';
 import { ListMainComponent } from './pages/list/list-main/list-main.component';
 import { ProductMainComponent } from './pages/product/product-main/product-main.component';
 import { AddressMainComponent } from './pages/address/address-main/address-main.component';
+import { ConfirmationMainComponent } from './pages/confirmation/main/main.component';
 
 const routes: Routes = [
 	{ path: '', component: MainComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
 	{ path: 'product', redirectTo:'list' },
 	{ path: 'product/:id', component: ProductMainComponent },
 	{ path: 'address', component: AddressMainComponent},
+	{ path: 'confirmation', component: ConfirmationMainComponent},
 	{ path: '**', redirectTo:'' },
 ];
 
